@@ -2,4 +2,3 @@
 .next/
 
 # Ignore specific files:
-package-lock.json
