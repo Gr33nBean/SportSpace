@@ -66,6 +66,7 @@
     "no-param-reassign": "error",
     "no-case-declarations": "off",
     "quote-props": ["warn", "as-needed"],
+    "no-irregular-whitespace": "warn",
     "unused-imports/no-unused-imports": "error",
     // TypeScript rules
     "@typescript-eslint/ban-types": "off",

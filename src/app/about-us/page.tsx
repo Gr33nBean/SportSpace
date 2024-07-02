@@ -1,10 +1,13 @@
-import OurTeam from '@/components/AboutUs/OurTeam'
 import React from 'react'
 
+import OurTeam from '@/components/AboutUs/OurTeam'
+
 const AboutUs = () => {
-  return <div>
-    <OurTeam />
-  </div>
+  return (
+    <div className='container'>
+      <OurTeam />
+    </div>
+  )
 }
 
 export default AboutUs

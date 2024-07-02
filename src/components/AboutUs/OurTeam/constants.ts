@@ -1,3 +1,3 @@
 export const message = {
-    TITLE: 'Our Team'
+  TITLE: 'Our Team',
 }

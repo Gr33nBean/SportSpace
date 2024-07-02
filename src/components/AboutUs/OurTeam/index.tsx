@@ -1,14 +1,16 @@
 import React from 'react'
+
 import MemberByTeam from '../MemberByTeam'
+
 import { message } from './constants'
 
 const OurTeam = () => {
   return (
     <div>
-        <p className='text-secondary tracking-tighter text-center font-Inter font-semibold text-3xl'>{message.TITLE}</p>
-        <section>
-            <MemberByTeam />
-        </section>
+      <p className='text-center font-Inter text-3xl font-semibold tracking-tighter text-secondary'>{message.TITLE}</p>
+      <section>
+        <MemberByTeam />
+      </section>
     </div>
   )
 }
