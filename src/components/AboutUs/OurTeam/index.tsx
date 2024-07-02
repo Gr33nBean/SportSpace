@@ -6,7 +6,7 @@ import { message } from './constants'
 
 const OurTeam = () => {
   return (
-    <div>
+    <div className='container bg-light-gray py-10'>
       <p className='text-center font-Inter text-3xl font-semibold tracking-tighter text-secondary'>{message.TITLE}</p>
       <section>
         <MemberByTeam />
