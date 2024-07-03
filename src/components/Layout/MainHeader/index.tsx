@@ -25,9 +25,10 @@ const pages = [
 
 const MainHeader = () => {
   const [expand, setExpand] = React.useState(false)
+
   return (
     <>
-      <div className='container sticky top-0 z-[999] w-full bg-white py-4 shadow-sm'>
+      <div className='container sticky top-0 z-[999] w-full bg-white py-4 shadow-sm transition-all duration-300'>
         <div className='flex w-full items-center'>
           <div className='flex flex-1 items-center gap-6'>
             <div className='size-8 rounded-full bg-primary'></div>
@@ -53,19 +54,15 @@ const MainHeader = () => {
       </div>
 
       <div
-        className='fixed bottom-0 left-0 right-0 top-0 z-[100] flex items-start pt-[76px] transition-all duration-500 md:hidden'
+        className='fixed bottom-0 left-0 right-0 top-0 z-[100] flex flex-col justify-start transition-all duration-500 md:hidden'
         style={{
           top: expand ? '0px' : '-100%',
           pointerEvents: expand ? 'all' : 'none',
         }}
         onClick={() => setExpand(false)}
       >
-        <div
-          className='container flex w-full flex-col gap-2 bg-white py-4 shadow-sm'
-          onClick={(e) => {
-            e.stopPropagation()
-          }}
-        >
+        <div className='my-4 h-8 w-full'></div>
+        <div className='container flex w-full flex-col gap-2 bg-white py-4 shadow-sm'>
           <ListLink />
           <PrimaryButton variant='outlined'>Đăng nhập</PrimaryButton>
           <PrimaryButton>Đăng ký</PrimaryButton>

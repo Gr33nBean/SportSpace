@@ -10,6 +10,7 @@
   --c: #16056b; /* the color */
 
   height: var(--s);
+  width: var(--s);
   aspect-ratio: 1;
   border: none;
   padding: 0;
