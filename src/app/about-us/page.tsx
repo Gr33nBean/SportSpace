@@ -1,5 +1,6 @@
 import React from 'react'
 
+import ContactUs from '@/components/AboutUs/ContactUs'
 import Introduction from '@/components/AboutUs/Introduction'
 import Numbers from '@/components/AboutUs/Numbers'
 import OurTeam from '@/components/AboutUs/OurTeam'
@@ -12,6 +13,7 @@ const AboutUs = () => {
       <VisionMissionValue />
       <Numbers />
       <OurTeam />
+      <ContactUs />
     </div>
   )
 }
