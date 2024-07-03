@@ -22,8 +22,8 @@ const Member = (props: MemberProps) => {
         alt='Picture of the author'
       />
       <div className='flex flex-col text-center'>
-        <span className='font-Inter text-xl font-bold text-primary'>{data.name}​</span>
-        <p className='font-Inter text-xl font-normal text-primary'>{data.description}​</p>
+        <span className='font-Inter text-lg font-bold text-primary'>{data.name}​</span>
+        <p className='font-Inter text-lg font-normal text-primary'>{data.description}​</p>
       </div>
     </div>
   )
