@@ -1,21 +1,21 @@
 'use client'
 import Image from 'next/image'
 
-import { Carousel } from 'react-responsive-carousel'
+import { Carousel, CarouselProps } from 'react-responsive-carousel'
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
-interface BaseCarouselProps {
+export type BaseCarouselProps = {
   images: string[]
   className?: string
-}
+} & Partial<CarouselProps>
 
 const BaseCarousel = (props: BaseCarouselProps) => {
-  const { className, images } = props
+  const { className, images, ...rest } = props
 
   return (
-    <Carousel className={className}>
+    <Carousel className={className} {...rest} showArrows={false} showIndicators>
       {images.map((image, index) => (
-        <Image key={index} alt='banner' width={600} height={400} src={image} />
+        <Image key={index} width={400} height={100} alt='banner' src={image} className='h-full w-full object-cover' />
       ))}
     </Carousel>
   )
