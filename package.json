@@ -16,6 +16,8 @@
     "@hookform/error-message": "^2.0.1",
     "@vercel/speed-insights": "^1.0.12",
     "clsx": "^2.1.1",
+    "framer-motion": "^11.2.13",
+    "hamburger-react": "^2.5.1",
     "lint-staged": "^15.2.7",
     "next": "14.2.4",
     "react": "^18",
@@ -50,13 +52,13 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "yarn lint && yarn format"
+      "pre-push": "yarn lint:fix && yarn lint && yarn format"
     }
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
-      "yarn lint",
       "yarn lint:fix",
+      "yarn lint",
       "yarn format"
     ]
   }
