@@ -23,7 +23,11 @@
     "react": "^18",
     "react-device-detect": "^2.2.3",
     "react-dom": "^18",
+
+    "react-responsive-carousel": "^3.2.23"
+
     "react-hook-form": "^7.52.1"
+
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
