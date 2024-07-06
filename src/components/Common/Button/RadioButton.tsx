@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import clsx from 'clsx';
-import { Input } from '../Input';
 
 export type RadioButtonProps = {
     id: string;
-    name: string;
+    name?: string;
     value: string;
     checked?: boolean;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -13,36 +12,36 @@ export type RadioButtonProps = {
     disabled?: boolean;
 };
 
-export const RadioButton: React.FC<RadioButtonProps> = ({
+export const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(({
     id,
-    name,
     value,
-    checked = false,
-    onChange,
     label,
     className,
-    disabled = false
-}) => {
+    disabled = false,
+    ...props
+}, ref) => {
+
     return (
         <div className={clsx('flex items-center', className)}>
-            <Input
+            <input
                 type="radio"
                 id={id}
-                name={name}
                 value={value}
-                checked={checked}
-                onChange={onChange}
+                ref={ref}
                 disabled={disabled}
+                {...props}
                 className={clsx(
-                    'form-radio h-4 w-4 transition-colors focus:outline-none focus:ring-2 focus:ring-opacity-50',
+                    'texborder-none outline-none form-radio h-4 w-4 transition-colors focus:outline-none focus:ring-2 focus:ring-opacity-50',
                     { 'cursor-not-allowed opacity-50': disabled }
                 )}
             />
             {label && (
-                <label htmlFor={id} className="ml-2 text-sm font-medium text-gray-900">
+                <label htmlFor={id} className="ml-2 text-sm font-medium text-primary flex-1">
                     {label}
                 </label>
             )}
         </div>
     );
-};
+});
+
+RadioButton.displayName = "RadioButton"

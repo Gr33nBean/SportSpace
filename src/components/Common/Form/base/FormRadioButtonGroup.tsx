@@ -2,7 +2,7 @@ import React from 'react';
 import { UseFormRegister, Path, RegisterOptions, FieldValues, DeepMap, FieldError } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import clsx from 'clsx';
-import { RadioButton } from '../Button/RadioButton';
+import { RadioButton } from '../../Button/RadioButton';
 
 export type FormRadioButtonGroupProps<TFormValues extends FieldValues> = {
     name: Path<TFormValues>;
@@ -23,30 +23,26 @@ export const FormRadioButtonGroup = <TFormValues extends Record<string, unknown>
     rules,
     errors,
     label,
-    disabled = false,
 }: FormRadioButtonGroupProps<TFormValues>) => {
     const errorMessages = errors?.[name];
     const hasError = !!(errors && errorMessages);
 
     return (
         <div className={className}>
-            {label && <label className="block mb-2 text-sm font-medium text-gray-900">{label}</label>}
+            {label && <label className="block mb-2 text-primary">{label}</label>}
             {options.map((option) => (
                 <RadioButton
                     key={option.value}
                     id={`${name}-${option.value}`}
-                    name={name}
                     value={option.value}
                     label={option.label}
-                    checked={false}  // react-hook-form will manage this
-                    {...(register && register(name, rules))}
+                    {...(register && register(name, rules))} 
                     className={clsx(
-                        "transition-colors focus:outline-none focus:ring-2 focus:ring-opacity-50",
+                        "text-secondary border-none outline-none transition-colors focus:outline-none focus:ring-2 focus:ring-opacity-50",
                         { 
                             "border-red-600 hover:border-red-600 focus:border-red-600 focus:ring-red-600": hasError 
                         }
                     )}
-                    disabled={disabled}
                 />
             ))}
             <ErrorMessage

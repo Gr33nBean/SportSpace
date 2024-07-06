@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, InputProps } from '../Input';
+import { Input, InputProps } from '../../Input';
 import { UseFormRegister, Path, RegisterOptions, FieldValues, DeepMap,
     FieldError, } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
@@ -11,6 +11,8 @@ export type FormInputProps<TFormValues extends FieldValues> = {
     register?: UseFormRegister<TFormValues>;
     errors?: Partial<DeepMap<TFormValues, FieldError>> | any;
   } & Omit<InputProps, 'name'>;
+
+  export type BaseFormInputType<TFormValues extends FieldValues> = Pick<FormInputProps<TFormValues>, 'register' | 'errors'>;
   
   export const FormInput = <TFormValues extends Record<string, unknown>>({
     className,

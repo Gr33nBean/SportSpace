@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextArea, TextAreaProps } from '../TextArea';
+import { TextArea, TextAreaProps } from '../../TextArea';
 import { UseFormRegister, Path, RegisterOptions, FieldValues, DeepMap,
     FieldError, } from 'react-hook-form';
 import clsx from 'clsx';

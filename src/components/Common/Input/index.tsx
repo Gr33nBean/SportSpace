@@ -46,9 +46,11 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
                 type={type}
                 aria-label={label}
                 placeholder={placeholder}
-                className={clsx('relative inline-flex w-full rounded leading-none transition-colors ease-in-out font font-Inter placeholder-gray-500 text-gray-700 bg-gray-50 border border-gray-300 hover:border-blue-400 focus:outline-none focus:ring-1 focus:border-blue-400', sizeMap[size], className)}
+                className={clsx('relative bg-white inline-flex w-full rounded leading-none transition-colors ease-in-out font font-Inter placeholder-gray-500 text-gray-700 border border-gray-300 hover:border-blue-400 focus:outline-none focus:ring-1 focus:border-blue-400', sizeMap[size], className)}
                 {...props}
             />
         );
     }
 );
+
+Input.displayName = "Input"
