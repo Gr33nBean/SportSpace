@@ -1,7 +1,10 @@
+import ContactForm from '@/components/Business/ContactForm'
 import React from 'react'
 
 const Business = () => {
-  return <div>Business</div>
+  return <div>
+    <ContactForm />
+  </div>
 }
 
 export default Business
