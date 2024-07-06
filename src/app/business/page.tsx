@@ -10,12 +10,16 @@ const banner_images = [
   'https://business.courtsite.my/images/cover.jpg',
 ]
 
+import ContactForm from '@/components/Business/ContactForm'
+
+
 const Business = () => {
   return (
     <div>
       <BaseCarousel images={banner_images} autoPlay interval={2000} />
       <WhatFor />
       <WhyFor />
+      <ContactForm />
     </div>
   )
 }

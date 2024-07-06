@@ -1,14 +1,8 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
-import Footer from '@/components/Layout/Footer'
-import MainHeader from '@/components/Layout/MainHeader'
-
 import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -25,10 +19,8 @@ export default function RootLayout({
       <head>
         <title>SportSpace</title>
       </head>
-      <body className={`${inter.className} font-Inter`}>
-        <MainHeader />
-        {children}
-        <Footer />
+      <body className={`font-Inter`}>
+        <main>{children}</main>
         <SpeedInsights />
       </body>
     </html>

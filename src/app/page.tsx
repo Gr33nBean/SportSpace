@@ -1,3 +1,7 @@
+import { redirect } from 'next/navigation'
+
+import { routes } from '@/constants/routes'
+
 export default function Home() {
-  return <main className='container'>Content</main>
+  redirect(routes.home)
 }
