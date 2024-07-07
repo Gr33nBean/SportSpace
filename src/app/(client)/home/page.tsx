@@ -2,6 +2,7 @@ import React from 'react'
 
 import Banner from '@/components/Home/Banner'
 import { Introduction } from '@/components/Home/Introduction'
+import Payment from '@/components/Home/Payment'
 import RunningText from '@/components/Home/RunningText'
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
         <RunningText />
       </div>
       <Introduction />
+      <Payment />
     </div>
   )
 }
