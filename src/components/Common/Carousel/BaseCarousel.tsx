@@ -13,9 +13,19 @@ const BaseCarousel = (props: BaseCarouselProps) => {
   const { className, images, ...rest } = props
 
   return (
-    <Carousel className={className} {...rest} showArrows={false} showIndicators>
+    <Carousel
+      className={className}
+      {...rest}
+      showArrows={false}
+      showIndicators
+      showThumbs={false}
+      showStatus={false}
+      infiniteLoop
+    >
       {images.map((image, index) => (
-        <Image key={index} width={400} height={100} alt='banner' src={image} className='h-full w-full object-cover' />
+        <div key={index} className='min-h-[200px] w-full md:h-[70vh]'>
+          <Image fill alt='banner' src={image} className='size-full h-auto object-cover' />
+        </div>
       ))}
     </Carousel>
   )
