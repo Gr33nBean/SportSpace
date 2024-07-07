@@ -1,4 +1,5 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 
 import { routes } from '@/constants/routes'
 
@@ -13,9 +14,10 @@ const pages: PageType[] = [
 ]
 
 const BusinessHeader = () => {
+  const [expand, setExpand] = useState(false)
   return (
     <>
-      <BaseHeader pages={pages} />
+      <BaseHeader pages={pages} hambugerProps={{ expand, setExpand }} rightContent={<></>} />
     </>
   )
 }

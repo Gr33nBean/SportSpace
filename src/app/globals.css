@@ -6,6 +6,36 @@
   @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
 }
 
+.marquee {
+  animation: marquee 10s linear infinite;
+  padding-left: 100%;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
+}
+
+.background-banner-home {
+  background-image: url('/images/png/banner.png');
+  background-position: center;
+  background-size: cover;
+}
+
+.dark-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+
 .background-contact {
   background-image: url('https://images.unsplash.com/photo-1448387473223-5c37445527e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c3RlcHN8ZW58MHx8MHx8fDA%3D&w=1000&q=80');
   background-position: center;

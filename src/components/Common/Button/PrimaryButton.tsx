@@ -5,24 +5,28 @@ const PrimaryButton = ({
   props,
   children,
   variant = 'filled',
+  radius = 'rounded',
   className,
 }: {
-  props?: ButtonHTMLAttributes<HTMLButtonElement>
+  props?: Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'className'>
   children?: React.ReactNode
   variant?: 'filled' | 'outlined'
+  radius?: 'full' | 'rounded'
   className?: string
 }) => {
   return (
     <button
+      {...props}
       className={clsx(
-        'duration-50 rounded-md border-secondary px-2 py-2 text-xs font-semibold transition-all hover:opacity-90 active:shadow-lg md:py-1',
+        'duration-50 border px-2 py-2 text-xs font-semibold transition-all hover:opacity-90 active:shadow-lg md:py-1',
         {
-          'bg-secondary text-white': variant === 'filled',
-          'border text-secondary': variant === 'outlined',
+          'border-secondary bg-secondary text-white': variant === 'filled',
+          'border-light-gray bg-white text-primary': variant === 'outlined',
+          'rounded-full': radius === 'full',
+          'rounded-md': radius === 'rounded',
         },
         className
       )}
-      {...props}
     >
       {children}
     </button>

@@ -1,13 +1,13 @@
 import React from 'react'
 
 import Banner from '@/components/Home/Banner'
-import InfinityScroll from '@/components/Home/InfinityScroll'
+import RunningText from '@/components/Home/RunningText'
 
 const Home = () => {
   return (
-    <div className='flex h-[90vh] flex-col'>
+    <div className='flex min-h-[90vh] flex-col'>
       <Banner />
-      <InfinityScroll />
+      <RunningText />
     </div>
   )
 }

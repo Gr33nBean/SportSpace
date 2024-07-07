@@ -33,7 +33,7 @@ const BaseHeader = ({ pages, hambugerProps, rightContent }: BaseHeaderProps) => 
 
           <div className='md:hidden'>
             {hambugerProps && rightContent && (
-              <Hamburger toggled={hambugerProps.expand} toggle={hambugerProps.setExpand} color='#16056b' />
+              <Hamburger toggled={hambugerProps.expand} toggle={hambugerProps.setExpand} color='#274A3D' />
             )}
           </div>
 

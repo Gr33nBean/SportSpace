@@ -16,9 +16,8 @@ const config: Config = {
         Inter: 'Inter',
       },
       colors: {
-        primary: '#26E8A2',
-        secondary: '#2FFFB4',
-        tertiary: '#274A3D',
+        primary: '#274A3D',
+        secondary: '#26E8A2',
         'light-gray': '#EDEEF0',
         'light-purple': '#EBEEFD',
       },
