@@ -2,7 +2,7 @@ import React from 'react'
 
 const RunningText = () => {
   return (
-    <section className='relative flex w-full items-center overflow-hidden bg-secondary py-4'>
+    <section className='relative flex h-[12vh] w-full items-center overflow-hidden bg-secondary py-4'>
       <RunItem isVisible={false} />
 
       <div className='absolute overflow-hidden'>

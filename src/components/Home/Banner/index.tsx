@@ -2,7 +2,7 @@ import PrimaryButton from '@/components/Common/Button/PrimaryButton'
 
 const Banner = () => {
   return (
-    <section className='background-banner-home dark-overlay relative flex flex-1 items-center justify-center px-6 py-8 md:px-24 lg:px-32'>
+    <section className='background-banner-home dark-overlay relative flex h-[82vh] flex-1 items-center justify-center px-6 py-8 md:px-24 lg:px-32'>
       <div className='z-10 w-full'>
         <div>
           <h1 className='mb-2 text-5xl font-bold text-white md:text-7xl lg:text-8xl'>Đặt lịch</h1>
