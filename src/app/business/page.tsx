@@ -12,7 +12,6 @@ const banner_images = [
 
 import ContactForm from '@/components/Business/ContactForm'
 
-
 const Business = () => {
   return (
     <div>
