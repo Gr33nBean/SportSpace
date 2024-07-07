@@ -31,7 +31,7 @@ export const Introduction = () => {
             <img key={index} className='bg- h-[88vh] w-[52vw] rounded-lg' src={item} alt='introduction 1'></img>
           ))} */}
           <img
-            className='bg- h-[88vh] w-[52vw] rounded-lg'
+            className='bg- h-[88vh] w-[52vw] rounded-lg object-cover'
             src='/images/png/introduction1.png'
             alt='introduction 1'
           ></img>
