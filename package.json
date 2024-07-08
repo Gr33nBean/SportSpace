@@ -14,17 +14,21 @@
   "dependencies": {
     "@headlessui/react": "^2.1.1",
     "@hookform/error-message": "^2.0.1",
+    "@tanstack/react-query": "^5.50.1",
     "@vercel/speed-insights": "^1.0.12",
+    "axios": "^1.7.2",
     "clsx": "^2.1.1",
     "framer-motion": "^11.2.13",
     "hamburger-react": "^2.5.1",
     "lint-staged": "^15.2.7",
     "next": "14.2.4",
+    "next-auth": "^4.24.7",
     "react": "^18",
     "react-device-detect": "^2.2.3",
     "react-dom": "^18",
     "react-hook-form": "^7.52.1",
-    "react-responsive-carousel": "^3.2.23"
+    "react-responsive-carousel": "^3.2.23",
+    "zustand": "^4.5.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",

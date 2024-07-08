@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import { Turn as Hamburger } from 'hamburger-react'
 
-import { routes } from '@/constants/routes'
+import { routes } from '@/config/routes'
 
 import ListLink, { PageType } from './ListLink'
 

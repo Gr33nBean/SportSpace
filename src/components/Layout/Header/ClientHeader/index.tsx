@@ -2,7 +2,7 @@
 import React from 'react'
 
 import PrimaryButton from '@/components/Common/Button/PrimaryButton'
-import { routes } from '@/constants/routes'
+import { routes } from '@/config/routes'
 
 import BaseHeader from '../BaseHeader'
 import { PageType } from '../ListLink'
