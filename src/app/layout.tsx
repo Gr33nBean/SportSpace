@@ -19,7 +19,7 @@ export default function RootLayout({
       <head>
         <title>SportSpace</title>
       </head>
-      <body className={`font-Inter`}>
+      <body className={`relative font-Inter`}>
         <main>{children}</main>
         <SpeedInsights />
       </body>

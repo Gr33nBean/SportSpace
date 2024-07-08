@@ -10,7 +10,7 @@ function Payment() {
   ]
 
   return (
-    <section className='flex h-screen w-full flex-col items-center justify-center'>
+    <section className='relative z-20 flex h-screen w-full flex-col items-center justify-center bg-white'>
       <div className='flex flex-col items-center justify-center'>
         <p className='text-7xl font-bold text-primary'>Thanh toán dễ dàng</p>
         <p className='mt-4 text-xl font-bold text-primary'>

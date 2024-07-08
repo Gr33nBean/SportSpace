@@ -62,45 +62,47 @@ const icons = [
 
 const Footer = () => {
   return (
-    <div className='container bg-light-purple py-6 text-primary'>
-      <div className='grid min-h-[232px] w-full grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-[0.9fr_0.6fr_repeat(2,1fr)]'>
-        {lists.map((list, index) => (
-          <div key={index}>
-            <h3 className='py-2 text-center text-xs font-bold uppercase sm:text-start'>{list.label}</h3>
-            <ul className='text-xs'>
-              {list.pages.map((page) => (
-                <li key={page.name} className='text-center sm:text-start'>
-                  <Link href={page.href} className='leading-6 hover:underline'>
-                    {page.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-      <div className='mt-8 h-[0.5px] w-full bg-black opacity-40 md:mt-12'></div>
-      <div className='flex flex-col items-center gap-6 pt-6 text-primary md:flex-row'>
-        <p className='flex-1 text-center text-xs font-medium md:text-left'>
-          © 2024 | SportSpace - Giải pháp quản lý sân hàng đầu
-        </p>
-        <div className='flex items-center gap-2'>
-          {icons.map((icon, index) => (
-            <svg
-              key={index}
-              xmlns='http://www.w3.org/2000/svg'
-              width='24'
-              height='24'
-              viewBox='0 0 24 24'
-              fill='none'
-              stroke='currentColor'
-              strokeWidth='2'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            >
-              {icon.icon}
-            </svg>
+    <div className='w-full bg-light-purple'>
+      <div className='container py-6 text-primary'>
+        <div className='grid min-h-[232px] w-full grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-[0.9fr_0.6fr_repeat(2,1fr)]'>
+          {lists.map((list, index) => (
+            <div key={index}>
+              <h3 className='py-2 text-center text-xs font-bold uppercase sm:text-start'>{list.label}</h3>
+              <ul className='text-xs'>
+                {list.pages.map((page) => (
+                  <li key={page.name} className='text-center sm:text-start'>
+                    <Link href={page.href} className='leading-6 hover:underline'>
+                      {page.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
+        </div>
+        <div className='mt-8 h-[0.5px] w-full bg-black opacity-40 md:mt-12'></div>
+        <div className='flex flex-col items-center gap-6 pt-6 text-primary md:flex-row'>
+          <p className='flex-1 text-center text-xs font-medium md:text-left'>
+            © 2024 | SportSpace - Giải pháp quản lý sân hàng đầu
+          </p>
+          <div className='flex items-center gap-2'>
+            {icons.map((icon, index) => (
+              <svg
+                key={index}
+                xmlns='http://www.w3.org/2000/svg'
+                width='24'
+                height='24'
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='currentColor'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              >
+                {icon.icon}
+              </svg>
+            ))}
+          </div>
         </div>
       </div>
     </div>

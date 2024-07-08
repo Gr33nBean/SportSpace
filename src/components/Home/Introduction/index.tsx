@@ -10,10 +10,10 @@ export const Introduction = () => {
   ]
 
   return (
-    <section className='background-white -mt-[6vh] h-[88vh] w-full'>
-      <div className='flex flex-row'>
+    <section className='w-full bg-white'>
+      <div className='flex flex-row items-start'>
         {/* Call To Action group */}
-        <div className='flex flex-1 flex-col items-center justify-center'>
+        <div className='sticky top-[165px] flex min-h-[80vh] flex-1 flex-col items-center justify-center'>
           <div className=''>
             <p className='text-[64px] font-bold'>Hệ thống sân đa dạng</p>
             <p className='mt-5 text-xl font-bold text-primary'>Đa dạng sự lựa chọn dựa trên vị trí của bạn</p>
@@ -27,14 +27,18 @@ export const Introduction = () => {
         </div>
         {/* Images Introduction */}
         <div>
-          {/* {introductionImages.map((item, index) => (
-            <img key={index} className='bg- h-[88vh] w-[52vw] rounded-lg' src={item} alt='introduction 1'></img>
-          ))} */}
-          <img
-            className='bg- h-[88vh] w-[52vw] rounded-lg object-cover'
-            src='/images/png/introduction1.png'
-            alt='introduction 1'
-          ></img>
+          {[
+            new Array(3)
+              .fill(1)
+              .map((_, index) => (
+                <img
+                  key={index}
+                  className='my-1 h-[88vh] w-[52vw] rounded-lg object-cover'
+                  src='/images/png/introduction1.png'
+                  alt='introduction 1'
+                />
+              )),
+          ]}
         </div>
       </div>
     </section>
