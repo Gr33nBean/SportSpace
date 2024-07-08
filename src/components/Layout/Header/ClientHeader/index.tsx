@@ -6,6 +6,8 @@ import { routes } from '@/constants/routes'
 
 import BaseHeader from '../BaseHeader'
 import { PageType } from '../ListLink'
+import SignInModalForm from '@/components/Auth/SignInModalForm'
+import SignUpModalForm from '@/components/Auth/SignUpModalForm'
 
 const pages: PageType[] = [
   {
@@ -24,6 +26,17 @@ const pages: PageType[] = [
 
 const ClientHeader = () => {
   const [expand, setExpand] = React.useState(false)
+  let [isLoginFormOpen, setIsLoginFormOpen] = React.useState(false)
+  let [isSignUpFormOpen, setIsSignUpFormOpen] = React.useState(false)
+
+  function handleOpenLoginForm() {
+    setIsLoginFormOpen(true)
+  }
+
+  function handleOpenSignUpForm() {
+    setIsSignUpFormOpen(true)
+  }
+
 
   return (
     <>
@@ -32,11 +45,14 @@ const ClientHeader = () => {
         hambugerProps={{ expand, setExpand }}
         rightContent={
           <>
-            <PrimaryButton variant='outlined'>Đăng nhập</PrimaryButton>
-            <PrimaryButton>Đăng ký</PrimaryButton>
+            <PrimaryButton variant='outlined' onClick={handleOpenLoginForm}>Đăng nhập</PrimaryButton>
+            <PrimaryButton onClick={handleOpenSignUpForm}>Đăng ký</PrimaryButton>
           </>
         }
       />
+
+      <SignInModalForm open={isLoginFormOpen} handleClose={() => { setIsLoginFormOpen(false) }} />
+      <SignUpModalForm open={isSignUpFormOpen} handleClose={() => { setIsSignUpFormOpen(false) }} />
     </>
   )
 }

@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react'
 import clsx from 'clsx'
 
 export type InputSize = 'small' | 'medium' | 'large'
-export type InputType = 'text' | 'email' | 'number' | 'radio'
+export type InputType = 'text' | 'email' | 'number' | 'radio' | 'password'
 
 export type InputProps = {
   id?: string
