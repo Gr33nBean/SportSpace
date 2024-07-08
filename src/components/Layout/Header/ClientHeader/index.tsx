@@ -1,13 +1,13 @@
 'use client'
 import React from 'react'
 
+import SignInModalForm from '@/components/Auth/SignInModalForm'
+import SignUpModalForm from '@/components/Auth/SignUpModalForm'
 import PrimaryButton from '@/components/Common/Button/PrimaryButton'
 import { routes } from '@/constants/routes'
 
 import BaseHeader from '../BaseHeader'
 import { PageType } from '../ListLink'
-import SignInModalForm from '@/components/Auth/SignInModalForm'
-import SignUpModalForm from '@/components/Auth/SignUpModalForm'
 
 const pages: PageType[] = [
   {
@@ -26,8 +26,8 @@ const pages: PageType[] = [
 
 const ClientHeader = () => {
   const [expand, setExpand] = React.useState(false)
-  let [isLoginFormOpen, setIsLoginFormOpen] = React.useState(false)
-  let [isSignUpFormOpen, setIsSignUpFormOpen] = React.useState(false)
+  const [isLoginFormOpen, setIsLoginFormOpen] = React.useState(false)
+  const [isSignUpFormOpen, setIsSignUpFormOpen] = React.useState(false)
 
   function handleOpenLoginForm() {
     setIsLoginFormOpen(true)
@@ -37,7 +37,6 @@ const ClientHeader = () => {
     setIsSignUpFormOpen(true)
   }
 
-
   return (
     <>
       <BaseHeader
@@ -45,14 +44,26 @@ const ClientHeader = () => {
         hambugerProps={{ expand, setExpand }}
         rightContent={
           <>
-            <PrimaryButton variant='outlined' onClick={handleOpenLoginForm}>Đăng nhập</PrimaryButton>
+            <PrimaryButton variant='outlined' onClick={handleOpenLoginForm}>
+              Đăng nhập
+            </PrimaryButton>
             <PrimaryButton onClick={handleOpenSignUpForm}>Đăng ký</PrimaryButton>
           </>
         }
       />
 
-      <SignInModalForm open={isLoginFormOpen} handleClose={() => { setIsLoginFormOpen(false) }} />
-      <SignUpModalForm open={isSignUpFormOpen} handleClose={() => { setIsSignUpFormOpen(false) }} />
+      <SignInModalForm
+        open={isLoginFormOpen}
+        handleClose={() => {
+          setIsLoginFormOpen(false)
+        }}
+      />
+      <SignUpModalForm
+        open={isSignUpFormOpen}
+        handleClose={() => {
+          setIsSignUpFormOpen(false)
+        }}
+      />
     </>
   )
 }

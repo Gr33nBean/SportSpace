@@ -1,4 +1,5 @@
 import { Path } from 'react-hook-form'
+
 import { BaseFormInputType, FormInput } from './base/FormInput'
 
 const Username = <TFormValues extends Record<string, unknown>>(props: BaseFormInputType<TFormValues>) => {

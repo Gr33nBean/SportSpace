@@ -1,8 +1,10 @@
 import React from 'react'
 import { ErrorMessage } from '@hookform/error-message'
 import clsx from 'clsx'
-import { FormInputProps } from './FormInput'
+
 import { IconInput } from '../../Input/IconInput'
+
+import { FormInputProps } from './FormInput'
 
 export const FormInputIcon = <TFormValues extends Record<string, unknown>>({
   className,
@@ -13,13 +15,13 @@ export const FormInputIcon = <TFormValues extends Record<string, unknown>>({
   label,
   icon,
   ...props
-}: FormInputProps<TFormValues> & { icon: React.ReactNode, type: string }) => {
+}: FormInputProps<TFormValues> & { icon: React.ReactNode; type: string }) => {
   const errorMessages = errors[name] || ''
   const hasError = !!(errors && errorMessages)
 
   return (
     <div className={className}>
-    {label && <span className='font-Inter text-sm font-medium text-gray-800'>{label}</span>}
+      {label && <span className='font-Inter text-sm font-medium text-gray-800'>{label}</span>}
       <IconInput
         name={name}
         label={label}

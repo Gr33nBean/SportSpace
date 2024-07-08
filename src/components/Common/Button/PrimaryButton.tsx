@@ -12,7 +12,7 @@ const PrimaryButton = ({
   props?: Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'className'>
   children?: React.ReactNode
   variant?: 'filled' | 'outlined'
-  radius?: 'full' | 'rounded',
+  radius?: 'full' | 'rounded'
   onClick?: () => void
   className?: string
 }) => {
