@@ -24,9 +24,7 @@ const SignInModalForm = ({ open = false, handleClose }: { open?: boolean; handle
     handleSubmit,
     formState: { errors },
   } = useForm<SignInFormFields>()
-  const onSubmit = handleSubmit((data) => {
-    console.log('data', data)
-  })
+  const onSubmit = handleSubmit((data) => {})
 
   return (
     <>
