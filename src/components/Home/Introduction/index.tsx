@@ -12,10 +12,10 @@ export const Introduction = () => {
   ]
 
   return (
-    <section className='overflow-scroll bg-white lg:overflow-visible'>
-      <div className='flex flex-col items-center justify-center lg:flex-row lg:items-start'>
+    <section className='bg-white py-6'>
+      <div className='container flex flex-col items-center justify-center gap-6 lg:flex-row lg:items-start'>
         {/* Call To Action group */}
-        <div className='top-[165px] flex min-h-[40vh] flex-col items-center justify-center lg:sticky lg:min-h-[80vh] lg:flex-1'>
+        <div className='flex flex-col items-center justify-center py-6 lg:sticky lg:top-[165px] lg:min-h-[calc(100dvh-80px-85px)] lg:flex-1'>
           <div className=''>
             <p className='text-[36px] font-bold lg:text-[64px]'>Hệ thống sân đa dạng</p>
             <p className='mt-5 text-[14px] font-bold text-primary lg:text-xl'>
@@ -30,17 +30,19 @@ export const Introduction = () => {
           </div>
         </div>
         {/* Images Introduction */}
-        <div className='flex flex-row flex-nowrap lg:h-auto lg:w-auto lg:flex-1 lg:flex-col'>
-          {introductionImages.map((item, index) => (
-            <div className='relative mr-[8px] h-[100vw] w-[100vw] lg:mb-[8px] lg:h-[88vh] lg:w-[52vw]' key={index}>
-              <Image
-                fill={true}
-                className='object-cover lg:rounded-lg'
-                src={item}
-                alt={'introduction' + introductionImages[index]}
-              />
-            </div>
-          ))}
+        <div className='w-full flex-1 overflow-auto'>
+          <div className='flex w-full flex-nowrap gap-4 lg:flex-col'>
+            {introductionImages.map((item, index) => (
+              <div className='relative h-[40dvh] w-full min-w-full lg:h-[100vh]' key={index}>
+                <Image
+                  fill={true}
+                  className='rounded-lg object-cover'
+                  src={item}
+                  alt={'introduction' + introductionImages[index]}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -19,7 +19,7 @@ type BaseHeaderProps = {
 const BaseHeader = ({ pages, hambugerProps, rightContent }: BaseHeaderProps) => {
   return (
     <>
-      <div className='sticky top-0 z-[999] w-full bg-white py-4 shadow-sm transition-all duration-300'>
+      <div className='sticky top-0 z-[999] flex h-[80px] w-full items-center bg-white py-4 shadow-sm transition-all duration-300'>
         <div className='container flex w-full items-center'>
           <div className='flex flex-1 items-center gap-6'>
             {/* Logo */}
@@ -50,7 +50,7 @@ const BaseHeader = ({ pages, hambugerProps, rightContent }: BaseHeaderProps) => 
           }}
           onClick={() => hambugerProps.setExpand(false)}
         >
-          <div className='my-4 h-8 w-full'></div>
+          <div className='my-4 h-[80px] w-full'></div>
           <div className='container flex w-full flex-col gap-2 bg-white py-4 shadow-sm'>
             {pages && <ListLink pages={pages} />}
             {rightContent}

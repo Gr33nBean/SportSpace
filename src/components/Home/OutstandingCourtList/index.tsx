@@ -24,16 +24,18 @@ const courts = [
 
 const OutstandingCourtList = () => {
   return (
-    <div className='bg-secondary px-4 py-8 md:px-8 lg:px-16'>
-      <h1 className='text-tertiary my-2 text-4xl font-bold lg:text-5xl'>Những sân nổi bật</h1>
-      <p className='text-tertiary text-sm lg:text-xl'>
-        Các sân thể thao chất lượng cao, phí thuê rẻ được nhiều khách hàng lựa chọn
-      </p>
-      <div className='mt-4 flex flex-nowrap gap-4 overflow-x-scroll lg:gap-6'>
-        {courts.map((court, index) => {
-          const { name, thumb } = court
-          return <BriefCourtCard name={name} thumb={thumb} key={index} />
-        })}
+    <div className='relative z-20 flex items-center bg-secondary px-4 py-12 md:px-8 lg:min-h-[80dvh] lg:px-16'>
+      <div className='container text-black'>
+        <h1 className='my-2 text-4xl font-bold lg:text-5xl'>Những sân nổi bật</h1>
+        <p className='text-sm lg:text-xl'>
+          Các sân thể thao chất lượng cao, phí thuê rẻ được nhiều khách hàng lựa chọn
+        </p>
+        <div className='mt-4 flex flex-nowrap gap-4 overflow-x-scroll lg:gap-6'>
+          {courts.map((court, index) => {
+            const { name, thumb } = court
+            return <BriefCourtCard name={name} thumb={thumb} key={index} />
+          })}
+        </div>
       </div>
     </div>
   )

@@ -2,27 +2,29 @@ import React from 'react'
 
 const RunningText = () => {
   return (
-    <section className='sticky top-[80px] z-10 flex w-full items-center justify-center overflow-hidden bg-secondary py-4'>
-      <RunItem isVisible={false} />
+    <section className='sticky top-[80px] z-10 h-[85px] w-full overflow-hidden bg-secondary py-4'>
+      <div className='container relative flex size-full items-center justify-center'>
+        <RunItem isVisible={false} />
 
-      <div className='absolute overflow-hidden'>
-        <div className='marquee flex w-fit items-center'>
-          {new Array(5).fill(1).map((_, index) => (
-            <RunItem key={index} />
-          ))}
+        <div className='absolute bottom-0 left-0 right-0 top-0 flex items-center overflow-hidden'>
+          <div className='marquee flex w-fit items-center'>
+            {new Array(4).fill(1).map((_, index) => (
+              <RunItem key={index} />
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div className='absolute overflow-hidden'>
-        <div
-          className='marquee flex w-fit items-center'
-          style={{
-            animationDelay: '10s',
-          }}
-        >
-          {new Array(5).fill(1).map((_, index) => (
-            <RunItem key={index} />
-          ))}
+        <div className='absolute bottom-0 left-0 right-0 top-0 flex items-center overflow-hidden'>
+          <div
+            className='marquee flex w-fit items-center'
+            style={{
+              animationDelay: '12s',
+            }}
+          >
+            {new Array(4).fill(1).map((_, index) => (
+              <RunItem key={index} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
