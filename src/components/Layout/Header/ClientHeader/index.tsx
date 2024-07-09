@@ -1,6 +1,8 @@
 'use client'
 import React from 'react'
 
+import SignInModalForm from '@/components/Auth/SignInModalForm'
+import SignUpModalForm from '@/components/Auth/SignUpModalForm'
 import PrimaryButton from '@/components/Common/Button/PrimaryButton'
 import { routes } from '@/config/routes'
 
@@ -24,6 +26,16 @@ const pages: PageType[] = [
 
 const ClientHeader = () => {
   const [expand, setExpand] = React.useState(false)
+  const [isLoginFormOpen, setIsLoginFormOpen] = React.useState(false)
+  const [isSignUpFormOpen, setIsSignUpFormOpen] = React.useState(false)
+
+  function handleOpenLoginForm() {
+    setIsLoginFormOpen(true)
+  }
+
+  function handleOpenSignUpForm() {
+    setIsSignUpFormOpen(true)
+  }
 
   return (
     <>
@@ -32,10 +44,25 @@ const ClientHeader = () => {
         hambugerProps={{ expand, setExpand }}
         rightContent={
           <>
-            <PrimaryButton variant='outlined'>Đăng nhập</PrimaryButton>
-            <PrimaryButton>Đăng ký</PrimaryButton>
+            <PrimaryButton variant='outlined' onClick={handleOpenLoginForm}>
+              Đăng nhập
+            </PrimaryButton>
+            <PrimaryButton onClick={handleOpenSignUpForm}>Đăng ký</PrimaryButton>
           </>
         }
+      />
+
+      <SignInModalForm
+        open={isLoginFormOpen}
+        handleClose={() => {
+          setIsLoginFormOpen(false)
+        }}
+      />
+      <SignUpModalForm
+        open={isSignUpFormOpen}
+        handleClose={() => {
+          setIsSignUpFormOpen(false)
+        }}
       />
     </>
   )

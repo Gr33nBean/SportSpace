@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react'
 import clsx from 'clsx'
 
 export type InputSize = 'small' | 'medium' | 'large'
-export type InputType = 'text' | 'email' | 'number' | 'radio'
+export type InputType = 'text' | 'email' | 'number' | 'radio' | 'password'
 
 export type InputProps = {
   id?: string
@@ -30,7 +30,7 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
         aria-label={label}
         placeholder={placeholder}
         className={clsx(
-          'font relative inline-flex w-full rounded border border-gray-300 bg-white font-Inter leading-none text-gray-700 placeholder-gray-500 transition-colors ease-in-out hover:border-blue-400 focus:border-blue-400 focus:outline-none focus:ring-1',
+          'font inline-flex w-full rounded border border-gray-400 bg-white font-Inter leading-none text-gray-700 transition-colors ease-in-out focus:border-primary',
           sizeMap[size],
           className
         )}

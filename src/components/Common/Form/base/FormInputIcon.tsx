@@ -1,40 +1,31 @@
 import React from 'react'
 import { ErrorMessage } from '@hookform/error-message'
 import clsx from 'clsx'
-import { DeepMap, FieldError, FieldValues, Path, RegisterOptions, UseFormRegister } from 'react-hook-form'
 
-import { Input, InputProps } from '../../Input'
+import { IconInput } from '../../Input/IconInput'
 
-export type FormInputProps<TFormValues extends FieldValues> = {
-  name: Path<TFormValues>
-  rules?: RegisterOptions<TFormValues, Path<TFormValues>> | any
-  register?: UseFormRegister<TFormValues>
-  errors?: Partial<DeepMap<TFormValues, FieldError>> | any
-} & Omit<InputProps, 'name'>
+import { FormInputProps } from './FormInput'
 
-export type BaseFormInputType<TFormValues extends FieldValues> = Pick<
-  FormInputProps<TFormValues>,
-  'register' | 'errors'
->
-
-export const FormInput = <TFormValues extends Record<string, unknown>>({
+export const FormInputIcon = <TFormValues extends Record<string, unknown>>({
   className,
   name,
   register,
   rules,
   errors,
   label,
+  icon,
   ...props
-}: FormInputProps<TFormValues>) => {
-  const errorMessages = errors[name]
+}: FormInputProps<TFormValues> & { icon: React.ReactNode; type?: string }) => {
+  const errorMessages = errors[name] || ''
   const hasError = !!(errors && errorMessages)
 
   return (
     <div className={className}>
       {label && <span className='font-Inter text-sm font-medium text-gray-800'>{label}</span>}
-      <Input
+      <IconInput
         name={name}
         label={label}
+        icon={icon}
         {...props}
         {...(register && register(name, rules))}
         className={clsx('transition-colors', {
