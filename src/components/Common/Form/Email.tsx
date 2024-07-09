@@ -12,6 +12,7 @@ const Email = <TFormValues extends Record<string, unknown>>(props: BaseFormInput
       label='Email'
       rules={{ required: 'You must enter email' }}
       register={register}
+      placeholder='Nhập Email'
       name={'email' as Path<TFormValues>}
       errors={errors}
       icon={

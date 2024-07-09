@@ -9,9 +9,9 @@ const Username = <TFormValues extends Record<string, unknown>>(props: BaseFormIn
     <FormInput
       id='username'
       type='text'
-      placeholder='Tên Đăng nhập'
-      label='Tên Đăng nhập'
-      rules={{ required: 'Vui Lòng nhập tên đăng nhập' }}
+      placeholder='Tên đăng nhập'
+      label='Tên đăng nhập'
+      rules={{ required: 'Vui lòng nhập tên đăng nhập' }}
       register={register}
       name={'username' as Path<TFormValues>}
       errors={errors}

@@ -16,6 +16,7 @@ const Password = <TFormValues extends Record<string, unknown>>(props: BaseFormIn
       label='Mật khẩu'
       rules={{ required: 'You must enter email' }}
       register={register}
+      placeholder='Nhập Mật Khẩu'
       name={'password' as Path<TFormValues>}
       errors={errors}
       icon={

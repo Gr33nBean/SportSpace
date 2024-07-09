@@ -5,17 +5,23 @@ import { Path } from 'react-hook-form'
 import { BaseFormInputType } from './base/FormInput'
 import { FormInputIcon } from './base/FormInputIcon'
 
-const ConfirmPassword = <TFormValues extends Record<string, unknown>>(props: BaseFormInputType<TFormValues>) => {
+const ConfirmPassword = <TFormValues extends Record<string, unknown>>(
+  props: BaseFormInputType<TFormValues> & { watch: any }
+) => {
   const [showPsw, setShowPsw] = useState(false)
-  const { register, errors } = props
+  const { register, errors, watch } = props
 
   return (
     <FormInputIcon
       id='confirmpassword'
       type={showPsw ? 'text' : 'password'}
-      label='Nhập Lại Mật khẩu'
-      rules={{ required: 'You must enter password' }}
+      label='Nhập lại mật khẩu'
+      rules={{
+        required: 'You must enter password',
+        validate: (value: string) => value === watch('password') || 'Passwords do not match',
+      }}
       register={register}
+      placeholder='Nhập lại mật khẩu'
       name={'confirmpassword' as Path<TFormValues>}
       errors={errors}
       icon={

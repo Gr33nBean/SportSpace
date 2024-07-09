@@ -15,7 +15,7 @@ export const FormInputIcon = <TFormValues extends Record<string, unknown>>({
   label,
   icon,
   ...props
-}: FormInputProps<TFormValues> & { icon: React.ReactNode; type: string }) => {
+}: FormInputProps<TFormValues> & { icon: React.ReactNode; type?: string }) => {
   const errorMessages = errors[name] || ''
   const hasError = !!(errors && errorMessages)
 
@@ -35,7 +35,19 @@ export const FormInputIcon = <TFormValues extends Record<string, unknown>>({
       <ErrorMessage
         errors={errors}
         name={name}
-        render={({ message }) => <p className='mt-1 block text-left font-serif text-sm text-red-600'>{message}</p>}
+        render={({ message }) => (
+          <p
+            className={clsx(
+              'mt-1 block transform text-left font-serif text-xs text-red-600 transition-all duration-300',
+              {
+                'translate-y-0 opacity-100': hasError,
+                '-translate-y-2 opacity-0': !hasError,
+              }
+            )}
+          >
+            {message}
+          </p>
+        )}
       />
     </div>
   )
