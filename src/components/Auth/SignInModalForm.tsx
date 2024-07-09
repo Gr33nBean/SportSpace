@@ -97,6 +97,23 @@ const SignInModalForm = ({ open = false, handleClose }: { open?: boolean; handle
                     <span className='text-base text-black'>Đăng nhập</span>
                   </PrimaryButton>
                 </div>
+                <div className="relative my-6 flex items-center justify-center">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-dashed border-gray-300"></div>
+                  </div>
+                  <div className="relative bg-white px-4 text-sm text-gray-500">Hoặc</div>
+                </div>
+                <div className='class="mb-4 mt-4 flex justify-center p-6'>
+                <PrimaryButton
+                    className='h-12 flex-1 rounded-md border border-black bg-white px-3 py-1.5 text-sm/6 font-semibold shadow-inner shadow-white/10 focus:outline-none'
+                    onClick={close}
+                    variant='outlined'
+                  >
+                  <span className='text-base text-black flex justify-center'>
+                    <img src='/images/png/google_icon.png' alt='Google' className='mr-2 h-6 w-6' /> Tiếp tục với Google
+                  </span>
+                </PrimaryButton>
+                </div>
                 <div className='flex h-full w-full cursor-pointer gap-4 rounded-bl-xl rounded-br-xl bg-slate-200 p-6'>
                   <span>
                     <svg
