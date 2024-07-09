@@ -8,11 +8,9 @@ import RunningText from '@/components/Home/RunningText'
 
 const Home = () => {
   return (
-    <div className='flex min-h-[90vh] flex-col'>
-      <div className='h-screen'>
-        <Banner />
-        <RunningText />
-      </div>
+    <div>
+      <Banner />
+      <RunningText />
       <Introduction />
       <Payment />
       <OutstandingCourtList />

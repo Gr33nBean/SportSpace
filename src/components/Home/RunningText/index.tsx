@@ -2,7 +2,7 @@ import React from 'react'
 
 const RunningText = () => {
   return (
-    <section className='relative flex h-[12vh] w-full items-center overflow-hidden bg-secondary py-4'>
+    <section className='sticky top-[80px] z-10 flex w-full items-center justify-center overflow-hidden bg-secondary py-4'>
       <RunItem isVisible={false} />
 
       <div className='absolute overflow-hidden'>
@@ -17,7 +17,7 @@ const RunningText = () => {
         <div
           className='marquee flex w-fit items-center'
           style={{
-            animationDelay: '5s',
+            animationDelay: '10s',
           }}
         >
           {new Array(5).fill(1).map((_, index) => (

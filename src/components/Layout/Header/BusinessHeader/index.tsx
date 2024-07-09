@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 
-import { routes } from '@/constants/routes'
+import { routes } from '@/config/routes'
 
 import BaseHeader from '../BaseHeader'
 import { PageType } from '../ListLink'

@@ -4,7 +4,7 @@ import React from 'react'
 import SignInModalForm from '@/components/Auth/SignInModalForm'
 import SignUpModalForm from '@/components/Auth/SignUpModalForm'
 import PrimaryButton from '@/components/Common/Button/PrimaryButton'
-import { routes } from '@/constants/routes'
+import { routes } from '@/config/routes'
 
 import BaseHeader from '../BaseHeader'
 import { PageType } from '../ListLink'

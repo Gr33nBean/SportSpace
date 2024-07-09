@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import { Turn as Hamburger } from 'hamburger-react'
 
-import { routes } from '@/constants/routes'
+import { routes } from '@/config/routes'
 
 import ListLink, { PageType } from './ListLink'
 
@@ -19,8 +19,8 @@ type BaseHeaderProps = {
 const BaseHeader = ({ pages, hambugerProps, rightContent }: BaseHeaderProps) => {
   return (
     <>
-      <div className='container sticky top-0 z-[999] w-full bg-white py-4 shadow-sm transition-all duration-300'>
-        <div className='flex w-full items-center'>
+      <div className='sticky top-0 z-[999] w-full bg-white py-4 shadow-sm transition-all duration-300'>
+        <div className='container flex w-full items-center'>
           <div className='flex flex-1 items-center gap-6'>
             {/* Logo */}
             <Link href={routes.home}>
