@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 import React from 'react'
 
 import PrimaryButton from '@/components/Common/Button/PrimaryButton'
@@ -22,7 +24,7 @@ export const Introduction = () => {
             <PrimaryButton radius='full' className='mt-[20px] w-fit !py-3 pl-8 pr-6 lg:mt-11'>
               <span className='flex items-center gap-2 text-primary'>
                 <span className='text-sm font-bold sm:text-base'>Xem thêm</span>
-                <img className='h-8 w-8' src='/images/svg/leftArrow.svg' alt='left arrow' />
+                <Image className='h-8 w-8' src='/images/svg/leftArrow.svg' alt='left arrow' />
               </span>
             </PrimaryButton>
           </div>
@@ -30,9 +32,9 @@ export const Introduction = () => {
         {/* Images Introduction */}
         <div className='flex flex-row flex-nowrap overflow-scroll lg:h-auto lg:flex-1 lg:flex-col'>
           {introductionImages.map((item, index) => (
-            <img
+            <Image
               key={index}
-              className='mr-[8px] h-[100vw] w-[100vw] w-screen object-cover lg:mb-[8px] lg:h-[88vh] lg:w-[52vw] lg:rounded-lg'
+              className='mr-[8px] h-[100vw] w-[100vw] object-cover lg:mb-[8px] lg:h-[88vh] lg:w-[52vw] lg:rounded-lg'
               src={item}
               alt='introduction 1'
             />
