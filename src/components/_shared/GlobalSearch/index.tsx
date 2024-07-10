@@ -11,7 +11,11 @@ const GlobalSearch = () => {
           </div>
           <span className='text-gray-300'>|</span>
           <div className='flex flex-1 items-center justify-between'>
-            <input type='date' className='bg-transparent' />
+            <input
+              type='date'
+              className='border-none bg-transparent outline-none focus:border-none focus:outline-none'
+            />
+
             <button className='rounded-full bg-white px-4 py-2 shadow-md'>
               <Search />
             </button>
