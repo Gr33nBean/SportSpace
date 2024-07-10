@@ -38,7 +38,7 @@ export const FormInputIcon = <TFormValues extends Record<string, unknown>>({
         render={({ message }) => (
           <p
             className={clsx(
-              'mt-1 block transform text-left font-serif text-xs text-red-600 transition-all duration-300',
+              'mt-1 block transform text-left font-Inter text-xs text-red-600 transition-all duration-300',
               {
                 'translate-y-0 opacity-100': hasError,
                 '-translate-y-2 opacity-0': !hasError,
