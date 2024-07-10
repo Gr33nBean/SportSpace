@@ -48,6 +48,9 @@ const SignInModalForm = ({ open = false, handleClose }: { open?: boolean; handle
               >
                 <div className='flex flex-col gap-7 p-6'>
                   <div className='flex items-center'>
+                    <DialogTitle as='h3' className='flex-1 text-center text-xl font-medium'>
+                      Tài khoản
+                    </DialogTitle>
                     <span className='cursor-pointer rounded-full bg-slate-200 p-2' onClick={handleClose}>
                       <svg
                         xmlns='http://www.w3.org/2000/svg'
@@ -65,9 +68,6 @@ const SignInModalForm = ({ open = false, handleClose }: { open?: boolean; handle
                         <path d='m6 6 12 12' />
                       </svg>
                     </span>
-                    <DialogTitle as='h3' className='flex-1 text-center text-xl font-medium'>
-                      Tài khoản
-                    </DialogTitle>
                   </div>
                   <div>
                     <form onSubmit={onSubmit}>
@@ -75,7 +75,7 @@ const SignInModalForm = ({ open = false, handleClose }: { open?: boolean; handle
                         <Email register={register} errors={errors} />
                         <Password register={register} errors={errors} />
                       </div>
-                      <a href='' className='text-xs font-bold text-gray-500 underline'>
+                      <a href='' className='text-gray-500 text-xs font-bold underline'>
                         Quên mật khẩu?
                       </a>
                     </form>
@@ -117,7 +117,7 @@ const SignInModalForm = ({ open = false, handleClose }: { open?: boolean; handle
                     </svg>
                   </span>
                   <div>
-                    <p className='font-Inter font-bold text-gray-500'>Bạn cần quản lý sân cầu lông?</p>
+                    <p className='text-gray-500 font-Inter font-bold'>Bạn cần quản lý sân cầu lông?</p>
                     <p className='font-Inter font-bold text-black'>Tới trang đăng nhập dành cho doanh nghiệp </p>
                   </div>
                 </div>
@@ -129,6 +129,7 @@ const SignInModalForm = ({ open = false, handleClose }: { open?: boolean; handle
         <BottomSheet open={open} className='block md:hidden' onClose={handleClose}>
           <div className='flex flex-col gap-7 p-6'>
             <div className='flex items-center'>
+              <p className='flex-1 text-center text-xl font-medium'>Tài khoản</p>
               <span className='cursor-pointer rounded-full bg-slate-200 p-2' onClick={handleClose}>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -146,7 +147,6 @@ const SignInModalForm = ({ open = false, handleClose }: { open?: boolean; handle
                   <path d='m6 6 12 12' />
                 </svg>
               </span>
-              <p className='flex-1 text-center text-xl font-medium'>Tài khoản</p>
             </div>
             <div>
               <form onSubmit={onSubmit}>
@@ -154,7 +154,7 @@ const SignInModalForm = ({ open = false, handleClose }: { open?: boolean; handle
                   <Email register={register} errors={errors} />
                   <Password register={register} errors={errors} />
                 </div>
-                <a href='' className='text-xs font-bold text-gray-500 underline'>
+                <a href='' className='text-gray-500 text-xs font-bold underline'>
                   Quên mật khẩu?
                 </a>
               </form>
@@ -164,13 +164,13 @@ const SignInModalForm = ({ open = false, handleClose }: { open?: boolean; handle
                   onClick={handleClose}
                   variant='outlined'
                 >
-                  <span className='text-base text-black'>Đăng ký</span>
+                  <span className='xs:text-base text-black'>Đăng ký</span>
                 </PrimaryButton>
                 <PrimaryButton
                   className='h-12 flex-1 bg-primary px-3 py-1.5 text-sm/6 font-semibold text-black shadow-inner shadow-white/10 focus:outline-none'
                   onClick={onSubmit}
                 >
-                  <span className='text-base text-black'>Đăng nhập</span>
+                  <span className='xs:text-base text-black'>Đăng nhập</span>
                 </PrimaryButton>
               </div>
             </div>

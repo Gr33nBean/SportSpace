@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import { Turn as Hamburger } from 'hamburger-react'
 
+import GlobalSearch from '@/components/_shared/GlobalSearch'
 import { routes } from '@/config/routes'
 
 import ListLink, { PageType } from './ListLink'
@@ -28,7 +29,11 @@ const BaseHeader = ({ pages, hambugerProps, rightContent }: BaseHeaderProps) => 
             </Link>
 
             {/* List link */}
-            <div className='hidden flex-1 items-center gap-6 md:!flex'>{pages && <ListLink pages={pages} />}</div>
+            <div className='hidden flex-1 items-center gap-6 md:!flex'>
+              {pages && <ListLink pages={pages} />}
+
+              <GlobalSearch />
+            </div>
           </div>
 
           <div className='md:hidden'>
