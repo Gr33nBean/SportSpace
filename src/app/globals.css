@@ -50,6 +50,25 @@ body {
   background-size: cover;
 }
 
+.date-container {
+  position: relative;
+  display: inline-block;
+}
+
+
+.date-input {
+  padding-left: 30px;
+  direction: ltr; 
+}
+
+.calendar-icon {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; 
+}
+
 @font-face {
   font-family: 'Inter';
   font-weight: 200;
