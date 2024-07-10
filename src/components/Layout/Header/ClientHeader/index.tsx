@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 
+import LoginBtn from '@/components/Auth/LoginBtn'
 import SignInModalForm from '@/components/Auth/SignInModalForm'
 import SignUpModalForm from '@/components/Auth/SignUpModalForm'
 import PrimaryButton from '@/components/Common/Button/PrimaryButton'
@@ -44,9 +45,10 @@ const ClientHeader = () => {
         hambugerProps={{ expand, setExpand }}
         rightContent={
           <>
-            <PrimaryButton variant='outlined' onClick={handleOpenLoginForm}>
+            {/* <PrimaryButton variant='outlined' onClick={handleOpenLoginForm}>
               Đăng nhập
-            </PrimaryButton>
+            </PrimaryButton> */}
+            <LoginBtn onClick={handleOpenLoginForm} />
             <PrimaryButton onClick={handleOpenSignUpForm}>Đăng ký</PrimaryButton>
           </>
         }

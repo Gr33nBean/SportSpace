@@ -41,7 +41,7 @@ const SignUpModalForm = ({ open = false, handleClose }: { open?: boolean; handle
             className={`fixed inset-0 bg-black transition-opacity ${open ? 'opacity-50' : 'opacity-0'}`}
             aria-hidden='true'
           />
-          <div className='fixed inset-0 z-10 w-screen overflow-y-auto'>
+          <div className='fixed inset-0 z-50 overflow-y-auto'>
             <div className='flex min-h-full items-center justify-center'>
               <DialogPanel
                 transition
@@ -49,6 +49,9 @@ const SignUpModalForm = ({ open = false, handleClose }: { open?: boolean; handle
               >
                 <div className='flex flex-col gap-7 p-6'>
                   <div className='flex items-center'>
+                    <DialogTitle as='h3' className='flex-1 text-center text-xl font-medium'>
+                      Tạo Tài khoản
+                    </DialogTitle>
                     <span className='cursor-pointer rounded-full bg-slate-200 p-2' onClick={handleClose}>
                       <svg
                         xmlns='http://www.w3.org/2000/svg'
@@ -66,16 +69,12 @@ const SignUpModalForm = ({ open = false, handleClose }: { open?: boolean; handle
                         <path d='m6 6 12 12' />
                       </svg>
                     </span>
-                    <DialogTitle as='h3' className='flex-1 text-center text-xl font-medium'>
-                      Tạo Tài khoản
-                    </DialogTitle>
                   </div>
                   <div>
                     <form onSubmit={onSubmit}>
-                      <div className='flex h-[30rem] flex-col gap-6 overflow-hidden overflow-y-auto px-2'>
+                      <div className='flex h-[25rem] flex-col gap-6 overflow-hidden overflow-y-auto px-2'>
                         <Firstname register={register} errors={errors} />
                         <Lastname register={register} errors={errors} />
-                        <Username register={register} errors={errors} />
                         <PhoneNumber register={register} errors={errors} />
                         <Email register={register} errors={errors} />
                         <Password register={register} errors={errors} />
@@ -107,6 +106,7 @@ const SignUpModalForm = ({ open = false, handleClose }: { open?: boolean; handle
         <BottomSheet open={open} className='block md:hidden' onClose={handleClose}>
           <div className='flex flex-col gap-7 p-6'>
             <div className='flex items-center'>
+              <p className='flex-1 text-center text-xl font-medium'>Tạo Tài khoản</p>
               <span className='cursor-pointer rounded-full bg-slate-200 p-2' onClick={handleClose}>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -124,11 +124,10 @@ const SignUpModalForm = ({ open = false, handleClose }: { open?: boolean; handle
                   <path d='m6 6 12 12' />
                 </svg>
               </span>
-              <p className='flex-1 text-center text-xl font-medium'>Tạo Tài khoản</p>
             </div>
             <div>
               <form onSubmit={onSubmit}>
-                <div className='flex h-[30rem] flex-col gap-6 overflow-hidden overflow-y-auto px-2'>
+                <div className='flex h-[15rem] flex-col gap-6 overflow-hidden overflow-y-auto px-2'>
                   <Firstname register={register} errors={errors} />
                   <Lastname register={register} errors={errors} />
                   <Username register={register} errors={errors} />
@@ -144,13 +143,13 @@ const SignUpModalForm = ({ open = false, handleClose }: { open?: boolean; handle
                   onClick={handleClose}
                   variant='outlined'
                 >
-                  <span className='text-base text-black'>Đăng ký</span>
+                  <span className='xs:text-base text-black'>Đăng ký</span>
                 </PrimaryButton>
                 <PrimaryButton
                   className='h-12 flex-1 bg-primary px-3 py-1.5 text-sm/6 font-semibold text-black shadow-inner shadow-white/10 focus:outline-none'
                   onClick={onSubmit}
                 >
-                  <span className='text-base text-black'>Đăng nhập</span>
+                  <span className='xs:text-base text-black'>Đăng nhập</span>
                 </PrimaryButton>
               </div>
             </div>
