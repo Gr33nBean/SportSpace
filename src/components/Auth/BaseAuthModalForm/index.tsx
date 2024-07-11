@@ -65,7 +65,6 @@ const BaseAuthModalForm = (props: BaseAuthModalFormProps) => {
                         strokeWidth='2'
                         strokeLinecap='round'
                         strokeLinejoin='round'
-                        className='lucide lucide-x'
                       >
                         <path d='M18 6 6 18' />
                         <path d='m6 6 12 12' />
@@ -94,7 +93,6 @@ const BaseAuthModalForm = (props: BaseAuthModalFormProps) => {
                   strokeWidth='2'
                   strokeLinecap='round'
                   strokeLinejoin='round'
-                  className='lucide lucide-x'
                 >
                   <path d='M18 6 6 18' />
                   <path d='m6 6 12 12' />
