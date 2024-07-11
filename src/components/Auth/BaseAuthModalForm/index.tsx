@@ -1,15 +1,15 @@
-import BottomSheet from '@/components/Common/BottomSheet'
-import { SCREEN } from '@/config/screen'
 import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
 import { useWindowSize } from '@uidotdev/usehooks'
-import { FieldValue, FieldValues, useForm } from 'react-hook-form'
-import NavigateToBusiness from '../NavigateToBusiness'
+import { useForm } from 'react-hook-form'
+
+import BottomSheet from '@/components/Common/BottomSheet'
+import { SCREEN } from '@/config/screen'
 
 type BaseAuthModalFormProps = {
   open: boolean
   handleClose: () => void
   callback: (data: any) => void
-  form: (props: any) => JSX.Element;
+  form: (props: any) => JSX.Element
   title: string
 }
 
@@ -72,7 +72,6 @@ const BaseAuthModalForm = (props: BaseAuthModalFormProps) => {
                       </svg>
                     </span>
                   </div>
-
                 </div>
                 {form({ onSubmit, register, errors, watch })}
               </DialogPanel>
@@ -103,7 +102,7 @@ const BaseAuthModalForm = (props: BaseAuthModalFormProps) => {
               </span>
             </div>
           </div>
-            {form({ onSubmit, register, errors, watch })}
+          {form({ onSubmit, register, errors, watch })}
         </BottomSheet>
       )}
     </>

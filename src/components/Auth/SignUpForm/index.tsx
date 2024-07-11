@@ -1,12 +1,12 @@
 import { FieldErrors, FieldValues, FormState, UseFormRegister, UseFormWatch } from 'react-hook-form'
 
 import PrimaryButton from '@/components/Common/Button/PrimaryButton'
+import ConfirmPassword from '@/components/Common/Form/ConfirmPassword'
+import Email from '@/components/Common/Form/Email'
 import Firstname from '@/components/Common/Form/Firstname'
 import Lastname from '@/components/Common/Form/Lastname'
-import PhoneNumber from '@/components/Common/Form/PhoneNumber'
-import Email from '@/components/Common/Form/Email'
 import Password from '@/components/Common/Form/Password'
-import ConfirmPassword from '@/components/Common/Form/ConfirmPassword'
+import PhoneNumber from '@/components/Common/Form/PhoneNumber'
 
 type SignUpFormProps = {
   onSubmit: () => void

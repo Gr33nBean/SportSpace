@@ -7,14 +7,19 @@ export type SignInFormFields = {
 }
 
 const SignInModalForm = ({ open = false, handleClose }: { open?: boolean; handleClose: () => void }) => {
-
-  const onSubmit = (data:SignInFormFields) => {
-    console.log(data);
+  const onSubmit = (data: SignInFormFields) => {
+    console.log(data)
   }
 
   return (
     <>
-      <BaseAuthModalForm open={open} form={SignInForm} handleClose={handleClose} callback={onSubmit} title='Tài khoản'/>
+      <BaseAuthModalForm
+        open={open}
+        form={SignInForm}
+        handleClose={handleClose}
+        callback={onSubmit}
+        title='Tài khoản'
+      />
     </>
   )
 }

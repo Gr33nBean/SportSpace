@@ -1,4 +1,3 @@
-
 import BaseAuthModalForm from './BaseAuthModalForm'
 import SignUpForm from './SignUpForm'
 
@@ -10,14 +9,19 @@ export type SignUpFormFields = {
 }
 
 const SignUpModalForm = ({ open = false, handleClose }: { open?: boolean; handleClose: () => void }) => {
-
   const onSubmit = (data: SignUpFormFields) => {
     console.log('data', data)
   }
 
   return (
     <>
-      <BaseAuthModalForm open={open} form={SignUpForm} handleClose={handleClose} callback={onSubmit} title='Tạo Tài khoản'/>
+      <BaseAuthModalForm
+        open={open}
+        form={SignUpForm}
+        handleClose={handleClose}
+        callback={onSubmit}
+        title='Tạo Tài khoản'
+      />
     </>
   )
 }
