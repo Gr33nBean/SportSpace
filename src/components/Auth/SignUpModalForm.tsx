@@ -1,20 +1,18 @@
-import BaseAuthModalForm from './BaseAuthModalForm'
+import { FieldValues } from 'react-hook-form'
 
-export type SignUpFormFields = {
-  email: string
-  password: string
-  firstName: string
-  lastName: string
-}
+import BaseAuthModalForm from './BaseAuthModalForm'
+import SignUpForm from './SignUpForm'
 
 const SignUpModalForm = ({ open = false, handleClose }: { open?: boolean; handleClose: () => void }) => {
-  const onSubmit = (data: SignUpFormFields) => {
+  const onSubmit = (data: FieldValues) => {
     console.log('data', data)
   }
 
   return (
     <>
-      <BaseAuthModalForm open={open} handleClose={handleClose} callback={onSubmit} title='Tạo Tài khoản' />
+      <BaseAuthModalForm open={open} handleClose={handleClose} callback={onSubmit} title='Tạo Tài khoản'>
+        <SignUpForm callback={onSubmit} />
+      </BaseAuthModalForm>
     </>
   )
 }
