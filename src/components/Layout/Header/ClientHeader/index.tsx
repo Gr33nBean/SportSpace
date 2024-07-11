@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
+import { LogOut } from 'lucide-react'
 
-import LoginBtn from '@/components/Auth/LoginBtn'
 import SignInModalForm from '@/components/Auth/SignInModalForm'
 import SignUpModalForm from '@/components/Auth/SignUpModalForm'
 import PrimaryButton from '@/components/Common/Button/PrimaryButton'
@@ -45,10 +45,11 @@ const ClientHeader = () => {
         hambugerProps={{ expand, setExpand }}
         rightContent={
           <>
-            {/* <PrimaryButton variant='outlined' onClick={handleOpenLoginForm}>
+            <PrimaryButton variant='outlined' onClick={handleOpenLoginForm} className='flex items-center gap-2'>
               Đăng nhập
-            </PrimaryButton> */}
-            <LoginBtn onClick={handleOpenLoginForm} />
+              <LogOut size={15} />
+            </PrimaryButton>
+
             <PrimaryButton onClick={handleOpenSignUpForm}>Đăng ký</PrimaryButton>
           </>
         }
