@@ -2,32 +2,105 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+::-webkit-scrollbar {
+  display: none;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.container {
+  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+.marquee {
+  animation: marquee 24s linear infinite;
+  padding-left: 100%;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate(0, 0);
   }
+  100% {
+    transform: translate(-100%, 0);
+  }
+}
+
+.background-banner-home {
+  background-image: url('/images/png/banner.png');
+  background-position: center;
+  background-size: cover;
+}
+
+.dark-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+
+.background-contact {
+  background-image: url('https://images.unsplash.com/photo-1448387473223-5c37445527e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c3RlcHN8ZW58MHx8MHx8fDA%3D&w=1000&q=80');
+  background-position: center;
+  background-size: cover;
+}
+
+.date-container {
+  position: relative;
+  display: inline-block;
+}
+
+
+.date-input {
+  padding-left: 30px;
+  direction: ltr; 
+}
+
+.calendar-icon {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; 
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-weight: 200;
+  src: url('/fonts/Inter/Inter-ExtraLight.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 300;
+  src: url('/fonts/Inter/Inter-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 400;
+  src: url('/fonts/Inter/Inter-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 500;
+  src: url('/fonts/Inter/Inter-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 600;
+  src: url('/fonts/Inter/Inter-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 700;
+  src: url('/fonts/Inter/Inter-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-weight: 800;
+  src: url('/fonts/Inter/Inter-ExtraBold.ttf') format('truetype');
 }
