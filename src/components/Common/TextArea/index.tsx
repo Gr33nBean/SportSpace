@@ -27,7 +27,7 @@ export const TextArea: React.FC<TextAreaProps> = forwardRef<HTMLTextAreaElement,
         aria-label={label}
         placeholder={placeholder}
         className={clsx(
-          'relative inline-flex w-full rounded border border-gray-300 bg-gray-50 bg-white leading-none text-gray-700 placeholder-gray-500 transition-colors ease-in-out hover:border-blue-400 focus:border-blue-400 focus:ring-1',
+          'border-gray-300 bg-gray-50 text-gray-700 placeholder-gray-500 relative inline-flex w-full rounded border bg-white leading-none transition-colors ease-in-out hover:border-blue-400 focus:border-blue-400 focus:ring-1',
           sizeMap[size],
           className
         )}

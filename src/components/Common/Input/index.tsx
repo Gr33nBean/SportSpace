@@ -30,7 +30,7 @@ export const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputPro
         aria-label={label}
         placeholder={placeholder}
         className={clsx(
-          'font inline-flex w-full rounded border border-gray-400 bg-white font-Inter leading-none text-gray-700 transition-colors ease-in-out focus:border-primary',
+          'font border-gray-400 text-gray-700 inline-flex w-full rounded border bg-white font-Inter leading-none transition-colors ease-in-out focus:border-primary',
           sizeMap[size],
           className
         )}

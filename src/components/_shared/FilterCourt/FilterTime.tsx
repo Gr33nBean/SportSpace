@@ -16,7 +16,7 @@ const FilterTime = () => {
     <div className='relative w-full'>
       <button
         type='button'
-        className='inline-flex w-full items-center justify-between rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none'
+        className='border-gray-300 text-gray-700 hover:bg-gray-50 inline-flex w-full items-center justify-between rounded-md border bg-white px-4 py-2 text-sm font-medium shadow-sm focus:outline-none'
         onClick={() => setIsOpen(!isOpen)}
       >
         {selectedOption}
@@ -41,7 +41,7 @@ const FilterTime = () => {
               <button
                 key={option}
                 onClick={() => handleOptionClick(option)}
-                className='block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100'
+                className='text-gray-700 hover:bg-gray-100 block w-full px-4 py-2 text-left text-sm'
               >
                 {option}
               </button>
