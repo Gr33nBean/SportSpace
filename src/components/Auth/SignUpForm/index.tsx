@@ -1,5 +1,3 @@
-import { FieldErrors, FieldValues, FormState, UseFormRegister, UseFormWatch } from 'react-hook-form'
-
 import PrimaryButton from '@/components/Common/Button/PrimaryButton'
 import ConfirmPassword from '@/components/Common/Form/ConfirmPassword'
 import Email from '@/components/Common/Form/Email'
@@ -7,16 +5,15 @@ import Firstname from '@/components/Common/Form/Firstname'
 import Lastname from '@/components/Common/Form/Lastname'
 import Password from '@/components/Common/Form/Password'
 import PhoneNumber from '@/components/Common/Form/PhoneNumber'
+import withForm, { WithFormProps } from '@/hocs/withForm'
 
-type SignUpFormProps = {
-  onSubmit: () => void
-  register: UseFormRegister<FieldValues>
-  errors: FieldErrors<FormState<FieldValues>>
-  watch: UseFormWatch<FieldValues>
-}
-
-const SignUpForm = (props: SignUpFormProps) => {
-  const { register, errors, watch, onSubmit } = props
+const SignUpForm = (props: WithFormProps) => {
+  const {
+    register,
+    formState: { errors },
+    watch,
+    onSubmit,
+  } = props
 
   return (
     <div>
@@ -49,4 +46,4 @@ const SignUpForm = (props: SignUpFormProps) => {
   )
 }
 
-export default SignUpForm
+export default withForm(SignUpForm)

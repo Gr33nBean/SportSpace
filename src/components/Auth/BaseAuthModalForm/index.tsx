@@ -9,12 +9,12 @@ type BaseAuthModalFormProps = {
   open: boolean
   handleClose: () => void
   callback: (data: any) => void
-  form: (props: any) => JSX.Element
   title: string
+  children?: React.ReactNode
 }
 
 const BaseAuthModalForm = (props: BaseAuthModalFormProps) => {
-  const { callback, open, handleClose, form, title } = props
+  const { callback, open, handleClose, title, children } = props
 
   const {
     register,
@@ -73,7 +73,7 @@ const BaseAuthModalForm = (props: BaseAuthModalFormProps) => {
                     </span>
                   </div>
                 </div>
-                {form({ onSubmit, register, errors, watch })}
+                {children}
               </DialogPanel>
             </div>
           </div>
@@ -102,7 +102,7 @@ const BaseAuthModalForm = (props: BaseAuthModalFormProps) => {
               </span>
             </div>
           </div>
-          {form({ onSubmit, register, errors, watch })}
+          {children}
         </BottomSheet>
       )}
     </>

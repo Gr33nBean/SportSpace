@@ -7,7 +7,7 @@ const FilterTime = () => {
 
   const options = ['Morning', 'Afternoon', 'Evening']
 
-  const handleOptionClick = (option: React.SetStateAction<string>) => {
+  const handleOptionClick = (option: string) => {
     setSelectedOption(option)
     setIsOpen(false)
   }

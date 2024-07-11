@@ -1,19 +1,17 @@
-import { FieldErrors, FieldValues, FormState, UseFormRegister } from 'react-hook-form'
-
 import PrimaryButton from '@/components/Common/Button/PrimaryButton'
 import Email from '@/components/Common/Form/Email'
 import Password from '@/components/Common/Form/Password'
+import withForm, { WithFormProps } from '@/hocs/withForm'
 
 import NavigateToBusiness from '../NavigateToBusiness'
 
-type SignInFormProps = {
-  onSubmit: () => void
-  register: UseFormRegister<FieldValues>
-  errors: FieldErrors<FormState<FieldValues>>
-}
+const SignInForm = (props: WithFormProps) => {
+  const {
+    onSubmit,
+    register,
+    formState: { errors },
+  } = props
 
-const SignInForm = (props: SignInFormProps) => {
-  const { onSubmit, register, errors } = props
   return (
     <div className=''>
       <form onSubmit={onSubmit} className='p-6'>
@@ -45,4 +43,4 @@ const SignInForm = (props: SignInFormProps) => {
   )
 }
 
-export default SignInForm
+export default withForm(SignInForm)
