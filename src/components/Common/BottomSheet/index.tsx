@@ -29,7 +29,7 @@ const BottomSheet = (props: BottomSheetProps) => {
         }}
       >
         <div className='my-4 h-8 w-full'></div>
-        <div className='container flex w-full flex-col gap-2 bg-white py-4 shadow-md'>{children}</div>
+        <div className='flex w-full flex-col gap-2 bg-white shadow-md'>{children}</div>
       </div>
     </div>
   )
