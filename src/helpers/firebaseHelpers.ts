@@ -2,13 +2,13 @@ import { initializeApp } from 'firebase/app'
 import { getAuth, GoogleAuthProvider } from 'firebase/auth'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyC20wLu8nFT5YujH9_wWb-G7JGpR3BpCNE',
-  authDomain: 'tobogo-court.firebaseapp.com',
-  projectId: 'tobogo-court',
-  storageBucket: 'tobogo-court.appspot.com',
-  messagingSenderId: '275793391377',
-  appId: '1:275793391377:web:465b4126a162b5f44366b0',
-  measurementId: 'G-DBGDW4L74B',
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID,
+  measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 }
 
 const app = initializeApp(firebaseConfig)
