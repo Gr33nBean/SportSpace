@@ -1,5 +1,6 @@
 import React from 'react'
 
+import SignInWithGoogleButton from '@/components/Auth/SignInWithGoogleButton'
 import Banner from '@/components/Home/Banner'
 import { Introduction } from '@/components/Home/Introduction'
 import OutstandingCourtList from '@/components/Home/OutstandingCourtList'
@@ -12,6 +13,7 @@ const Home = () => {
       <Banner />
       <RunningText />
       <Introduction />
+      <SignInWithGoogleButton />
       <Payment />
       <OutstandingCourtList />
     </div>
