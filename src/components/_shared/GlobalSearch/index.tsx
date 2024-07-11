@@ -2,7 +2,7 @@ import { MapPin, Search } from 'lucide-react'
 
 const GlobalSearch = () => {
   return (
-    <div className='hidden rounded-full border bg-gray-100 px-2 py-1.5 shadow-sm md:block'>
+    <div className='bg-gray-100 hidden rounded-full border px-2 py-1.5 shadow-sm md:block'>
       <form action=''>
         <div className='flex items-center gap-3'>
           <div className='flex flex-1 items-center gap-4'>

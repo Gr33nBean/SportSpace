@@ -19,7 +19,7 @@ const SuccessNotification = (props: SuccessNotificationProps) => {
   return (
     <div className='flex flex-col items-center justify-center gap-4'>
       <CheckCircle2 size={72} strokeWidth={2} className='text-secondary' />
-      <p className='text-xl text-gray-500'>{message}</p>
+      <p className='text-gray-500 text-xl'>{message}</p>
       <PrimaryButton
         onClick={() => {
           router.push(route)
