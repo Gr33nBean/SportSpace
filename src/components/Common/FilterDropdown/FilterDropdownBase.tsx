@@ -1,5 +1,8 @@
 'use client'
 import React, { useState } from 'react'
+import { ChevronRight } from 'lucide-react'
+
+import './style.css'
 
 type FilterDropdownBase = {
   children: React.ReactNode
@@ -14,25 +17,19 @@ const FilterDropdownBase = (props: FilterDropdownBase) => {
     <div className='relative w-full'>
       <button
         type='button'
-        className='inline-flex w-full items-center justify-between rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none'
+        className='inline-flex w-full items-center justify-between rounded-md border border-gray-300 bg-gray-50 p-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-100 focus:outline-none'
         onClick={() => setIsOpen(!isOpen)}
       >
         {title}
-        <svg
-          className='h-5 w-5'
-          xmlns='http://www.w3.org/2000/svg'
-          viewBox='0 0 20 20'
-          fill='currentColor'
-          aria-hidden='true'
-        >
-          <path
-            fillRule='evenodd'
-            d='M5.23 7.21a.75.75 0 011.06.02L10 11.086l3.71-3.856a.75.75 0 111.08 1.04l-4.25 4.418a.75.75 0 01-1.08 0l-4.25-4.418a.75.75 0 01.02-1.06z'
-            clipRule='evenodd'
-          />
-        </svg>
+        <ChevronRight size={18} className={`duration-75 ${isOpen ? 'rotate-90' : ''}`} />
       </button>
-      {isOpen && children}
+      {isOpen && (
+        <div
+          className={`mt-2 w-full rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 ${isOpen ? 'slide-down' : 'hidden'}`}
+        >
+          <div className='py-1'>{children}</div>
+        </div>
+      )}
     </div>
   )
 }
