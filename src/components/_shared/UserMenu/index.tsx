@@ -38,7 +38,7 @@ const UserMenu = () => {
   const { name, email } = userInfo
   return (
     <Menu>
-      <MenuButton className='border-gray rounded-full border p-1'>
+      <MenuButton className='border-gray rounded-full border p-1' onClick={(e) => e.stopPropagation()}>
         <User />
       </MenuButton>
       <MenuItems anchor='bottom end' className='border-gray z-[1000] mt-1 rounded-md border bg-white p-4'>

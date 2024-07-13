@@ -18,6 +18,7 @@ const BottomSheet = (props: BottomSheetProps) => {
         aria-hidden='true'
         onClick={onClose}
       />
+
       <div
         className={clsx(
           'fixed bottom-0 left-0 right-0 z-[100] flex flex-col justify-start transition-all duration-500 md:hidden',

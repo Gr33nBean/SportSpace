@@ -3,6 +3,7 @@ import React from 'react'
 import { LogOut } from 'lucide-react'
 
 import GlobalSearch from '@/components/_shared/GlobalSearch'
+import UserMenu from '@/components/_shared/UserMenu'
 import SignInModalForm from '@/components/Auth/SignInModalForm'
 import SignUpModalForm from '@/components/Auth/SignUpModalForm'
 import PrimaryButton from '@/components/Common/Button/PrimaryButton'
@@ -39,23 +40,31 @@ const ClientHeader = () => {
     setIsSignUpFormOpen(true)
   }
 
+  const isLogin = true
+
   return (
     <>
       <BaseHeader
         hambugerProps={{ expand, setExpand }}
         rightContent={
           <>
-            <PrimaryButton
-              variant='outlined'
-              radius='full'
-              onClick={handleOpenLoginForm}
-              className='flex items-center gap-2 !px-4 !py-2'
-            >
-              <span className='flex w-full items-center justify-center gap-2'>
-                Đăng nhập
-                <LogOut size={15} />
-              </span>
-            </PrimaryButton>
+            {isLogin ? (
+              <UserMenu />
+            ) : (
+              <>
+                <PrimaryButton
+                  variant='outlined'
+                  radius='full'
+                  onClick={handleOpenLoginForm}
+                  className='flex items-center gap-2 !px-4 !py-2'
+                >
+                  <span className='flex w-full items-center justify-center gap-2'>
+                    Đăng nhập
+                    <LogOut size={15} />
+                  </span>
+                </PrimaryButton>
+              </>
+            )}
 
             {/* <PrimaryButton onClick={handleOpenSignUpForm}>Đăng ký</PrimaryButton> */}
           </>
