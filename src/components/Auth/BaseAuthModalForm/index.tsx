@@ -9,12 +9,12 @@ type BaseAuthModalFormProps = {
   open: boolean
   handleClose: () => void
   callback: (data: any) => void
-  form: (props: any) => JSX.Element
   title: string
+  children?: React.ReactNode
 }
 
 const BaseAuthModalForm = (props: BaseAuthModalFormProps) => {
-  const { callback, open, handleClose, form, title } = props
+  const { callback, open, handleClose, title, children } = props
 
   const {
     register,
@@ -65,7 +65,6 @@ const BaseAuthModalForm = (props: BaseAuthModalFormProps) => {
                         strokeWidth='2'
                         strokeLinecap='round'
                         strokeLinejoin='round'
-                        className='lucide lucide-x'
                       >
                         <path d='M18 6 6 18' />
                         <path d='m6 6 12 12' />
@@ -73,7 +72,7 @@ const BaseAuthModalForm = (props: BaseAuthModalFormProps) => {
                     </span>
                   </div>
                 </div>
-                {form({ onSubmit, register, errors, watch })}
+                {children}
               </DialogPanel>
             </div>
           </div>
@@ -94,7 +93,6 @@ const BaseAuthModalForm = (props: BaseAuthModalFormProps) => {
                   strokeWidth='2'
                   strokeLinecap='round'
                   strokeLinejoin='round'
-                  className='lucide lucide-x'
                 >
                   <path d='M18 6 6 18' />
                   <path d='m6 6 12 12' />
@@ -102,7 +100,7 @@ const BaseAuthModalForm = (props: BaseAuthModalFormProps) => {
               </span>
             </div>
           </div>
-          {form({ onSubmit, register, errors, watch })}
+          {children}
         </BottomSheet>
       )}
     </>

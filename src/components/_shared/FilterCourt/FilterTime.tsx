@@ -3,12 +3,7 @@ import React from 'react'
 
 import FilterDropdownBase from '@/components/Common/FilterDropdown/FilterDropdownBase'
 
-type FilterTimeProps = {
-  callback: (data: any) => void
-}
-
-const FilterTime = (props: FilterTimeProps) => {
-  const { callback } = props
+const FilterTime = () => {
   const options = ['Morning', 'Afternoon', 'Evening']
 
   return (
@@ -16,7 +11,7 @@ const FilterTime = (props: FilterTimeProps) => {
       {options.map((option) => (
         <button
           key={option}
-          onClick={() => callback(option)}
+          onClick={() => {}}
           className='block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100'
         >
           {option}
