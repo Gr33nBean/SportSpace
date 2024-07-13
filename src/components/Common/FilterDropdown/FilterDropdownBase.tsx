@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { ChevronRight } from 'lucide-react'
 
 type FilterDropdownBase = {
@@ -10,7 +10,6 @@ type FilterDropdownBase = {
 const FilterDropdownBase = (props: FilterDropdownBase) => {
   const { children, title } = props
   const [isOpen, setIsOpen] = useState(false)
-  const listRef = useRef<HTMLDivElement>(null)
 
   return (
     <div className='relative w-full transition-all duration-75'>
@@ -26,21 +25,19 @@ const FilterDropdownBase = (props: FilterDropdownBase) => {
       </button>
 
       <div
-        className={`transition-all duration-75`}
+        className='pt-2 transition-all duration-150'
         style={{
-          height: isOpen ? (listRef.current?.clientHeight || 0) + 'px' : '0px',
+          maxHeight: isOpen ? '1000px' : 0,
         }}
       >
-        <div ref={listRef} className='pt-2'>
-          <div
-            className={`w-full rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5`}
-            style={{
-              opacity: isOpen ? 1 : 0,
-              pointerEvents: isOpen ? 'all' : 'none',
-            }}
-          >
-            <div className='py-1'>{children}</div>
-          </div>
+        <div
+          className={`w-full rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 transition-all duration-150`}
+          style={{
+            opacity: isOpen ? 1 : 0,
+            pointerEvents: isOpen ? 'all' : 'none',
+          }}
+        >
+          <div className='py-1'>{children}</div>
         </div>
       </div>
     </div>

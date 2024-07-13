@@ -5,10 +5,7 @@ import FilterTime from './FilterTime'
 
 const FilterCourt = () => {
   return (
-    <div
-      id='filter-container'
-      className='relative flex w-[17rem] flex-col gap-6 overflow-hidden rounded-lg border px-5 py-5 transition-all duration-150'
-    >
+    <div className='relative flex w-[17rem] flex-col gap-6 overflow-hidden rounded-lg border px-5 py-5 transition-all duration-150'>
       <div className='flex items-center justify-between rounded-lg border-black p-1.5'>
         <p>Filter</p>
         <div className='rounded bg-secondary px-3'>
