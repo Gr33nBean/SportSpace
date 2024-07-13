@@ -22,7 +22,7 @@ const EmailConfirmationForm = ({ open = false, handleClose }: { open?: boolean; 
   return (
     <div className='flex flex-col items-center justify-center'>
       <form onSubmit={onSubmit}>
-        <p className='mb-4 text-sm font-medium text-gray'>
+        <p className='mb-4 text-sm font-medium text-custom-gray'>
           Nhấn để nhận mã xác nhận, thư xác nhận sẽ gửi về hòm thư của bạn.
         </p>
         <div className='flex flex-col gap-6'>
@@ -41,11 +41,11 @@ const EmailConfirmationForm = ({ open = false, handleClose }: { open?: boolean; 
       <div className='flex flex-row gap-8'>
         <Link href='' className='flex flex-row items-center gap-1'>
           <CircleUserRound color='#8E8E8E' />
-          <p className='text-sm font-medium text-gray'>Liên hệ CSKH</p>
+          <p className='text-sm font-medium text-custom-gray'>Liên hệ CSKH</p>
         </Link>
         <Link href='' className='flex flex-row items-center gap-1'>
           <CircleHelp color='#8E8E8E' />
-          <p className='text-sm font-medium text-gray'>Vấn đề thường gặp</p>
+          <p className='text-sm font-medium text-custom-gray'>Vấn đề thường gặp</p>
         </Link>
       </div>
     </div>

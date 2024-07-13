@@ -20,7 +20,7 @@ const config: Config = {
         secondary: '#26E8A2',
         'light-gray': '#EDEEF0',
         'light-purple': '#EBEEFD',
-        gray: '#8E8E8E',
+        'custom-gray': '#8E8E8E',
       },
     },
   },

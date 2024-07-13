@@ -20,7 +20,7 @@ const NavigateToBusiness = () => {
         </svg>
       </span>
       <div>
-        <p className='text-gray-500 font-Inter font-bold'>Bạn cần quản lý sân cầu lông?</p>
+        <p className='font-Inter font-bold text-gray-500'>Bạn cần quản lý sân cầu lông?</p>
         <p className='font-Inter font-bold text-black'>Tới trang đăng nhập dành cho doanh nghiệp </p>
       </div>
     </div>

@@ -19,8 +19,10 @@ const SignUpForm = (props: WithFormProps) => {
     <div>
       <form onSubmit={onSubmit} className='p-6'>
         <div className='flex h-[25rem] flex-col gap-6 overflow-hidden overflow-y-auto px-2'>
-          <Firstname register={register} errors={errors} />
-          <Lastname register={register} errors={errors} />
+          <div className='flex gap-4'>
+            <Lastname register={register} errors={errors} />
+            <Firstname register={register} errors={errors} />
+          </div>
           <PhoneNumber register={register} errors={errors} />
           <Email register={register} errors={errors} />
           <Password register={register} errors={errors} />

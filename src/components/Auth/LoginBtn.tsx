@@ -6,7 +6,7 @@ type LoginBtnProps = React.ButtonHTMLAttributes<HTMLButtonElement>
 const LoginBtn = (props: LoginBtnProps) => {
   return (
     <button
-      className='border-gray-300 flex items-center justify-center gap-3 rounded-full border px-2.5 py-1'
+      className='flex items-center justify-center gap-3 rounded-full border border-gray-300 px-2.5 py-1'
       {...props}
     >
       <span className='font-Inter'>Login</span>

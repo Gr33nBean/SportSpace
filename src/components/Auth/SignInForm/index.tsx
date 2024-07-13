@@ -19,7 +19,7 @@ const SignInForm = (props: WithFormProps) => {
           <Email register={register} errors={errors} />
           <Password register={register} errors={errors} />
         </div>
-        <a href='' className='text-gray-500 text-xs font-bold underline'>
+        <a href='' className='text-xs font-bold text-gray-500 underline'>
           Quên mật khẩu?
         </a>
       </form>

@@ -31,7 +31,7 @@ export const FormInput = <TFormValues extends Record<string, unknown>>({
 
   return (
     <div className={className}>
-      {label && <span className='text-gray-800 font-Inter text-sm font-medium'>{label}</span>}
+      {label && <span className='font-Inter text-sm font-medium text-gray-800'>{label}</span>}
       <Input
         name={name}
         label={label}
