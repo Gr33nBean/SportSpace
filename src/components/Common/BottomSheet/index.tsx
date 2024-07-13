@@ -1,10 +1,14 @@
+'use client'
 import React from 'react'
 import clsx from 'clsx'
+
+import 'react-spring-bottom-sheet/dist/style.css'
 
 type BottomSheetProps = {
   children: React.ReactNode
   open: boolean
   onClose?: () => void
+  onDismiss?: () => void
   className?: string
 }
 
