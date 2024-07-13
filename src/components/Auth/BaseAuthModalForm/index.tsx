@@ -25,7 +25,6 @@ const BaseAuthModalForm = (props: BaseAuthModalFormProps) => {
   const onSubmit = handleSubmit((data) => {
     callback(data)
   })
-  console.log(isMobile)
 
   return (
     <>

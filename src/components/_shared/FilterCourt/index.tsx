@@ -12,7 +12,7 @@ const FilterCourt = () => {
           <span className='text-sm font-bold text-black'>20</span>
         </div>
       </div>
-      <div className='flex flex-col gap-3 transition-all duration-75 ease-linear'>
+      <div className='flex flex-col gap-3 transition-all duration-75'>
         <FilterTime />
         <FilterPlace />
       </div>
