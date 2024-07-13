@@ -4,6 +4,7 @@ export const routes = {
   search: '/search',
   booking: booking,
   contact: '/contact',
+  aboutUser: '/about-user',
   business: business(''),
 }
 
