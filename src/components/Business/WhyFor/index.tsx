@@ -40,7 +40,7 @@ const contents = [
 
 const WhyFor = () => {
   return (
-    <section className='px-6 py-12'>
+    <section className='container py-12'>
       <div className='my-4 flex flex-col items-center justify-center'>
         <h1 className='my-2 text-center text-2xl font-bold text-primary'>Tại sao Sport Space dành cho doanh nghiệp?</h1>
         <p className='text-center text-lg text-primary'>Hãy để chúng tôi cho bạn biết lý do tại sao</p>

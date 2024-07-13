@@ -2,6 +2,7 @@
 import React from 'react'
 import { LogOut } from 'lucide-react'
 
+import GlobalSearch from '@/components/_shared/GlobalSearch'
 import SignInModalForm from '@/components/Auth/SignInModalForm'
 import SignUpModalForm from '@/components/Auth/SignUpModalForm'
 import PrimaryButton from '@/components/Common/Button/PrimaryButton'
@@ -41,19 +42,30 @@ const ClientHeader = () => {
   return (
     <>
       <BaseHeader
-        pages={pages}
         hambugerProps={{ expand, setExpand }}
         rightContent={
           <>
-            <PrimaryButton variant='outlined' onClick={handleOpenLoginForm} className='flex items-center gap-2'>
-              Đăng nhập
-              <LogOut size={15} />
+            <PrimaryButton
+              variant='outlined'
+              radius='full'
+              onClick={handleOpenLoginForm}
+              className='flex items-center gap-2 !px-4 !py-2'
+            >
+              <span className='flex w-full items-center justify-center gap-2'>
+                Đăng nhập
+                <LogOut size={15} />
+              </span>
             </PrimaryButton>
 
-            <PrimaryButton onClick={handleOpenSignUpForm}>Đăng ký</PrimaryButton>
+            {/* <PrimaryButton onClick={handleOpenSignUpForm}>Đăng ký</PrimaryButton> */}
           </>
         }
-      />
+      >
+        <div className='flex w-full flex-col items-center justify-center md:flex-row'>
+          {/* {pages && <ListLink pages={pages} />} */}
+          <GlobalSearch />
+        </div>
+      </BaseHeader>
 
       <SignInModalForm
         open={isLoginFormOpen}
