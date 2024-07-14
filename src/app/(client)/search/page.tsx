@@ -1,12 +1,12 @@
-import React from 'react'
-
 import FilterCourt from '@/components/_shared/FilterCourt'
+import CourtList from '@/components/Search/CourtList'
 
 const Search = () => {
   return (
-    <div className='container py-12'>
+    <main className='container mt-10 flex flex-col gap-8 md:flex-row'>
       <FilterCourt />
-    </div>
+      <CourtList />
+    </main>
   )
 }
 
