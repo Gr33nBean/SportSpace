@@ -107,84 +107,86 @@ const Table = () => {
 
       {/*  */}
       <div className='relative flex max-h-[75vh] w-full items-start overflow-auto'>
-        <div
-          className='sticky left-0 top-0 z-10 h-fit bg-white'
-          style={{
-            width: courtWidth + '%',
-          }}
-        >
-          {/*  */}
-          <HeaderCell className='sticky top-0 z-10 px-2'>
-            <div className='hidden w-full sm:!block'>
-              <ChoosingDate choosingDate={choosingDate} handleChange={handleChoosingDate} />
-            </div>
-          </HeaderCell>
-
-          {/*  */}
-          <div className='border-r border-custom-gray'>
-            {court.map((item, index) => (
-              <BodyCell key={index} className='border-b last:border-0'>
-                <p className='text-base font-bold'>{item.name}</p>
-              </BodyCell>
-            ))}
-          </div>
-        </div>
-
-        <div
-          className='sticky top-0'
-          style={{
-            width: 100 - courtWidth + '%',
-          }}
-        >
-          {/*  */}
+        <>
           <div
-            className='sticky top-0 grid'
+            className='sticky left-0 top-0 z-10 h-fit bg-white'
             style={{
-              gridTemplateColumns: `repeat(${time.length}, minmax(0, 1fr))`,
-              minWidth: `${time.length * cellWidth}px`,
+              width: courtWidth + '%',
             }}
           >
-            {time.map((item, index) => (
-              <HeaderCell key={index} className='w-full last:border-r-0'>
-                <p className='text-sm font-bold'>
-                  {format(item.start)} - {format(item.end)}
-                </p>
-              </HeaderCell>
-            ))}
-          </div>
+            {/*  */}
+            <HeaderCell className='sticky top-0 z-10 px-2'>
+              <div className='hidden w-full sm:!block'>
+                <ChoosingDate choosingDate={choosingDate} handleChange={handleChoosingDate} />
+              </div>
+            </HeaderCell>
 
-          {/*  */}
-          {court.map((_, index) => (
-            <div
-              key={index}
-              className='grid items-center overflow-hidden border-b border-custom-gray last:border-b-0'
-              style={{
-                gridTemplateColumns: `repeat(${time.length}, minmax(0, 1fr))`,
-                minWidth: `${time.length * cellWidth}px`,
-                height: rowHeight + 'px',
-              }}
-            >
-              {time.map((_, i) => (
-                <BodyCell key={i} className='border-r last:border-r-0'>
-                  <div
-                    className='grid size-full items-stretch'
-                    style={{
-                      gridTemplateColumns: `repeat(${splitCell}, minmax(0, 1fr))`,
-                    }}
-                  >
-                    {[...Array(splitCell)].map((_, x) => (
-                      <Cell
-                        key={x}
-                        state={(i + index) % 2 === 0 ? 'available' : 'busy'}
-                        className='w-full border-r border-custom-gray last:border-r-0'
-                      />
-                    ))}
-                  </div>
+            {/*  */}
+            <div className='border-r border-custom-gray'>
+              {court.map((item, index) => (
+                <BodyCell key={index} className='border-b last:border-0'>
+                  <p className='text-base font-bold'>{item.name}</p>
                 </BodyCell>
               ))}
             </div>
-          ))}
-        </div>
+          </div>
+
+          <div
+            className='sticky top-0'
+            style={{
+              width: 100 - courtWidth + '%',
+            }}
+          >
+            {/*  */}
+            <div
+              className='sticky top-0 grid'
+              style={{
+                gridTemplateColumns: `repeat(${time.length}, minmax(0, 1fr))`,
+                minWidth: `${time.length * cellWidth}px`,
+              }}
+            >
+              {time.map((item, index) => (
+                <HeaderCell key={index} className='w-full last:border-r-0'>
+                  <p className='text-sm font-bold'>
+                    {format(item.start)} - {format(item.end)}
+                  </p>
+                </HeaderCell>
+              ))}
+            </div>
+
+            {/*  */}
+            {court.map((_, index) => (
+              <div
+                key={index}
+                className='grid items-center overflow-hidden border-b border-custom-gray last:border-b-0'
+                style={{
+                  gridTemplateColumns: `repeat(${time.length}, minmax(0, 1fr))`,
+                  minWidth: `${time.length * cellWidth}px`,
+                  height: rowHeight + 'px',
+                }}
+              >
+                {time.map((_, i) => (
+                  <BodyCell key={i} className='border-r last:border-r-0'>
+                    <div
+                      className='grid size-full items-stretch'
+                      style={{
+                        gridTemplateColumns: `repeat(${splitCell}, minmax(0, 1fr))`,
+                      }}
+                    >
+                      {[...Array(splitCell)].map((_, x) => (
+                        <Cell
+                          key={x}
+                          state={(i + index) % 2 === 0 ? 'available' : 'busy'}
+                          className='w-full border-r border-custom-gray last:border-r-0'
+                        />
+                      ))}
+                    </div>
+                  </BodyCell>
+                ))}
+              </div>
+            ))}
+          </div>
+        </>
       </div>
     </div>
   )

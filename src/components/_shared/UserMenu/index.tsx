@@ -1,14 +1,14 @@
 import Link from 'next/link'
 
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { CalendarCheck, Lock, TimerReset, User, UserCircle2 } from 'lucide-react'
+import { CalendarCheck, History, Lock, User, UserCircle2 } from 'lucide-react'
 
 import PrimaryButton from '@/components/Common/Button/PrimaryButton'
 import { routes } from '@/config/routes'
 
 const menuItems = [
   {
-    href: routes.home,
+    href: routes.profile,
     label: 'Hồ sơ',
     PrefixComponent: UserCircle2,
   },
@@ -20,7 +20,7 @@ const menuItems = [
   {
     href: routes.home,
     label: 'Lịch sử đặt sân',
-    PrefixComponent: TimerReset,
+    PrefixComponent: History,
   },
   {
     href: routes.home,
@@ -41,7 +41,7 @@ const UserMenu = () => {
       <MenuButton className='border-gray rounded-full border p-1' onClick={(e) => e.stopPropagation()}>
         <User />
       </MenuButton>
-      <MenuItems anchor='bottom end' className='border-gray z-[1000] mt-1 rounded-md border bg-white p-4'>
+      <MenuItems anchor='bottom end' className='z-[1000] mt-1 rounded-md border border-gray-200 bg-white p-4'>
         <div className='mb-6 flex flex-col items-center justify-center'>
           <h1 className='text-base font-bold'>{name}</h1>
           <p className='text-gray text-sm'>{email}</p>

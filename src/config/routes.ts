@@ -5,6 +5,7 @@ export const routes = {
   booking: booking,
   contact: '/contact',
   aboutUser: '/about-user',
+  profile: '/profile',
   business: business(''),
 }
 
