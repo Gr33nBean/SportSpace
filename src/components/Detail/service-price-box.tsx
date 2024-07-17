@@ -14,7 +14,6 @@ function ServicePriceBox() {
       </div>
       <div className='flex flex-col items-start justify-center gap-4 px-6 py-8'>
         <p className='text-lg italic'>Hoạt động 5h30 đến 22h các ngày trong tuần</p>
-        {/* Need to replaced with PriceItem */}
         <PriceItem price='60.000' timeRange='5:30am - 8:00am' />
         <PriceItem price='60.000' timeRange='5:30am - 8:00am' />
         <PriceItem price='60.000' timeRange='5:30am - 8:00am' />
