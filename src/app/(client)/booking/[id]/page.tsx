@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation'
 
 import { useState } from 'react'
 
+import LinkGGMap from '@/components/_shared/LinkGGMap'
 import Table from '@/components/Booking/Table'
 import Tab from '@/components/Common/Tab'
 import facebook from '@/images/svg/facebook.svg'
@@ -18,7 +19,11 @@ const Booking = () => {
       <div className='background-banner-home dark-overlay relative flex min-h-[40dvh] w-full items-center bg-blue-200'>
         <div className='container z-10 py-10 text-white'>
           <p className='text-4xl font-semibold'>Sân cầu Hiển Hoa</p>
-          <p className='text-md pt-3 font-normal'>Quận 2, TPHCM</p>
+          <LinkGGMap link='263/3 đường Trần Não, Phường Bình An, Quận 2, thành phố Hồ Chí Minh'>
+            <p className='text-md pt-3 font-normal'>
+              263/3 đường Trần Não, Phường Bình An, Quận 2, thành phố Hồ Chí Minh
+            </p>
+          </LinkGGMap>
           <div className='flex items-center gap-2 pt-2'>
             <Image src={facebook} alt='facebook' width={20} height={20} className='object-cover' />
             <Image src={google} alt='facebook' width={20} height={20} className='object-cover' />
