@@ -46,6 +46,7 @@ const Booking = () => {
       <div className='container flex flex-col items-start gap-8 py-20 lg:flex-row'>
         <div className='w-full lg:w-[68%]'>
           <Table />
+          {/* <CourtDetail/> */}
         </div>
 
         <div className='w-full lg:w-[32%]'></div>

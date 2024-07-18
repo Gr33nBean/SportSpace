@@ -5,7 +5,7 @@ import PriceItem from './price-item'
 
 function ServicePriceBox() {
   return (
-    <div className='flex w-full flex-col divide-y divide-inherit rounded-2xl border-2 border-gray-100 lg:w-1/3'>
+    <div className='flex w-full flex-col divide-y divide-inherit rounded-2xl border-2 border-gray-100 lg:w-2/3'>
       <div className='flex flex-row items-center justify-start gap-4 px-6 py-8'>
         <div className='rounded-full bg-secondary p-3 text-white'>
           <Gem size={24} />
