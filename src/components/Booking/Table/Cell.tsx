@@ -37,7 +37,7 @@ export const HeaderCell = ({ children, className }: { children: React.ReactNode;
 export const BodyCell = ({ children, className }: { children: React.ReactNode; className?: string }) => {
   return (
     <div
-      className={`flex items-center justify-center border-custom-gray ${className}`}
+      className={`flex items-center justify-center border-gray-300 ${className}`}
       style={{ height: rowHeight + 'px' }}
     >
       {children}
@@ -72,7 +72,6 @@ export const Cell = ({
       }
     >
       {children}
-      {!children && tempState == 'available' && <span className='text-3xl font-extralight text-custom-gray'>+</span>}
     </button>
   )
 }
