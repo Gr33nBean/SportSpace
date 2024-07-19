@@ -51,7 +51,7 @@ const BaseHeader = ({ children, hambugerProps, rightContent }: BaseHeaderProps) 
             top: hambugerProps.expand ? '0px' : '-100%',
             pointerEvents: hambugerProps.expand ? 'all' : 'none',
           }}
-          onClick={() => hambugerProps.setExpand(false)}
+          onClick={() => hambugerProps.setExpand(true)}
         >
           <div className='h-[80px] w-full'></div>
           <div className='container flex w-full flex-col gap-2 bg-white py-4 shadow-sm'>

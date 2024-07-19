@@ -11,6 +11,7 @@ import { routes } from '@/config/routes'
 
 import BaseHeader from '../BaseHeader'
 import { PageType } from '../ListLink'
+import MobileGlobalSearch from '@/components/_shared/MobileGlobalSearch'
 
 const pages: PageType[] = [
   {
@@ -73,6 +74,7 @@ const ClientHeader = () => {
         <div className='flex w-full flex-col items-center justify-center md:flex-row'>
           {/* {pages && <ListLink pages={pages} />} */}
           <GlobalSearch />
+          <MobileGlobalSearch />
         </div>
       </BaseHeader>
 

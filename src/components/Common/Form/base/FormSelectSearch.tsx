@@ -31,11 +31,11 @@ const FormSelectSearch = <TFormValues extends Record<string, unknown>>({
         className='w-full border-none bg-transparent text-xs outline-none text-gray-500'
         {...(register && register(name))}
       >
-        <option value=''>
+        <option value='' className='text-gray-500 bg-white'>
           <span>{placeholder}</span>
         </option>
         {options.map((option) => (
-          <option key={option.value} value={option.value}>
+          <option key={option.value} value={option.value} className='text-black bg-white hover:bg-gray-100'>
             {option.label}
           </option>
         ))}
