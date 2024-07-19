@@ -62,9 +62,9 @@ const Table = () => {
   }
 
   return (
-    <div className='w-full overflow-hidden rounded-[10px] border border-custom-gray'>
+    <div className='w-full overflow-hidden rounded-[10px] border border-gray-300'>
       {/*  */}
-      <div className='flex flex-col items-center gap-2 border-b border-custom-gray px-2 py-6 sm:flex-row sm:px-8'>
+      <div className='flex flex-col items-center gap-2 border-b border-gray-300 px-2 py-6 sm:flex-row sm:px-8'>
         <div className='flex w-full flex-1 items-center gap-2'>
           <div className='rounded-full bg-secondary p-3 text-white'>
             <CalendarPlus size={20} />
@@ -73,7 +73,7 @@ const Table = () => {
             <p className='text-sm font-bold sm:text-base'>Chọn sân và thời gian</p>
             <div className='pt-1'>
               <Slider
-                min={150}
+                min={50}
                 max={400}
                 value={cellWidth}
                 onChange={(value) => setCellWidth(value as number)}
@@ -147,8 +147,8 @@ const Table = () => {
             >
               {time.map((item, index) => (
                 <HeaderCell key={index} className='w-full last:border-r-0'>
-                  <p className='text-sm font-bold'>
-                    {format(item.start)} - {format(item.end)}
+                  <p className='text-center text-sm font-bold'>
+                    {format(item.start)} {cellWidth > 100 && '-'} {format(item.end)}
                   </p>
                 </HeaderCell>
               ))}
@@ -158,7 +158,7 @@ const Table = () => {
             {court.map((_, index) => (
               <div
                 key={index}
-                className='grid items-center overflow-hidden border-b border-custom-gray last:border-b-0'
+                className='grid items-center overflow-hidden border-b border-gray-300 last:border-b-0'
                 style={{
                   gridTemplateColumns: `repeat(${time.length}, minmax(0, 1fr))`,
                   minWidth: `${time.length * cellWidth}px`,
@@ -177,7 +177,7 @@ const Table = () => {
                         <Cell
                           key={x}
                           state={(i + index) % 2 === 0 ? 'available' : 'busy'}
-                          className='w-full border-r border-custom-gray last:border-r-0'
+                          className='w-full border-r border-gray-300 last:border-r-0'
                         />
                       ))}
                     </div>

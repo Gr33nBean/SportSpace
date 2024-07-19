@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 
-import React from 'react'
+import React, { useRef } from 'react'
 import { useForm } from 'react-hook-form'
 
 const BillSummaryEmpty = () => {
@@ -16,9 +16,10 @@ const BillSummaryEmpty = () => {
     console.log(data)
   }
 
+  const ref = useRef<HTMLDivElement>(null)
   return (
-    <div className='flex h-screen flex-col items-center justify-center bg-gray-100'>
-      <form onSubmit={handleSubmit(onSubmit)} className='w-80 rounded-lg bg-white p-6 shadow-md'>
+    <div ref={ref} className='top-[calc(80px+32px)] translate-y-[20%] transition-all sm:fixed'>
+      <form onSubmit={handleSubmit(onSubmit)} className='w-80 rounded-lg border border-gray-300 bg-white p-6 shadow-md'>
         <div className='mb-6 flex flex-col items-center'>
           <div className='mb-4 flex w-full flex-col items-center rounded-lg bg-gray-200 p-4'>
             <div className='mb-6 flex h-20 w-20 items-center justify-center'>

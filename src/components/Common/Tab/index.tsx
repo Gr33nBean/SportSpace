@@ -14,7 +14,7 @@ const Tab = ({
       {children}
       <span
         className='duration-350 absolute bottom-0 left-0 right-0 h-0.5 rounded-t-full bg-secondary transition-all'
-        style={{ transform: isActive ? 'translateY(0)' : 'translateY(100%)' }}
+        style={{ transform: isActive ? 'translateY(0)' : 'translateY(110%)' }}
       ></span>
     </button>
   )

@@ -7,6 +7,8 @@ import { useState } from 'react'
 import LinkGGMap from '@/components/_shared/LinkGGMap'
 import Table from '@/components/Booking/Table'
 import Tab from '@/components/Common/Tab'
+import CourtDetail from '@/components/Detail/CourtDetail/CourtDetail'
+import BillSummaryEmpty from '@/components/Summary/Bill/BillSummaryEmpty'
 import facebook from '@/images/svg/facebook.svg'
 import google from '@/images/svg/google.svg'
 
@@ -45,10 +47,20 @@ const Booking = () => {
       {/*  */}
       <div className='container flex flex-col items-start gap-8 py-20 lg:flex-row'>
         <div className='w-full lg:w-[68%]'>
-          <Table />
+          {activeTab === 0 ? (
+            <>
+              <Table />
+            </>
+          ) : (
+            <>
+              <CourtDetail />
+            </>
+          )}
         </div>
 
-        <div className='w-full lg:w-[32%]'></div>
+        <div className='w-full lg:w-[32%]'>
+          <BillSummaryEmpty />
+        </div>
       </div>
     </div>
   )
