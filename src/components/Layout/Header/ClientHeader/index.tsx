@@ -3,6 +3,7 @@ import React from 'react'
 import { LogOut } from 'lucide-react'
 
 import GlobalSearch from '@/components/_shared/GlobalSearch'
+import MobileGlobalSearch from '@/components/_shared/MobileGlobalSearch'
 import UserMenu from '@/components/_shared/UserMenu'
 import SignInModalForm from '@/components/Auth/SignInModalForm'
 import SignUpModalForm from '@/components/Auth/SignUpModalForm'
@@ -73,6 +74,7 @@ const ClientHeader = () => {
         <div className='flex w-full flex-col items-center justify-center md:flex-row'>
           {/* {pages && <ListLink pages={pages} />} */}
           <GlobalSearch />
+          <MobileGlobalSearch />
         </div>
       </BaseHeader>
 
