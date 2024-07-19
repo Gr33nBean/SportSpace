@@ -3,6 +3,7 @@ import React from 'react'
 import { LogOut } from 'lucide-react'
 
 import GlobalSearch from '@/components/_shared/GlobalSearch'
+import MobileGlobalSearch from '@/components/_shared/MobileGlobalSearch'
 import UserMenu from '@/components/_shared/UserMenu'
 import SignInModalForm from '@/components/Auth/SignInModalForm'
 import SignUpModalForm from '@/components/Auth/SignUpModalForm'
@@ -11,7 +12,6 @@ import { routes } from '@/config/routes'
 
 import BaseHeader from '../BaseHeader'
 import { PageType } from '../ListLink'
-import MobileGlobalSearch from '@/components/_shared/MobileGlobalSearch'
 
 const pages: PageType[] = [
   {

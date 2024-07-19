@@ -1,23 +1,25 @@
 'use client'
 import { Search } from 'lucide-react'
-import { useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form'
+
 import PrimaryButton from '@/components/Common/Button/PrimaryButton'
-import Divider from './Divider';
-import CourtNameInput from './CourtNameInput';
-import PlaceSelect from './PlaceSelect';
-import SportSelect from './SportSelect';
-import TimeSelect from './TimeSelect';
-import DurationSelect from './DurationSelect';
-import DateSelect from './DateSelect';
+
+import CourtNameInput from './CourtNameInput'
+import DateSelect from './DateSelect'
+import Divider from './Divider'
+import DurationSelect from './DurationSelect'
+import PlaceSelect from './PlaceSelect'
+import SportSelect from './SportSelect'
+import TimeSelect from './TimeSelect'
 
 const GlobalSearch = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm()
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
-  });
+    console.log(data)
+  })
 
   return (
-    <div className='hidden lg:block lg:max-w-[55rem] xl:max-w-[65rem] w-full rounded-md border bg-gray-100 py-2 shadow-sm lg:w-auto lg:rounded-full lg:px-2 lg:py-1'>
+    <div className='hidden w-full rounded-md border bg-gray-100 py-2 shadow-sm lg:block lg:w-auto lg:max-w-[55rem] lg:rounded-full lg:px-2 lg:py-1 xl:max-w-[65rem]'>
       <form className='w-full' onSubmit={onSubmit}>
         <div className='flex w-full flex-col items-center gap-3 lg:flex-row'>
           <CourtNameInput register={register} />
