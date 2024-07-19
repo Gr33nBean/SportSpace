@@ -14,7 +14,6 @@ const MobileGlobalSearch = () => {
   const { control, handleSubmit, register, reset } = useForm()
 
   const onSubmit = handleSubmit((data) => {
-    const { courtName, ...rest } = data
     console.log('data', data)
   })
 
