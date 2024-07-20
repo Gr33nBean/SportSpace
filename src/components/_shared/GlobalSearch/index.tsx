@@ -1,24 +1,45 @@
-import { MapPin, Search } from 'lucide-react'
+'use client'
+import { Search } from 'lucide-react'
+import { useForm } from 'react-hook-form'
+
+import PrimaryButton from '@/components/Common/Button/PrimaryButton'
+
+import CourtNameInput from './CourtNameInput'
+import DateSelect from './DateSelect'
+import Divider from './Divider'
+import DurationSelect from './DurationSelect'
+import PlaceSelect from './PlaceSelect'
+import SportSelect from './SportSelect'
+import TimeSelect from './TimeSelect'
 
 const GlobalSearch = () => {
-  return (
-    <div className='hidden rounded-full border bg-gray-100 px-2 py-1.5 shadow-sm md:block'>
-      <form action=''>
-        <div className='flex items-center gap-3'>
-          <div className='flex flex-1 items-center gap-4'>
-            <MapPin />
-            <input type='text' className='w-3/4 border-none bg-transparent outline-none' placeholder='Địa điểm' />
-          </div>
-          <span className='text-gray-300'>|</span>
-          <div className='flex flex-1 items-center justify-between'>
-            <input
-              type='date'
-              className='border-none bg-transparent outline-none focus:border-none focus:outline-none'
-            />
+  const { register, handleSubmit } = useForm()
+  const onSubmit = handleSubmit((data) => {
+    console.log(data)
+  })
 
-            <button className='rounded-full bg-white px-4 py-2 shadow-md'>
-              <Search />
-            </button>
+  return (
+    <div className='hidden w-full rounded-md border bg-gray-100 py-2 shadow-sm lg:block lg:w-auto lg:max-w-[55rem] lg:rounded-full lg:px-2 lg:py-1 xl:max-w-[65rem]'>
+      <form className='w-full' onSubmit={onSubmit}>
+        <div className='flex w-full flex-col items-center gap-3 lg:flex-row'>
+          <CourtNameInput register={register} />
+          <Divider />
+          <SportSelect register={register} />
+          <Divider />
+          <PlaceSelect register={register} />
+          <Divider />
+          <DateSelect register={register} />
+          <Divider />
+          <TimeSelect register={register} />
+          <Divider />
+          <DurationSelect register={register} />
+          <button className='hidden rounded-full bg-white p-2 px-4 shadow-md lg:!block' onClick={onSubmit}>
+            <Search size={18} />
+          </button>
+          <div className='w-full px-2 lg:hidden'>
+            <PrimaryButton variant='outlined' radius='full' className='w-full lg:hidden'>
+              Tìm kiếm
+            </PrimaryButton>
           </div>
         </div>
       </form>

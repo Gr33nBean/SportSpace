@@ -1,25 +1,23 @@
-import React from 'react'
-import FilterSport from './FilterSport'
+'use client'
+
 import FilterPlace from './FilterPlace'
 import FilterTime from './FilterTime'
 
 const FilterCourt = () => {
-    return (
-        <div className='rounded w-[15rem] border py-2 px-2 flex flex-col gap-3'>
-            <div className='flex justify-between items-center rounded-lg boder p-2 border-black'>
-                <p>Filter</p>
-                <div className='bg-secondary rounded px-2'><span className='text-black'>20</span></div>
-            </div>
-            <div className='flex flex-col gap-3'>
-                {/* <FilterSport />
-                <FilterPlace /> */}
-                <FilterTime />
-                <FilterTime />
-                <FilterTime />
-
-            </div>
+  return (
+    <div className='sm-w-full flex h-fit w-auto flex-col gap-6 rounded-lg border px-5 py-5 md:w-[25rem]'>
+      <div className='flex items-center justify-between rounded-lg border-black p-1.5'>
+        <p>Filter</p>
+        <div className='rounded bg-secondary px-3'>
+          <span className='text-sm font-bold text-black'>20</span>
         </div>
-    )
+      </div>
+      <div className='flex flex-col gap-3 transition-all duration-75'>
+        <FilterTime />
+        <FilterPlace />
+      </div>
+    </div>
+  )
 }
 
 export default FilterCourt

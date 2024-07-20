@@ -40,7 +40,7 @@ const ContactForm = () => {
     { label: 'Others', value: 'option3' },
   ]
   return (
-    <div className='container mb-4 mt-4 flex flex-col gap-10'>
+    <div className='container flex flex-col gap-10 py-6'>
       <div className='flex flex-col gap-1 text-center'>
         <p className='font-Inter text-xl font-bold text-primary'>{message.FIND_OUT_MORE}</p>
         <span className='text-primary'>{message.LEAVE_A_MSG}</span>

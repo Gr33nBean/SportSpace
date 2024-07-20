@@ -16,5 +16,4 @@ const SignUpModalForm = ({ open = false, handleClose }: { open?: boolean; handle
     </>
   )
 }
-
 export default SignUpModalForm

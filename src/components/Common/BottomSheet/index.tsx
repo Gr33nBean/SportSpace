@@ -1,10 +1,14 @@
+'use client'
 import React from 'react'
 import clsx from 'clsx'
+
+import 'react-spring-bottom-sheet/dist/style.css'
 
 type BottomSheetProps = {
   children: React.ReactNode
   open: boolean
   onClose?: () => void
+  onDismiss?: () => void
   className?: string
 }
 
@@ -18,6 +22,7 @@ const BottomSheet = (props: BottomSheetProps) => {
         aria-hidden='true'
         onClick={onClose}
       />
+
       <div
         className={clsx(
           'fixed bottom-0 left-0 right-0 z-[100] flex flex-col justify-start transition-all duration-500 md:hidden',

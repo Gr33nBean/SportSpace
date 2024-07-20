@@ -3,13 +3,10 @@ import Link from 'next/link'
 import React from 'react'
 import { Turn as Hamburger } from 'hamburger-react'
 
-import GlobalSearch from '@/components/_shared/GlobalSearch'
 import { routes } from '@/config/routes'
 
-import ListLink, { PageType } from './ListLink'
-
 type BaseHeaderProps = {
-  pages?: PageType[]
+  children?: React.ReactNode
   hambugerProps?: {
     expand: boolean
     setExpand: React.Dispatch<React.SetStateAction<boolean>>
@@ -17,47 +14,45 @@ type BaseHeaderProps = {
   rightContent?: React.ReactNode
 }
 
-const BaseHeader = ({ pages, hambugerProps, rightContent }: BaseHeaderProps) => {
+const BaseHeader = ({ children, hambugerProps, rightContent }: BaseHeaderProps) => {
   return (
     <>
-      <div className='sticky top-0 z-[999] flex h-[80px] w-full items-center bg-white py-4 shadow-sm transition-all duration-300'>
-        <div className='container flex w-full items-center'>
-          <div className='flex flex-1 items-center gap-6'>
+      <div className='sticky top-0 z-[100] flex h-[80px] w-full items-center bg-white py-4 shadow-sm transition-all duration-300'>
+        <div className='container'>
+          <div className='relative flex w-full items-center justify-between lg:justify-center'>
             {/* Logo */}
-            <Link href={routes.home}>
-              <div className='size-8 rounded-full bg-primary'></div>
-            </Link>
+            <Logo />
 
             {/* List link */}
-            <div className='hidden flex-1 items-center gap-6 md:!flex'>
-              {pages && <ListLink pages={pages} />}
+            <div className='hidden flex-1 items-center gap-6 lg:!flex'>{children}</div>
 
-              <GlobalSearch />
+            <div className='lg:hidden'>
+              {hambugerProps && rightContent && (
+                <Hamburger toggled={hambugerProps.expand} toggle={hambugerProps.setExpand} color='#274A3D' />
+              )}
             </div>
-          </div>
 
-          <div className='md:hidden'>
-            {hambugerProps && rightContent && (
-              <Hamburger toggled={hambugerProps.expand} toggle={hambugerProps.setExpand} color='#274A3D' />
+            {rightContent && (
+              <div className='hidden items-center gap-2 lg:absolute lg:bottom-0 lg:right-0 lg:top-0 lg:!flex'>
+                {rightContent}
+              </div>
             )}
           </div>
-
-          {rightContent && <div className='hidden items-center gap-2 md:!flex'>{rightContent}</div>}
         </div>
       </div>
 
       {hambugerProps && rightContent && (
         <div
-          className='fixed bottom-0 left-0 right-0 top-0 z-[100] flex flex-col justify-start transition-all duration-500 md:hidden'
+          className='fixed bottom-0 left-0 right-0 top-0 z-[99] flex flex-col justify-start transition-all duration-500 lg:hidden'
           style={{
             top: hambugerProps.expand ? '0px' : '-100%',
             pointerEvents: hambugerProps.expand ? 'all' : 'none',
           }}
-          onClick={() => hambugerProps.setExpand(false)}
+          onClick={() => hambugerProps.setExpand(true)}
         >
-          <div className='my-4 h-[80px] w-full'></div>
+          <div className='h-[80px] w-full'></div>
           <div className='container flex w-full flex-col gap-2 bg-white py-4 shadow-sm'>
-            {pages && <ListLink pages={pages} />}
+            {children}
             {rightContent}
           </div>
         </div>
@@ -67,3 +62,11 @@ const BaseHeader = ({ pages, hambugerProps, rightContent }: BaseHeaderProps) => 
 }
 
 export default BaseHeader
+
+function Logo() {
+  return (
+    <Link href={routes.home} className='flex items-center lg:absolute lg:bottom-0 lg:left-0 lg:top-0'>
+      <div className='size-8 rounded-full bg-primary'></div>
+    </Link>
+  )
+}

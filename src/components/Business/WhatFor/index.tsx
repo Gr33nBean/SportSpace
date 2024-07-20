@@ -39,23 +39,24 @@ const images = [
 
 const WhatFor = () => {
   return (
-    <section className='bg-light-gray px-6 py-12 lg:px-16'>
-      <div className='my-4 flex flex-col items-center justify-center'>
-        <h1 className='my-2 text-center text-2xl font-bold text-primary'>Sport Space dành cho doanh nghiệp là gì?</h1>
-        <p className='text-center text-lg text-primary'>Tính năng của phần mềm Sport Space</p>
-      </div>
-      <div className='my-8 grid gap-8 lg:grid-cols-2'>
-        <FeatureList contents={system_contents} />
-        <Image className='w-full object-contain' alt='description-image' src={images[0]} width={400} height={200} />
-      </div>
-
-      <div className='my-8 grid gap-8 lg:grid-cols-2'>
-        <Image className='w-full object-contain' alt='description-image' src={images[1]} width={400} height={200} />
-        <FeatureList contents={platform_contents}>
-          <PrimaryButton className='m-8 px-4 py-3 md:py-4'>
-            <span className='text-sm font-bold md:text-base'>Khám Phá Nền Tảng Sport Space</span>
-          </PrimaryButton>
-        </FeatureList>
+    <section className='bg-light-gray py-6'>
+      <div className='container'>
+        <div className='my-4 flex flex-col items-center justify-center'>
+          <h1 className='my-2 text-center text-2xl font-bold text-primary'>Sport Space dành cho doanh nghiệp là gì?</h1>
+          <p className='text-center text-lg text-primary'>Tính năng của phần mềm Sport Space</p>
+        </div>
+        <div className='my-8 grid gap-8 lg:grid-cols-2'>
+          <FeatureList contents={system_contents} />
+          <Image className='w-full object-contain' alt='description-image' src={images[0]} width={400} height={200} />
+        </div>
+        <div className='my-8 grid gap-8 lg:grid-cols-2'>
+          <Image className='w-full object-contain' alt='description-image' src={images[1]} width={400} height={200} />
+          <FeatureList contents={platform_contents}>
+            <PrimaryButton className='m-8 !py-2 px-4'>
+              <span className='text-sm font-bold md:text-base'>Khám Phá Nền Tảng Sport Space</span>
+            </PrimaryButton>
+          </FeatureList>
+        </div>
       </div>
     </section>
   )

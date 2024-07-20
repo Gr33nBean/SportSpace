@@ -8,7 +8,7 @@ import { COLORS } from '@/constants/colors'
 
 const BookingCourtCard = () => {
   return (
-    <div className='ml-2 mt-4 w-[25rem] overflow-hidden rounded-lg border'>
+    <div className='w-auto overflow-hidden rounded-lg border xl:w-[22rem]'>
       <Image
         src='https://babolat.com.vn/wp-content/uploads/2023/10/san-cau-long-viettel.jpg'
         alt='img'
@@ -21,7 +21,7 @@ const BookingCourtCard = () => {
         <p className='font-Inter text-lg'>Đặt lịch</p>
       </div>
       <div className='flex flex-col gap-3 py-4'>
-        <div className='flex flex-col px-4 py-2'>
+        <div className='flex flex-col px-4'>
           <h2 className='font-Inter text-xl font-semibold'>Sân cầu lông Hiển Hoa</h2>
           <p className='text-xs'>Quận 2, TPHCM</p>
         </div>
