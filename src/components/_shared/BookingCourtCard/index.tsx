@@ -1,14 +1,15 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import React from 'react'
 import { CalendarPlus2 } from 'lucide-react'
 
-import PrimaryButton from '@/components/Common/Button/PrimaryButton'
+import { routes } from '@/config/routes'
 import { COLORS } from '@/constants/colors'
 import { IBusiness } from '@/interface/business'
 
 const BookingCourtCard = (props: IBusiness) => {
-  const { address, name } = props
+  const { address, name, id } = props
   return (
     <div className='w-auto overflow-hidden rounded-lg border xl:w-[22rem]'>
       <Image
@@ -18,22 +19,25 @@ const BookingCourtCard = (props: IBusiness) => {
         height={200}
         className='h-44 w-full'
       />
-      <div className='flex cursor-pointer items-center justify-center gap-2 border-b px-2 py-4 transition-all duration-75 hover:text-secondary'>
+      <Link
+        href={routes.booking(id)}
+        className='flex cursor-pointer items-center justify-center gap-2 border-b px-2 py-4 transition-all duration-75 hover:text-secondary'
+      >
         <CalendarPlus2 color={COLORS.SECONDARY} />
         <p className='font-Inter text-lg'>Đặt lịch</p>
-      </div>
+      </Link>
       <div className='flex flex-col gap-3 py-4'>
         <div className='flex flex-col px-4'>
           <h2 className='font-Inter text-xl font-semibold'>Sân cầu lông {name}</h2>
           <p className='text-xs'>{address}</p>
         </div>
         <div className='flex justify-end px-4'>
-          <PrimaryButton
-            variant='outlined'
+          <Link
+            href={routes.booking(id)}
             className='h-10 border-secondary px-8 py-2 font-Inter hover:bg-secondary hover:text-white'
           >
             Xem chi tiết
-          </PrimaryButton>
+          </Link>
         </div>
       </div>
     </div>

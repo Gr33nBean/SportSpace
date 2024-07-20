@@ -1,47 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { CalendarPlus } from 'lucide-react'
 import Slider from 'rc-slider'
+
+import { getCourt } from '@/config/api/court'
+import { useFetch } from '@/hooks/api-hooks'
+import { IBusiness } from '@/interface/business'
+import { ICourt, ISlot } from '@/interface/court'
 
 import { BodyCell, Cell, cellState, courtWidth, HeaderCell, rowHeight, splitCell } from './Cell'
 import ChoosingDate, { formatDate } from './ChoosingDate'
 
 import 'rc-slider/assets/index.css'
 import './style.css'
-
-const court = [
-  {
-    id: 1,
-    name: 'Sân 1',
-  },
-  {
-    id: 2,
-    name: 'Sân 2',
-  },
-  {
-    id: 3,
-    name: 'Sân 3',
-  },
-  {
-    id: 4,
-    name: 'Sân 3',
-  },
-  {
-    id: 5,
-    name: 'Sân 5',
-  },
-  {
-    id: 6,
-    name: 'Sân 6',
-  },
-  {
-    id: 7,
-    name: 'Sân 7',
-  },
-  {
-    id: 8,
-    name: 'Sân 8',
-  },
-]
 
 const time = [
   { start: 6, end: 7, price: 20000 },
@@ -54,16 +24,31 @@ const time = [
   { start: 13, end: 14, price: 20000 },
 ]
 
-const Table = () => {
+type TableProps = {
+  business: IBusiness
+  onSelectSlot: (slot: ISlot) => void
+  choosingDate: string
+  setChoosingDate: React.Dispatch<React.SetStateAction<string>>
+}
+
+const Table = (props: TableProps) => {
+  const { business, onSelectSlot, choosingDate, setChoosingDate } = props
+
   const [cellWidth, setCellWidth] = React.useState(200)
-  const [choosingDate, setChoosingDate] = useState(formatDate(new Date()))
+
   const handleChoosingDate = (date: Date) => {
     setChoosingDate(formatDate(date))
   }
 
+  const { slug } = business || {}
+  const { data, isLoading } = useFetch<ICourt[]>(getCourt('0d41ec0d-b114-4c06-a021-87fecfbc91f2', slug))
+
+  if (isLoading) return null
+
+  const courts = data || []
+
   return (
     <div className='w-full overflow-hidden rounded-[10px] border border-gray-300'>
-      {/*  */}
       <div className='flex flex-col items-center gap-2 border-b border-gray-300 px-2 py-6 sm:flex-row sm:px-8'>
         <div className='flex w-full flex-1 items-center gap-2'>
           <div className='rounded-full bg-secondary p-3 text-white'>
@@ -105,7 +90,6 @@ const Table = () => {
         </div>
       </div>
 
-      {/*  */}
       <div className='relative flex max-h-[75vh] w-full items-start overflow-auto'>
         <>
           <div
@@ -114,16 +98,14 @@ const Table = () => {
               width: courtWidth + '%',
             }}
           >
-            {/*  */}
             <HeaderCell className='sticky top-0 z-10 px-2'>
               <div className='hidden w-full sm:!block'>
                 <ChoosingDate choosingDate={choosingDate} handleChange={handleChoosingDate} />
               </div>
             </HeaderCell>
 
-            {/*  */}
             <div className='border-r border-custom-gray'>
-              {court.map((item, index) => (
+              {courts.map((item, index) => (
                 <BodyCell key={index} className='border-b last:border-0'>
                   <p className='text-base font-bold'>{item.name}</p>
                 </BodyCell>
@@ -137,7 +119,6 @@ const Table = () => {
               width: 100 - courtWidth + '%',
             }}
           >
-            {/*  */}
             <div
               className='sticky top-0 grid'
               style={{
@@ -154,37 +135,44 @@ const Table = () => {
               ))}
             </div>
 
-            {/*  */}
-            {court.map((_, index) => (
-              <div
-                key={index}
-                className='grid items-center overflow-hidden border-b border-gray-300 last:border-b-0'
-                style={{
-                  gridTemplateColumns: `repeat(${time.length}, minmax(0, 1fr))`,
-                  minWidth: `${time.length * cellWidth}px`,
-                  height: rowHeight + 'px',
-                }}
-              >
-                {time.map((_, i) => (
-                  <BodyCell key={i} className='border-r last:border-r-0'>
-                    <div
-                      className='grid size-full items-stretch'
-                      style={{
-                        gridTemplateColumns: `repeat(${splitCell}, minmax(0, 1fr))`,
-                      }}
-                    >
-                      {[...Array(splitCell)].map((_, x) => (
-                        <Cell
-                          key={x}
-                          state={(i + index) % 2 === 0 ? 'available' : 'busy'}
-                          className='w-full border-r border-gray-300 last:border-r-0'
-                        />
-                      ))}
-                    </div>
-                  </BodyCell>
-                ))}
-              </div>
-            ))}
+            {courts.map((item, index) => {
+              const { slots, id } = item
+              return (
+                <div
+                  key={index}
+                  className='grid items-center overflow-hidden border-b border-gray-300 last:border-b-0'
+                  style={{
+                    gridTemplateColumns: `repeat(${time.length}, minmax(0, 1fr))`,
+                    minWidth: `${time.length * cellWidth}px`,
+                    height: rowHeight + 'px',
+                  }}
+                >
+                  {slots.map((slot, i) => {
+                    slot.id = `index-${i}-${id}`
+
+                    return (
+                      <BodyCell key={i} className='border-r last:border-r-0'>
+                        <div
+                          onClick={() => onSelectSlot(slot)}
+                          className='grid size-full items-stretch'
+                          style={{
+                            gridTemplateColumns: `repeat(${splitCell}, minmax(0, 1fr))`,
+                          }}
+                        >
+                          {[...Array(splitCell)].map((_, x) => (
+                            <Cell
+                              key={x}
+                              state={slot.status === 0 ? 'available' : 'busy'}
+                              className='w-full border-r border-gray-300 last:border-r-0'
+                            />
+                          ))}
+                        </div>
+                      </BodyCell>
+                    )
+                  })}
+                </div>
+              )
+            })}
           </div>
         </>
       </div>
