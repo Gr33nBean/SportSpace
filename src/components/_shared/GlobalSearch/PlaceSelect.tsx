@@ -10,10 +10,6 @@ const PlaceSelect = (props: any) => {
       label: 'Hồ Chí Minh',
       value: 'hcm',
     },
-    {
-      label: 'Hà Nội',
-      value: 'hn',
-    },
   ]
 
   return (

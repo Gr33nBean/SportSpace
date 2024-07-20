@@ -9,7 +9,7 @@ import Table from '@/components/Booking/Table'
 import Tab from '@/components/Common/Tab'
 import CourtDetail from '@/components/Detail/CourtDetail/CourtDetail'
 import BillSummaryEmpty from '@/components/Summary/Bill/BillSummaryEmpty'
-import { businessDetail } from '@/hooks/api/business'
+import { getBusinessDetail } from '@/config/api/business'
 import { useFetch } from '@/hooks/api-hooks'
 import facebook from '@/images/svg/facebook.svg'
 import google from '@/images/svg/google.svg'
@@ -17,7 +17,7 @@ import { IBusiness } from '@/interface/business'
 
 const Booking = () => {
   const { id } = useParams()
-  const { data } = useFetch<IBusiness>(businessDetail(id as string))
+  const { data } = useFetch<IBusiness>(getBusinessDetail(id as string))
   const [activeTab, setActiveTab] = useState(0)
 
   return (

@@ -1,7 +1,7 @@
 import React from 'react'
 import { FieldValues, Path, UseFormRegister } from 'react-hook-form'
 
-interface Option {
+export interface Option {
   label: string
   value: string
 }

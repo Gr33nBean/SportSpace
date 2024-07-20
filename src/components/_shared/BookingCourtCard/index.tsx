@@ -5,8 +5,10 @@ import { CalendarPlus2 } from 'lucide-react'
 
 import PrimaryButton from '@/components/Common/Button/PrimaryButton'
 import { COLORS } from '@/constants/colors'
+import { IBusiness } from '@/interface/business'
 
-const BookingCourtCard = () => {
+const BookingCourtCard = (props: IBusiness) => {
+  const { address, name } = props
   return (
     <div className='w-auto overflow-hidden rounded-lg border xl:w-[22rem]'>
       <Image
@@ -22,8 +24,8 @@ const BookingCourtCard = () => {
       </div>
       <div className='flex flex-col gap-3 py-4'>
         <div className='flex flex-col px-4'>
-          <h2 className='font-Inter text-xl font-semibold'>Sân cầu lông Hiển Hoa</h2>
-          <p className='text-xs'>Quận 2, TPHCM</p>
+          <h2 className='font-Inter text-xl font-semibold'>Sân cầu lông {name}</h2>
+          <p className='text-xs'>{address}</p>
         </div>
         <div className='flex justify-end px-4'>
           <PrimaryButton
