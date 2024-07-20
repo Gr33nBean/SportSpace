@@ -6,25 +6,39 @@ import { useState } from 'react'
 
 import LinkGGMap from '@/components/_shared/LinkGGMap'
 import Table from '@/components/Booking/Table'
+import { formatDate, formatForInput } from '@/components/Booking/Table/ChoosingDate'
 import Tab from '@/components/Common/Tab'
 import CourtDetail from '@/components/Detail/CourtDetail/CourtDetail'
+import BillSummary from '@/components/Summary/Bill/BillSummary'
 import BillSummaryEmpty from '@/components/Summary/Bill/BillSummaryEmpty'
+import { getBusinessDetail } from '@/config/api/business'
+import { useFetch } from '@/hooks/api-hooks'
 import facebook from '@/images/svg/facebook.svg'
 import google from '@/images/svg/google.svg'
+import { IBusiness } from '@/interface/business'
+import { ISlot } from '@/interface/court'
 
 const Booking = () => {
   const { id } = useParams()
+  const { data } = useFetch<IBusiness>(getBusinessDetail(id as string))
   const [activeTab, setActiveTab] = useState(0)
+  const [selectedSlots, setSelectedSlots] = useState<ISlot[]>([])
+  const [choosingDate, setChoosingDate] = useState(formatDate(new Date()))
+
+  const handleAddNewSlot = (slot: ISlot) => {
+    const isExits = [...selectedSlots].findIndex((s) => s.id === slot.id) !== -1
+
+    const newSlots = isExits ? [...selectedSlots].filter((s) => s.id !== slot.id) : [...selectedSlots, slot]
+    setSelectedSlots(newSlots)
+  }
+
   return (
     <div>
-      {/*  */}
       <div className='background-banner-home dark-overlay relative flex min-h-[40dvh] w-full items-center bg-blue-200'>
         <div className='container z-10 py-10 text-white'>
-          <p className='text-4xl font-semibold'>Sân cầu Hiển Hoa</p>
-          <LinkGGMap link='263/3 đường Trần Não, Phường Bình An, Quận 2, thành phố Hồ Chí Minh'>
-            <p className='text-md pt-3 font-normal'>
-              263/3 đường Trần Não, Phường Bình An, Quận 2, thành phố Hồ Chí Minh
-            </p>
+          <p className='text-4xl font-semibold'>{data?.name}</p>
+          <LinkGGMap link={data?.address as string}>
+            <span className='text-md pt-3 font-normal'>{data?.address}</span>
           </LinkGGMap>
           <div className='flex items-center gap-2 pt-2'>
             <Image src={facebook} alt='facebook' width={20} height={20} className='object-cover' />
@@ -33,7 +47,6 @@ const Booking = () => {
         </div>
       </div>
 
-      {/*  */}
       <div className='border-b border-custom-gray'>
         <div className='container flex items-center justify-center sm:justify-start'>
           {['Đặt lịch', 'Thông tin'].map((item, index) => (
@@ -44,22 +57,36 @@ const Booking = () => {
         </div>
       </div>
 
-      {/*  */}
       <div className='container flex flex-col items-start gap-8 py-20 lg:flex-row'>
         <div className='w-full lg:w-[68%]'>
           {activeTab === 0 ? (
             <>
-              <Table />
+              <Table
+                choosingDate={choosingDate}
+                setChoosingDate={setChoosingDate}
+                onSelectSlot={handleAddNewSlot}
+                business={data as IBusiness}
+              />
             </>
           ) : (
             <>
-              <CourtDetail />
+              <CourtDetail {...(data as IBusiness)} />
             </>
           )}
         </div>
 
         <div className='w-full lg:w-[32%]'>
-          <BillSummaryEmpty />
+          {selectedSlots.length > 0 ? (
+            <BillSummary
+              onBooking={() => {}}
+              date={formatForInput(choosingDate)}
+              price={selectedSlots.reduce((total, cur) => total + cur.price, 0)}
+              startTime='12:00'
+              endTime='13:00'
+            />
+          ) : (
+            <BillSummaryEmpty />
+          )}
         </div>
       </div>
     </div>

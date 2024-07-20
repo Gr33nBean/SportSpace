@@ -36,7 +36,7 @@ function convertFomartDateToDate(value: string) {
   return new Date(+year, +month - 1, +day)
 }
 
-function formatForInput(value: string) {
+export function formatForInput(value: string) {
   const [day, month, year] = value.split('/')
-  return year + '-' + month + '-' + day
+  return day + '-' + month + '-' + year
 }
