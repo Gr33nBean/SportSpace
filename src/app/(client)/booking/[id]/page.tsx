@@ -9,22 +9,25 @@ import Table from '@/components/Booking/Table'
 import Tab from '@/components/Common/Tab'
 import CourtDetail from '@/components/Detail/CourtDetail/CourtDetail'
 import BillSummaryEmpty from '@/components/Summary/Bill/BillSummaryEmpty'
+import { businessDetail } from '@/hooks/api/business'
+import { useFetch } from '@/hooks/api-hooks'
 import facebook from '@/images/svg/facebook.svg'
 import google from '@/images/svg/google.svg'
+import { IBusiness } from '@/interface/business'
 
 const Booking = () => {
   const { id } = useParams()
+  const { data } = useFetch<IBusiness>(businessDetail(id as string))
   const [activeTab, setActiveTab] = useState(0)
+
   return (
     <div>
       {/*  */}
       <div className='background-banner-home dark-overlay relative flex min-h-[40dvh] w-full items-center bg-blue-200'>
         <div className='container z-10 py-10 text-white'>
-          <p className='text-4xl font-semibold'>Sân cầu Hiển Hoa</p>
-          <LinkGGMap link='263/3 đường Trần Não, Phường Bình An, Quận 2, thành phố Hồ Chí Minh'>
-            <p className='text-md pt-3 font-normal'>
-              263/3 đường Trần Não, Phường Bình An, Quận 2, thành phố Hồ Chí Minh
-            </p>
+          <p className='text-4xl font-semibold'>{data?.name}</p>
+          <LinkGGMap link={data?.address as string}>
+            <p className='text-md pt-3 font-normal'>{data?.address}</p>
           </LinkGGMap>
           <div className='flex items-center gap-2 pt-2'>
             <Image src={facebook} alt='facebook' width={20} height={20} className='object-cover' />
