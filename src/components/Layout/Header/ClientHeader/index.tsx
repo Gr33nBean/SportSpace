@@ -3,8 +3,8 @@ import React from 'react'
 import { Calendar, House, LogOut, Search, Settings, User } from 'lucide-react'
 import { isMobile } from 'react-device-detect'
 
-import GlobalSearch from '@/components/_shared/GlobalSearch'
 import MobileGlobalSearch from '@/components/_shared/MobileGlobalSearch'
+import SearchBar from '@/components/_shared/SearchBar'
 import UserMenu from '@/components/_shared/UserMenu'
 import SignInModalForm from '@/components/Auth/SignInModalForm'
 import SignUpModalForm from '@/components/Auth/SignUpModalForm'
@@ -93,7 +93,7 @@ const ClientHeader = () => {
         >
           <div className='flex w-full flex-col items-center justify-center md:flex-row'>
             {/* {pages && <ListLink pages={pages} />} */}
-            <GlobalSearch />
+            <SearchBar />
             <MobileGlobalSearch />
           </div>
         </BaseHeader>

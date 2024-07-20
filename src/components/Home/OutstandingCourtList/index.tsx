@@ -24,7 +24,7 @@ const courts = [
 
 const OutstandingCourtList = () => {
   return (
-    <div className='relative z-20 flex items-center bg-secondary px-4 py-12 md:px-8 lg:min-h-[80dvh] lg:px-16'>
+    <div className='relative z-20 flex items-center bg-secondary py-8 md:px-8 lg:min-h-[80dvh] lg:px-16'>
       <div className='container text-black'>
         <h1 className='my-2 text-4xl font-bold lg:text-5xl'>Những sân nổi bật</h1>
         <p className='text-sm lg:text-xl'>

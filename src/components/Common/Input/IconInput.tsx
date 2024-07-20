@@ -23,7 +23,7 @@ const sizeMap: { [key in InputSize]: string } = {
 export const IconInput: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
   ({ id, name, label, type = 'text', size = 'medium', className = '', placeholder, icon, ...props }, ref) => {
     return (
-      <div className='relative'>
+      <div className='relative w-full'>
         <input
           id={id}
           ref={ref}

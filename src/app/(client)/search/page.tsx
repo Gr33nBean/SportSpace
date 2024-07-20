@@ -1,10 +1,14 @@
-import FilterCourt from '@/components/_shared/FilterCourt'
+import MobileGlobalSearch from '@/components/_shared/MobileGlobalSearch'
 import CourtList from '@/components/Search/CourtList'
 
 const Search = () => {
   return (
-    <main className='container mt-10 flex flex-col gap-8 md:flex-row'>
-      <FilterCourt />
+    <main className='container my-10 flex flex-col items-center gap-8'>
+      {/* { isMobile ? 
+      :
+      <GlobalSearch />
+      } */}
+      <MobileGlobalSearch />
       <CourtList />
     </main>
   )
