@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 import React from 'react'
 
 import ServicePriceBox from '@/components/Detail/service-price-box'
@@ -29,7 +31,7 @@ const CourtDetail = () => {
           <div className='mr-2 h-6 w-2 bg-secondary'></div>
           <h2 className='text-foreground text-xl font-bold'>Sơ đồ sân</h2>
         </div>
-        <img src='https://placehold.co/600x200?text=Court-map' alt='Court Map' className='w-full rounded-lg shadow' />
+        <Image src='https://placehold.co/600x200?text=Court-map' alt='Court Map' className='w-full rounded-lg shadow' />
       </div>
     </div>
   )
