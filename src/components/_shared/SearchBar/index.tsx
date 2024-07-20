@@ -4,14 +4,9 @@ import { useForm } from 'react-hook-form'
 
 import PrimaryButton from '@/components/Common/Button/PrimaryButton'
 
-import DateSelect from './DateSelect'
-import Divider from './Divider'
-import DurationSelect from './DurationSelect'
-import PlaceSelect from './PlaceSelect'
-import SportSelect from './SportSelect'
-import TimeSelect from './TimeSelect'
+import CourtNameInput from '../GlobalSearch/CourtNameInput'
 
-const GlobalSearch = () => {
+const SearchBar = () => {
   const { register, handleSubmit } = useForm()
   const onSubmit = handleSubmit((data) => {
     console.log(data)
@@ -21,15 +16,7 @@ const GlobalSearch = () => {
     <div className='hidden w-full rounded-md border bg-gray-100 py-2 shadow-sm lg:block lg:w-auto lg:max-w-[55rem] lg:rounded-full lg:px-2 lg:py-1 xl:max-w-[65rem]'>
       <form className='w-full' onSubmit={onSubmit}>
         <div className='flex w-full flex-col items-center gap-3 lg:flex-row'>
-          <SportSelect register={register} />
-          <Divider />
-          <PlaceSelect register={register} />
-          <Divider />
-          <DateSelect register={register} />
-          <Divider />
-          <TimeSelect register={register} />
-          <Divider />
-          <DurationSelect register={register} />
+          <CourtNameInput register={register} />
           <button className='hidden rounded-full bg-white p-2 px-4 shadow-md lg:!block' onClick={onSubmit}>
             <Search size={18} />
           </button>
@@ -44,4 +31,4 @@ const GlobalSearch = () => {
   )
 }
 
-export default GlobalSearch
+export default SearchBar

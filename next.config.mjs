@@ -9,7 +9,7 @@ const nextConfig = {
     ],
   },
   env: {
-    NEXT_PUBLIC_BASE_URL: "https://jsonplaceholder.typicode.com",
+    NEXT_PUBLIC_BASE_URL: "https://courtbusinessssss.azurewebsites.net/api",
     FIREBASE_API_KEY: 'AIzaSyC20wLu8nFT5YujH9_wWb-G7JGpR3BpCNE',
     FIREBASE_AUTH_DOMAIN: 'tobogo-court.firebaseapp.com',
     FIREBASE_PROJECT_ID: 'tobogo-court',

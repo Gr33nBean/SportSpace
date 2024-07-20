@@ -1,4 +1,7 @@
+import Link from 'next/link'
+
 import PrimaryButton from '@/components/Common/Button/PrimaryButton'
+import { routes } from '@/config/routes'
 
 const Banner = () => {
   return (
@@ -12,7 +15,7 @@ const Banner = () => {
           </p>
         </div>
         <PrimaryButton radius='full' variant='outlined' className='mt-2 w-fit !py-3 pl-8 pr-6'>
-          <span className='flex items-center gap-2 text-primary'>
+          <Link href={routes.search} className='flex items-center gap-2 text-primary'>
             <span className='text-sm font-bold sm:text-base'>Đặt trước ngay</span>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -26,7 +29,7 @@ const Banner = () => {
             >
               <path d='m9 18 6-6-6-6' />
             </svg>
-          </span>
+          </Link>
         </PrimaryButton>
       </div>
     </section>

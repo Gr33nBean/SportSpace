@@ -10,3 +10,8 @@ export interface IBusiness {
   contract: string
   id: string
 }
+
+export interface ISportCategory {
+  name: string
+  id: string
+}
