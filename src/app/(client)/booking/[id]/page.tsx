@@ -34,7 +34,7 @@ const Booking = () => {
 
   return (
     <div>
-      <div className='background-banner-home dark-overlay relative flex min-h-[40dvh] w-full items-center bg-blue-200'>
+      <div className='background-banner-home dark-overlay relative flex min-h-[40vh] w-full items-center bg-blue-200'>
         <div className='container z-10 py-10 text-white'>
           <p className='text-4xl font-semibold'>{data?.name}</p>
           <LinkGGMap link={data?.address as string}>

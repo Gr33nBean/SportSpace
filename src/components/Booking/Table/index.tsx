@@ -31,22 +31,20 @@ type TableProps = {
   setChoosingDate: React.Dispatch<React.SetStateAction<string>>
 }
 
-const Table = (props: TableProps) => {
-  const { business, onSelectSlot, choosingDate, setChoosingDate } = props
-
+const Table = ({ business, onSelectSlot, choosingDate, setChoosingDate }: TableProps) => {
   const [cellWidth, setCellWidth] = React.useState(200)
+
+  const { data: courts, isLoading } = useFetch<ICourt[]>(
+    getCourt('0d41ec0d-b114-4c06-a021-87fecfbc91f2', business?.slug ?? {})
+  )
+
+  if (isLoading) return null
+
+  if (!courts || courts.length === 0) return <p className='text w-full text-center font-bold'>Chưa có sân nào</p>
 
   const handleChoosingDate = (date: Date) => {
     setChoosingDate(formatDate(date))
   }
-
-  const { slug } = business || {}
-  const { data, isLoading } = useFetch<ICourt[]>(getCourt('0d41ec0d-b114-4c06-a021-87fecfbc91f2', slug))
-
-  if (isLoading) return null
-
-  const courts = data || []
-
   return (
     <div className='w-full overflow-hidden rounded-[10px] border border-gray-300'>
       <div className='flex flex-col items-center gap-2 border-b border-gray-300 px-2 py-6 sm:flex-row sm:px-8'>

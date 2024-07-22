@@ -29,7 +29,7 @@ function Payment() {
     <section className='w-full bg-white py-16 lg:relative lg:z-20'>
       <div className='container flex flex-col items-center justify-center gap-6 lg:min-h-[80dvh] lg:gap-10'>
         <div className='flex flex-col items-center'>
-          <p className='text-4xl font-bold text-primary lg:text-7xl'>Thanh toán dễ dàng</p>
+          <p className='text-center text-4xl font-bold text-primary lg:text-7xl'>Thanh toán dễ dàng</p>
           <p className='mt-4 w-2/3 text-center text-sm font-bold text-primary lg:text-xl'>
             Hỗ trợ thanh toán 24/7, phương thức thanh toán đa dạng, an toàn
           </p>
@@ -39,10 +39,10 @@ function Payment() {
             const { title, PrefixComponent } = item
             return (
               <div
-                className='flex w-full items-center justify-center gap-2 border-b bg-secondary bg-opacity-25 py-4 text-sm font-bold text-primary md:rounded-full lg:w-auto lg:py-8 lg:text-[32px]'
+                className='flex w-full items-center justify-center gap-2 border-b bg-secondary bg-opacity-25 py-4 text-sm font-bold text-primary md:rounded-full lg:w-auto lg:gap-4 lg:px-8 lg:py-8 lg:text-[32px]'
                 key={index}
               >
-                <PrefixComponent />
+                <PrefixComponent size={28} />
                 <p className='text-center'>{title}</p>
               </div>
             )

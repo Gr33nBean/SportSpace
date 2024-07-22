@@ -11,8 +11,8 @@ interface BillSummaryProps {
 
 const BillSummary: React.FC<BillSummaryProps> = ({ price, date, startTime, endTime, onBooking }) => {
   return (
-    <div className='top-[calc(80px+32px)] translate-y-[20%] transition-all sm:fixed'>
-      <div className='w-80 rounded-lg bg-white p-6 shadow-md'>
+    <div className='top-[calc(80px+32px)] translate-y-[20%] transition-all lg:fixed lg:w-80'>
+      <div className='w-full rounded-lg bg-white p-6 shadow-md'>
         <div className='mb-6 flex flex-col items-center'>
           <h1 className='mb-4 text-4xl font-bold'>{price.toLocaleString()} đ</h1>
           <div className='mb-4 w-full border-t border-light-gray'></div>

@@ -13,7 +13,7 @@ const SearchBar = () => {
   })
 
   return (
-    <div className='hidden w-full rounded-md border bg-gray-100 py-2 shadow-sm lg:block lg:w-auto lg:max-w-[55rem] lg:rounded-full lg:px-2 lg:py-1 xl:max-w-[65rem]'>
+    <div className='hidden w-full rounded-md border bg-gray-100 py-2 shadow-sm lg:!block lg:w-auto lg:max-w-[55rem] lg:rounded-full lg:px-2 lg:py-1 xl:max-w-[65rem]'>
       <form className='w-full' onSubmit={onSubmit}>
         <div className='flex w-full flex-col items-center gap-3 lg:flex-row'>
           <CourtNameInput register={register} />

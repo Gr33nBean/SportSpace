@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { Calendar, House, LogOut, Search, Settings, User } from 'lucide-react'
+import { Calendar, House, LogOut, Search, User } from 'lucide-react'
 import { isMobile } from 'react-device-detect'
 
 import MobileGlobalSearch from '@/components/_shared/MobileGlobalSearch'
@@ -36,11 +36,11 @@ const pages: PageType[] = [
     href: routes.profile,
     icon: <User />,
   },
-  {
-    name: 'Cài đặt',
-    href: routes.booking('123'),
-    icon: <Settings />,
-  },
+  // {
+  //   name: 'Cài đặt',
+  //   href: routes.booking('123'),
+  //   icon: <Settings />,
+  // },
 ]
 
 const ClientHeader = () => {

@@ -11,7 +11,7 @@ type BookingDetailProps = {
 const BookingDetail = (props: BookingDetailProps) => {
   const { courtName, date, time, totalPrice, isPaid } = props
   return (
-    <div className='flex-1 rounded-xl border-2 bg-white'>
+    <div className='rounded-xl border-2 bg-white'>
       <div className='bg-medium-gray'>
         <span className='text-md block py-5 pl-6 text-custom-gray'>Chi tiết đơn đặt</span>
       </div>
