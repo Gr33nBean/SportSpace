@@ -22,7 +22,7 @@ const ConfirmPassword = <TFormValues extends Record<string, unknown>>(
       }}
       register={register}
       placeholder='Nhập lại mật khẩu'
-      name={'confirmpassword' as Path<TFormValues>}
+      name={'confirmPassword' as Path<TFormValues>}
       errors={errors}
       icon={
         showPsw ? (

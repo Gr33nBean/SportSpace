@@ -6,10 +6,9 @@ import { isMobile } from 'react-device-detect'
 import MobileGlobalSearch from '@/components/_shared/MobileGlobalSearch'
 import SearchBar from '@/components/_shared/SearchBar'
 import UserMenu from '@/components/_shared/UserMenu'
-import SignInModalForm from '@/components/Auth/SignInModalForm'
-import SignUpModalForm from '@/components/Auth/SignUpModalForm'
 import PrimaryButton from '@/components/Common/Button/PrimaryButton'
 import { routes } from '@/config/routes'
+import useParamModal, { MODAL } from '@/hooks/useParamModal'
 
 import BaseHeader from '../BaseHeader'
 import BaseHeaderBusiness from '../BaseHeaderBusiness'
@@ -45,18 +44,9 @@ const pages: PageType[] = [
 
 const ClientHeader = () => {
   const [expand, setExpand] = React.useState(false)
-  const [isLoginFormOpen, setIsLoginFormOpen] = React.useState(false)
-  const [isSignUpFormOpen, setIsSignUpFormOpen] = React.useState(false)
+  const { handleOpenModal } = useParamModal()
 
-  function handleOpenLoginForm() {
-    setIsLoginFormOpen(true)
-  }
-
-  function handleOpenSignUpForm() {
-    setIsSignUpFormOpen(true)
-  }
-
-  const isLogin = true
+  const isLogin = false
 
   return (
     <>
@@ -76,7 +66,9 @@ const ClientHeader = () => {
                   <PrimaryButton
                     variant='outlined'
                     radius='full'
-                    onClick={handleOpenLoginForm}
+                    onClick={() => {
+                      handleOpenModal(MODAL.LOGIN)
+                    }}
                     className='flex items-center gap-2 !px-4 !py-2'
                   >
                     <span className='flex w-full items-center justify-center gap-2'>
@@ -98,19 +90,6 @@ const ClientHeader = () => {
           </div>
         </BaseHeader>
       )}
-
-      <SignInModalForm
-        open={isLoginFormOpen}
-        handleClose={() => {
-          setIsLoginFormOpen(false)
-        }}
-      />
-      <SignUpModalForm
-        open={isSignUpFormOpen}
-        handleClose={() => {
-          setIsSignUpFormOpen(false)
-        }}
-      />
     </>
   )
 }

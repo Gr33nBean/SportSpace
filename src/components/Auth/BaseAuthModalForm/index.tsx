@@ -35,7 +35,7 @@ const BaseAuthModalForm = (props: BaseAuthModalFormProps) => {
           className='relative z-[200] hidden transition-all ease-in-out focus:outline-none md:!block'
           onClose={handleClose}
         >
-          <div className='fixed inset-0 flex h-[100dvh] w-screen items-center justify-center bg-black bg-opacity-70'>
+          <div className='fixed inset-0 flex h-[100dvh] w-screen items-center justify-center'>
             <DialogPanel
               transition
               className='data-[closed]:transform-[scale(95%)] max-h-[85dvh] w-full max-w-xl overflow-auto rounded-xl bg-white pt-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:opacity-0'

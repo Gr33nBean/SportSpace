@@ -2,6 +2,7 @@ import PrimaryButton from '@/components/Common/Button/PrimaryButton'
 import Email from '@/components/Common/Form/Email'
 import Password from '@/components/Common/Form/Password'
 import withForm, { WithFormProps } from '@/hocs/withForm'
+import useParamModal, { MODAL } from '@/hooks/useParamModal'
 
 import NavigateToBusiness from '../NavigateToBusiness'
 
@@ -11,6 +12,7 @@ const SignInForm = (props: WithFormProps) => {
     register,
     formState: { errors },
   } = props
+  const { handleOpenModal } = useParamModal()
 
   return (
     <div className=''>
@@ -26,7 +28,9 @@ const SignInForm = (props: WithFormProps) => {
       <div className='mb-4 mt-4 flex gap-5 p-6'>
         <PrimaryButton
           className='h-12 flex-1 rounded-md border border-black bg-white px-3 py-1.5 text-sm/6 font-semibold shadow-inner shadow-white/10 focus:outline-none'
-          onClick={() => {}}
+          onClick={() => {
+            handleOpenModal(MODAL.REGISTER)
+          }}
           variant='outlined'
         >
           <span className='text-base text-black'>Đăng ký</span>

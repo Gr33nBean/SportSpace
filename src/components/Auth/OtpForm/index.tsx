@@ -1,26 +1,20 @@
-'use client'
 import Link from 'next/link'
 
+import React from 'react'
 import { CircleHelp, CircleUserRound } from 'lucide-react'
-import { useForm } from 'react-hook-form'
 
-import PrimaryButton from '../Common/Button/PrimaryButton'
-import Email from '../Common/Form/Email'
+import PrimaryButton from '@/components/Common/Button/PrimaryButton'
+import Email from '@/components/Common/Form/Email'
+import withForm, { WithFormProps } from '@/hocs/withForm'
 
-export type EmailConfirmationFormFields = {
-  email: string
-}
-
-const EmailConfirmationForm = ({ open = false, handleClose }: { open?: boolean; handleClose: () => void }) => {
+const OtpForm = (props: WithFormProps) => {
   const {
+    onSubmit,
     register,
-    handleSubmit,
     formState: { errors },
-  } = useForm<EmailConfirmationFormFields>()
-  const onSubmit = handleSubmit((data) => {})
-
+  } = props
   return (
-    <div className='flex flex-col items-center justify-center'>
+    <div className='flex flex-col items-center justify-center py-2'>
       <form onSubmit={onSubmit}>
         <p className='mb-4 text-sm font-medium text-custom-gray'>
           Nhấn để nhận mã xác nhận, thư xác nhận sẽ gửi về hòm thư của bạn.
@@ -38,7 +32,7 @@ const EmailConfirmationForm = ({ open = false, handleClose }: { open?: boolean; 
           <span className='text-base text-black'>Bước tiếp theo</span>
         </PrimaryButton>
       </div>
-      <div className='flex flex-row gap-8'>
+      <div className='flex flex-row gap-8 pb-4'>
         <Link href='' className='flex flex-row items-center gap-1'>
           <CircleUserRound color='#8E8E8E' />
           <p className='text-sm font-medium text-custom-gray'>Liên hệ CSKH</p>
@@ -52,4 +46,4 @@ const EmailConfirmationForm = ({ open = false, handleClose }: { open?: boolean; 
   )
 }
 
-export default EmailConfirmationForm
+export default withForm(OtpForm)
