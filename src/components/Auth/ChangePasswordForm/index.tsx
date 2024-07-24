@@ -11,9 +11,8 @@ const ChangePasswordForm = (props: WithFormProps) => {
     watch,
     onSubmit,
   } = props
-
   return (
-    <div>
+    <div className=''>
       <form onSubmit={onSubmit} className='p-6'>
         <div className='flex h-[25rem] flex-col gap-6 overflow-hidden overflow-y-auto px-2'>
           <div className='flex gap-4'>

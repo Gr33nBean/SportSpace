@@ -5,18 +5,20 @@ import { Path } from 'react-hook-form'
 import { BaseFormInputType } from './base/FormInput'
 import { FormInputIcon } from './base/FormInputIcon'
 
-const Password = <TFormValues extends Record<string, unknown>>(props: BaseFormInputType<TFormValues>) => {
+const Password = <TFormValues extends Record<string, unknown>>(
+  props: BaseFormInputType<TFormValues> & { placeholder?: string }
+) => {
   const [showPsw, setShowPsw] = useState(false)
-  const { register, errors } = props
+  const { register, errors, placeholder = 'Nhập Mật Khẩu' } = props
 
   return (
     <FormInputIcon
       id='password'
       type={showPsw ? 'text' : 'password'}
       label='Mật khẩu'
-      rules={{ required: 'You must enter email' }}
+      rules={{ required: 'You must enter password' }}
       register={register}
-      placeholder='Nhập Mật Khẩu'
+      placeholder={placeholder}
       name={'password' as Path<TFormValues>}
       errors={errors}
       icon={
