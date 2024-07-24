@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Calendar, House, LogOut, Search, User } from 'lucide-react'
 import { isMobile } from 'react-device-detect'
 
@@ -14,6 +14,9 @@ import { routes } from '@/config/routes'
 import BaseHeader from '../BaseHeader'
 import BaseHeaderBusiness from '../BaseHeaderBusiness'
 import ListLink, { PageType } from '../ListLink'
+import OtpConfirmationForm from '@/components/Auth/OtpConfirmationModalForm'
+import { usePathname, useRouter } from "next/navigation";
+import useParamModal, { MODAL } from '@/hooks/useParamModal'
 
 const pages: PageType[] = [
   {
@@ -44,9 +47,14 @@ const pages: PageType[] = [
 ]
 
 const ClientHeader = () => {
+  const router = useRouter();
   const [expand, setExpand] = React.useState(false)
   const [isLoginFormOpen, setIsLoginFormOpen] = React.useState(false)
+  const [isOtpFormOpen, setIsOtpFormOpen] = React.useState(false)
+
   const [isSignUpFormOpen, setIsSignUpFormOpen] = React.useState(false)
+
+  const { handleCloseModal, handleOpenModal, isMatchParamModalKey } = useParamModal();
 
   function handleOpenLoginForm() {
     setIsLoginFormOpen(true)
@@ -57,6 +65,10 @@ const ClientHeader = () => {
   }
 
   const isLogin = true
+
+  // useEffect(() => {
+  //   router.push(`?openModal=login`);
+  // }, [])
 
   return (
     <>
@@ -95,22 +107,56 @@ const ClientHeader = () => {
             {/* {pages && <ListLink pages={pages} />} */}
             <SearchBar />
             <MobileGlobalSearch />
+            <PrimaryButton
+                    variant='outlined'
+                    radius='full'
+                    onClick={() => {handleOpenModal(MODAL.LOGIN)}}
+                    className='flex items-center gap-2 !px-4 !py-2'
+                  >
+                    <span className='flex w-full items-center justify-center gap-2'>
+                      Đăng nhập
+                      <LogOut size={15} />
+                    </span>
+                  </PrimaryButton>
+
+                  <PrimaryButton
+                    variant='outlined'
+                    radius='full'
+                    onClick={() => {handleOpenModal(MODAL.REGISTER)}}
+                    className='flex items-center gap-2 !px-4 !py-2'
+                  >
+                    <span className='flex w-full items-center justify-center gap-2'>
+                      Đăng Ky
+                      <LogOut size={15} />
+                    </span>
+                  </PrimaryButton>
           </div>
         </BaseHeader>
       )}
 
       <SignInModalForm
-        open={isLoginFormOpen}
-        handleClose={() => {
-          setIsLoginFormOpen(false)
+        open={isMatchParamModalKey(MODAL.LOGIN)}
+        // handleClose={() => {
+        //   setIsLoginFormOpen(false)
+        // }}
+        handleClose={()=>{
+          handleCloseModal()
         }}
       />
       <SignUpModalForm
-        open={isSignUpFormOpen}
-        handleClose={() => {
-          setIsSignUpFormOpen(false)
+        // open={isSignUpFormOpen}
+        open={isMatchParamModalKey(MODAL.REGISTER)}
+
+        // handleClose={() => {
+        //   setIsSignUpFormOpen(false)
+        // }}
+        handleClose={()=>{
+          handleCloseModal()
         }}
       />
+      {/* <OtpConfirmationForm open={isOtpFormOpen} handleClose={() => {
+        setIsOtpFormOpen(false)
+      }} /> */}
     </>
   )
 }
