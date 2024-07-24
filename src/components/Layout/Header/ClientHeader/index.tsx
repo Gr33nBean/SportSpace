@@ -56,7 +56,7 @@ const ClientHeader = () => {
     setIsSignUpFormOpen(true)
   }
 
-  const isLogin = true
+  const isLogin = false
 
   return (
     <>
@@ -86,8 +86,7 @@ const ClientHeader = () => {
                   </PrimaryButton>
                 </>
               )}
-
-              {/* <PrimaryButton onClick={handleOpenSignUpForm}>Đăng ký</PrimaryButton> */}
+              <PrimaryButton onClick={handleOpenSignUpForm}>Đăng ký</PrimaryButton>
             </>
           }
         >

@@ -20,7 +20,7 @@ const PhoneNumber = <TFormValues extends Record<string, unknown>>(
         },
       }}
       register={register}
-      name={'mobile' as Path<TFormValues>}
+      name={'phoneNumber' as Path<TFormValues>}
       errors={errors}
     />
   )
