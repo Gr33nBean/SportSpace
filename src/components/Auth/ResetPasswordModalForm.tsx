@@ -1,24 +1,37 @@
 'use client'
 import React from 'react'
 import { FieldValues } from 'react-hook-form'
-import { usePost } from '@/hooks/api-hooks'
+
 import { getChangePsw } from '@/config/api/auth'
+import { usePost } from '@/hooks/api-hooks'
+import useParamModal from '@/hooks/useParamModal'
+
 import BaseAuthModalForm from './BaseAuthModalForm'
 import ResetPasswordForm from './ResetPasswordForm'
 export type ResetPasswordFormFields = {
-    email: string
-  }
+  email: string
+}
 
-const ResetPasswordModalForm = ({ open = true, handleClose }: { open?: boolean; handleClose: () => void }) => {
-    const { mutate } = usePost(getChangePsw(), {}, (data) => {
-        console.log(data);
-     }, () => { })
-      const onSubmit = (data: FieldValues) => {
-        mutate(data)
-      }
+const ResetPasswordModalForm = ({ open = false, handleClose }: { open?: boolean; handleClose: () => void }) => {
+  const { handleCloseModal } = useParamModal()
+  const { mutate } = usePost(
+    getChangePsw(),
+    {},
+    (data) => {
+      console.log(data)
+      handleCloseModal()
+    },
+    () => {}
+  )
+  const onSubmit = (data: FieldValues) => {
+    mutate({
+      email: 'vietdanghoang1705@gmail.com',
+      ...data,
+    })
+  }
   return (
-    <BaseAuthModalForm open={true} handleClose={handleClose} callback={onSubmit} title='Nhập mật khẩu mới'>
-      <ResetPasswordForm callback={onSubmit}/>
+    <BaseAuthModalForm open={open} handleClose={handleClose} callback={onSubmit} title='Nhập mật khẩu mới'>
+      <ResetPasswordForm callback={onSubmit} />
     </BaseAuthModalForm>
   )
 }
