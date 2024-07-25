@@ -78,7 +78,6 @@ const ClientHeader = () => {
                   </PrimaryButton>
                 </>
               )}
-
               {/* <PrimaryButton onClick={handleOpenSignUpForm}>Đăng ký</PrimaryButton> */}
             </>
           }
