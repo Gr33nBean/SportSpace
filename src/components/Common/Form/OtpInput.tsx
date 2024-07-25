@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ErrorMessage } from '@hookform/error-message'
 import clsx from 'clsx'
 import { DeepMap, FieldError, FieldValues, Path, RegisterOptions, UseFormRegister } from 'react-hook-form'
@@ -11,6 +11,7 @@ export type OtpInputProps<TFormValues extends FieldValues> = {
   register?: UseFormRegister<TFormValues>
   errors?: Partial<DeepMap<TFormValues, FieldError>> | any
   callback?: () => void
+  watch: any
 } & Omit<InputProps, 'name'>
 
 export type BaseFormInputType<TFormValues extends FieldValues> = Pick<OtpInputProps<TFormValues>, 'register' | 'errors'>
@@ -21,22 +22,37 @@ const OtpInput = <TFormValues extends Record<string, unknown>>({
   register,
   rules,
   errors,
+  watch,
   label,
   callback,
   ...props
 }: OtpInputProps<TFormValues>) => {
+  const [isFocused, setIsFocused] = useState(false)
   const errorMessages = errors[name]
   const hasError = !!(errors && errorMessages)
+  const isValidOtp = watch('otp')?.length === 6
   return (
     <div className={className}>
-      <Input
-        name={name}
-        {...props}
-        {...(register && register(name, rules))}
-        className={clsx('transition-colors', {
-          'border-red-600 hover:border-red-600 focus:border-red-600 focus:ring-red-600': hasError,
-        })}
-      />
+      <div className={clsx('flex items-center rounded border transition-colors', { 'border-primary': isFocused })}>
+        <Input
+          type='number'
+          name={name}
+          {...props}
+          {...(register && register(name, rules))}
+          className={clsx('border-none outline-none transition-colors', {
+            'border-red-600 hover:border-red-600 focus:border-red-600 focus:ring-red-600': hasError,
+          })}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+        />
+        <span className='text-gray-400'>|</span>
+        <button
+          className={`px-4 transition-colors duration-75 ${isValidOtp ? 'text-secondary' : 'text-gray-400'}`}
+          onClick={callback}
+        >
+          Gửi
+        </button>
+      </div>
       <ErrorMessage
         errors={errors}
         name={name}

@@ -7,7 +7,7 @@ import BottomSheet from '@/components/Common/BottomSheet'
 type BaseAuthModalFormProps = {
   open: boolean
   handleClose: () => void
-  callback: (data: any) => void
+  callback?: (data: any) => void
   title: string
   children?: React.ReactNode
 }
@@ -21,10 +21,6 @@ const BaseAuthModalForm = (props: BaseAuthModalFormProps) => {
     watch,
     formState: { errors },
   } = useForm()
-
-  const onSubmit = handleSubmit((data) => {
-    callback(data)
-  })
 
   return (
     <>

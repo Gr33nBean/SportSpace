@@ -1,8 +1,9 @@
 'use client'
 
+import { useState } from 'react'
 import { FieldValues } from 'react-hook-form'
 
-import { getOtpCode } from '@/config/api/auth'
+import { getCheckValidOtp } from '@/config/api/auth'
 import { usePost } from '@/hooks/api-hooks'
 
 import BaseAuthModalForm from './BaseAuthModalForm'
@@ -13,21 +14,25 @@ export type OtpConfirmationFormFields = {
 }
 
 const OtpConfirmationModalForm = ({ open = false, handleClose }: { open?: boolean; handleClose: () => void }) => {
+  const [isSuccess, setIsSuccess] = useState(false)
   const { mutate } = usePost(
-    getOtpCode(),
+    getCheckValidOtp(),
     {},
     (data) => {
-      console.log(data)
+      setIsSuccess(true)
     },
     () => {}
   )
   const onSubmit = (data: FieldValues) => {
-    mutate(data)
+    mutate({
+      email: 'vietdanghoang1705@gmail.com',
+      ...data,
+    })
   }
 
   return (
-    <BaseAuthModalForm open={open} handleClose={handleClose} callback={onSubmit} title='Nhập mã xác nhận'>
-      <OtpForm callback={onSubmit} />
+    <BaseAuthModalForm open={open} handleClose={handleClose} title='Nhập mã xác nhận'>
+      <OtpForm callback={onSubmit} isSuccess={isSuccess} />
     </BaseAuthModalForm>
   )
 }

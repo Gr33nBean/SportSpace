@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FieldValues } from 'react-hook-form'
 
 import { getOtpCode } from '@/config/api/auth'
@@ -8,6 +8,7 @@ import BaseAuthModalForm from './BaseAuthModalForm'
 import EmailConfirmationForm from './EmailConfirmationForm'
 
 const EmailConfirmationModalForm = ({ open = false, handleClose }: { open?: boolean; handleClose: () => void }) => {
+  const [isSuccess, setIsSuccess] = useState(false)
   const { mutate } = usePost(
     getOtpCode(),
     {},
@@ -21,7 +22,7 @@ const EmailConfirmationModalForm = ({ open = false, handleClose }: { open?: bool
   }
   return (
     <BaseAuthModalForm open={open} handleClose={handleClose} callback={onSubmit} title='Nhập địa chỉ email'>
-      <EmailConfirmationForm callback={onSubmit} />
+      <EmailConfirmationForm callback={onSubmit} isSuccess={isSuccess} />
     </BaseAuthModalForm>
   )
 }

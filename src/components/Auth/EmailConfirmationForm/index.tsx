@@ -22,13 +22,6 @@ const EmailConfirmationForm = (props: WithFormProps) => {
         </div>
       </form>
       <div className='mb-16 mt-4 flex w-1/2 gap-5 p-6'>
-        {/* <PrimaryButton
-          className='h-12 flex-1 bg-primary px-3 py-1.5 text-sm/6 font-semibold text-black shadow-inner shadow-white/10 focus:outline-none'
-          onClick={onSubmit}
-          variant='outlined'
-        >
-          <span className='text-base text-black'>Bước tiếp theo</span>
-        </PrimaryButton> */}
         <NextStepButton callback={onSubmit} isActive={false} />
       </div>
       <div className='flex flex-row gap-8'>
