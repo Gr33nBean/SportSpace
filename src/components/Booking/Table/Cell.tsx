@@ -23,11 +23,22 @@ export const cellState: { color: string; label: string; value: CellStateType }[]
   },
 ]
 
-export const HeaderCell = ({ children, className }: { children: React.ReactNode; className?: string }) => {
+export const HeaderCell = ({
+  children,
+  className,
+  colSpan,
+}: {
+  children: React.ReactNode
+  className?: string
+  colSpan?: number
+}) => {
   return (
     <div
       className={`flex items-center justify-center border-b border-r border-custom-gray bg-white ${className}`}
-      style={{ height: headerHeight + 'px' }}
+      style={{
+        height: headerHeight + 'px',
+        gridColumn: `span ${colSpan ? colSpan : 1} / span ${colSpan ? colSpan : 1}`,
+      }}
     >
       {children}
     </div>
@@ -51,10 +62,12 @@ export const Cell = ({
   state,
   children,
   className,
+  onClick,
 }: {
   children?: React.ReactNode
   className?: string
   state: CellStateType
+  onClick?: () => void
 }) => {
   const [tempState, setTempState] = useState(state)
   return (
@@ -64,12 +77,12 @@ export const Cell = ({
       style={{
         backgroundColor: cellState.find((s) => s.value === tempState)?.color,
       }}
-      onClick={() =>
+      onClick={() => {
+        onClick && onClick()
         setTempState((prev) => {
-          if (prev === 'selected') return 'available'
-          return 'selected'
+          return prev === 'selected' ? 'available' : 'selected'
         })
-      }
+      }}
     >
       {children}
     </button>

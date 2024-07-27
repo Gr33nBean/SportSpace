@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 import React from 'react'
 
 type UserRecordProps = {
@@ -14,7 +16,13 @@ const UserRecord = (props: UserRecordProps) => {
   return (
     <>
       <div className='flex items-center p-4'>
-        <img className='h-12 w-12 rounded-full' src='https://placehold.co/48x48' alt='User profile picture' />
+        <Image
+          width={48}
+          height={48}
+          className='rounded-full'
+          src='https://placehold.co/48x48'
+          alt='User profile picture'
+        />
         <div className='ml-4'>
           <h2 className='text-lg font-semibold text-black'>{`${userName}`}</h2>
           <p className='text-zinc-500'>

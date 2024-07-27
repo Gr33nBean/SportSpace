@@ -2,19 +2,24 @@ export interface ICourt {
   id: string
   name: string
   slug: string
-  openTime: Date
-  closeTime: Date
-  minBookingTime: Date
-  price: 160000
-  slots: ISlot[]
+  openTime: string
+  closeTime: string
+  minBookingTime: string
+  price: number
 }
 
 export interface ISlot {
   id?: string
-  start: Date
-  end: Date
-  price: int
-  status: int
-  isGoldenTime: boolean
-  surcharge: int
+  start: string
+  end: string
+  price: number
+  slot: number
+  // status: int
+  // isGoldenTime: boolean
+  // surcharge: int
+}
+
+export interface IBusinessCourt {
+  courts: ICourt[]
+  slots: ISlot[]
 }

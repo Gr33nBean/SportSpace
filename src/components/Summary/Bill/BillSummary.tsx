@@ -1,6 +1,8 @@
 'use client'
 import React from 'react'
 
+import { formatCurrency } from '@/helpers/currencyHelpers'
+
 interface BillSummaryProps {
   price: number
   date: string
@@ -14,7 +16,7 @@ const BillSummary: React.FC<BillSummaryProps> = ({ price, date, startTime, endTi
     <div className='top-[calc(80px+32px)] translate-y-[20%] transition-all lg:fixed lg:w-80'>
       <div className='w-full rounded-lg bg-white p-6 shadow-md'>
         <div className='mb-6 flex flex-col items-center'>
-          <h1 className='mb-4 text-4xl font-bold'>{price.toLocaleString()} đ</h1>
+          <h1 className='mb-4 text-4xl font-bold'>{formatCurrency(price)}</h1>
           <div className='mb-4 w-full border-t border-light-gray'></div>
           <div className='flex w-full items-center justify-between'>
             <p className='mb-1 text-gray-600'>{date}</p>
