@@ -22,6 +22,7 @@ const config: Config = {
         'light-purple': '#EBEEFD',
         'custom-gray': '#8E8E8E',
         'medium-gray': '#D9D9D9',
+        success: '#007247',
       },
     },
   },
