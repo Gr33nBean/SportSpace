@@ -8,7 +8,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type=number] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 
@@ -23,14 +23,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
   right: 0;
   top: 0;
   width: auto;
-}
-
-::-webkit-scrollbar {
-  display: none;
-}
-body {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 .container {
