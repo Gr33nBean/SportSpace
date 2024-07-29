@@ -1,6 +1,7 @@
 import React from 'react'
 import { CalendarPlus } from 'lucide-react'
 import Slider from 'rc-slider'
+import ScrollContainer from 'react-indiana-drag-scroll'
 
 import { getCourtsByBusinessSlug } from '@/config/api/court'
 import { useFetch } from '@/hooks/api-hooks'
@@ -22,8 +23,7 @@ type TableProps = {
 
 const Table = ({ business, onSelectSlot, choosingDate, setChoosingDate }: TableProps) => {
   const [cellWidth, setCellWidth] = React.useState(200)
-
-  const { data, isFetching } = useFetch<IBusinessCourt>(getCourtsByBusinessSlug(business?.slug ?? ''))
+  const { data } = useFetch<IBusinessCourt>(getCourtsByBusinessSlug(business?.slug ?? ''))
 
   const handleChoosingDate = (date: Date) => {
     setChoosingDate(formatDate(date))
@@ -77,109 +77,110 @@ const Table = ({ business, onSelectSlot, choosingDate, setChoosingDate }: TableP
               </div>
             </div>
 
-            <div className='relative flex max-h-[75vh] w-full items-start overflow-auto'>
-              <>
-                {/* First column */}
-                <div
-                  className='sticky left-0 top-0 z-10 h-fit bg-white'
-                  style={{
-                    width: courtWidth + '%',
-                  }}
-                >
-                  <HeaderCell className='sticky top-0 z-10 px-2'>
-                    <div className='hidden w-full sm:!block'>
-                      <ChoosingDate choosingDate={choosingDate} handleChange={handleChoosingDate} />
-                    </div>
-                  </HeaderCell>
-
-                  <div className='border-r border-custom-gray'>
-                    {data.courts.map((item) => (
-                      <BodyCell key={item.id} className='border-b last:border-0'>
-                        <p className='text-base font-bold'>{item.name}</p>
-                      </BodyCell>
-                    ))}
+            <ScrollContainer
+              hideScrollbars={false}
+              className='relative flex max-h-[75vh] w-full items-start overflow-auto'
+            >
+              {/* First column */}
+              <div
+                className='sticky left-0 top-0 z-10 h-fit bg-white'
+                style={{
+                  width: courtWidth + '%',
+                }}
+              >
+                <HeaderCell className='sticky top-0 z-10 px-2'>
+                  <div className='hidden w-full sm:!block'>
+                    <ChoosingDate choosingDate={choosingDate} handleChange={handleChoosingDate} />
                   </div>
+                </HeaderCell>
+
+                <div className='border-r border-custom-gray'>
+                  {data.courts.map((item) => (
+                    <BodyCell key={item.id} className='border-b last:border-0'>
+                      <p className='text-base font-bold'>{item.name}</p>
+                    </BodyCell>
+                  ))}
                 </div>
+              </div>
 
-                {/* The others */}
+              {/* The others */}
+              <div
+                className='sticky top-0'
+                style={{
+                  width: 100 - courtWidth + '%',
+                }}
+              >
+                {/* First row */}
                 <div
-                  className='sticky top-0'
+                  className='sticky top-0 grid'
                   style={{
-                    width: 100 - courtWidth + '%',
+                    gridTemplateColumns: `repeat(${data.slots.length}, minmax(0, 1fr))`,
+                    minWidth: `${(data.slots.length * cellWidth) / splitCell}px`,
                   }}
                 >
-                  {/* First row */}
-                  <div
-                    className='sticky top-0 grid'
-                    style={{
-                      gridTemplateColumns: `repeat(${data.slots.length}, minmax(0, 1fr))`,
-                      minWidth: `${(data.slots.length * cellWidth) / splitCell}px`,
-                    }}
-                  >
-                    {data.slots.map((slot, index, arr) => {
-                      const start = removeSecond(slot.start)
-                      let col = 1
-                      let end = ''
-                      if (index % splitCell == 0) {
-                        if (index + splitCell - 1 <= arr.length - 1) {
-                          end = arr[index + splitCell - 1].end
-                          col = splitCell
-                        } else {
-                          end = arr[arr.length - 1].end
-                          col = arr.length % splitCell
-                        }
-                      }
-                      if (!end) {
-                        return <></>
+                  {data.slots.map((slot, index, arr) => {
+                    const start = removeSecond(slot.start)
+                    let col = 1
+                    let end = ''
+                    if (index % splitCell == 0) {
+                      if (index + splitCell - 1 <= arr.length - 1) {
+                        end = arr[index + splitCell - 1].end
+                        col = splitCell
                       } else {
-                        end = removeSecond(end)
+                        end = arr[arr.length - 1].end
+                        col = arr.length % splitCell
                       }
+                    }
+                    if (!end) {
+                      return <></>
+                    } else {
+                      end = removeSecond(end)
+                    }
 
-                      return (
-                        <HeaderCell key={index} colSpan={col} className={`w-full last:border-r-0`}>
-                          <p className='flex flex-wrap justify-center gap-2 text-center text-sm font-bold'>
-                            <span>{start}</span>
-                            {cellWidth * col > 200 && '-'}
-                            <span>{end}</span>
-                          </p>
-                        </HeaderCell>
-                      )
-                    })}
-                  </div>
-
-                  {/* The others */}
-                  {data.courts.map((item) => {
-                    const courtId = item.id
                     return (
-                      <div
-                        key={item.id}
-                        className='grid items-center overflow-hidden border-b border-gray-300 last:border-b-0'
-                        style={{
-                          gridTemplateColumns: `repeat(${data.slots.length}, minmax(0, 1fr))`,
-                          minWidth: `${(data.slots.length * cellWidth) / splitCell}px`,
-                          height: rowHeight + 'px',
-                        }}
-                      >
-                        {data.slots.map((slot) => {
-                          const id = `${courtId}-${slot.slot}`
-                          return (
-                            <BodyCell key={id} className='border-r last:border-r-0'>
-                              <Cell
-                                onClick={() => {
-                                  onSelectSlot({ ...slot, id })
-                                }}
-                                state={'available'}
-                                className='size-full'
-                              />
-                            </BodyCell>
-                          )
-                        })}
-                      </div>
+                      <HeaderCell key={index} colSpan={col} className={`w-full last:border-r-0`}>
+                        <p className='flex flex-wrap justify-center gap-2 text-center text-sm font-bold'>
+                          <span>{start}</span>
+                          {cellWidth * col > 200 && '-'}
+                          <span>{end}</span>
+                        </p>
+                      </HeaderCell>
                     )
                   })}
                 </div>
-              </>
-            </div>
+
+                {/* The others */}
+                {data.courts.map((item) => {
+                  const courtId = item.id
+                  return (
+                    <div
+                      key={item.id}
+                      className='grid items-center overflow-hidden border-b border-gray-300 last:border-b-0'
+                      style={{
+                        gridTemplateColumns: `repeat(${data.slots.length}, minmax(0, 1fr))`,
+                        minWidth: `${(data.slots.length * cellWidth) / splitCell}px`,
+                        height: rowHeight + 'px',
+                      }}
+                    >
+                      {data.slots.map((slot) => {
+                        const id = `${courtId}-${slot.slot}`
+                        return (
+                          <BodyCell key={id} className='border-r last:border-r-0'>
+                            <Cell
+                              onClick={() => {
+                                onSelectSlot({ ...slot, id })
+                              }}
+                              state={'available'}
+                              className='pointer-events-none size-full'
+                            />
+                          </BodyCell>
+                        )
+                      })}
+                    </div>
+                  )
+                })}
+              </div>
+            </ScrollContainer>
           </div>
         </>
       ) : (
