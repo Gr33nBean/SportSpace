@@ -11,8 +11,8 @@ import Tab from '@/components/Common/Tab'
 import CourtDetail from '@/components/Detail/CourtDetail/CourtDetail'
 import BillSummary from '@/components/Summary/Bill/BillSummary'
 import BillSummaryEmpty from '@/components/Summary/Bill/BillSummaryEmpty'
-import { getBusinessDetail } from '@/config/api/business'
-import { useFetch } from '@/hooks/api-hooks'
+import { getBookingCourt, getBusinessDetail } from '@/config/api/business'
+import { useFetch, usePost } from '@/hooks/api-hooks'
 import facebook from '@/images/svg/facebook.svg'
 import google from '@/images/svg/google.svg'
 import { IBusiness } from '@/interface/business'
@@ -24,12 +24,49 @@ const Booking = () => {
   const [activeTab, setActiveTab] = useState(0)
   const [selectedSlots, setSelectedSlots] = useState<ISlot[]>([])
   const [choosingDate, setChoosingDate] = useState(formatDate(new Date()))
+  const { mutate } = usePost(
+    getBookingCourt(),
+    {},
+    (data) => {
+      console.log(data)
+    },
+    () => {}
+  )
+
+  const parseDateToIso = (choosingDate: string) => {
+    const [day, month, year] = choosingDate.split('/').map(Number)
+    const date = new Date(Date.UTC(year, month - 1, day, 16, 27, 41, 754))
+    const isoString = date.toISOString()
+
+    return isoString
+  }
 
   const handleAddNewSlot = (slot: ISlot) => {
+    console.log(slot)
     const isExits = [...selectedSlots].findIndex((s) => s.id === slot.id) !== -1
 
     const newSlots = isExits ? [...selectedSlots].filter((s) => s.id !== slot.id) : [...selectedSlots, slot]
     setSelectedSlots(newSlots)
+  }
+
+  const mappingDataForBooking = () => {
+    return {
+      name: 'Viet',
+      phoneNumber: '0905124585',
+      createBookingCourtInfors: selectedSlots.map((item) => ({
+        courtId: item.id ? item.id.slice(0, -2) : '',
+        bookingMethodId: '315c1ea3-8b2d-46c4-abd6-835fbd6eb337',
+        date: parseDateToIso(choosingDate),
+        slot: item.slot,
+        startTime: item.start,
+        endTime: item.end,
+        status: 0,
+      })),
+    }
+  }
+
+  const handleBooking = () => {
+    mutate(mappingDataForBooking())
   }
 
   return (
@@ -78,7 +115,7 @@ const Booking = () => {
         <div className='w-full lg:w-[32%]'>
           {selectedSlots.length > 0 ? (
             <BillSummary
-              onBooking={() => {}}
+              onBooking={handleBooking}
               date={formatForInput(choosingDate)}
               price={selectedSlots.reduce((total, cur) => total + cur.price, 0)}
               startTime='12:00'
