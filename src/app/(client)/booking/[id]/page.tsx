@@ -12,11 +12,12 @@ import CourtDetail from '@/components/Detail/CourtDetail/CourtDetail'
 import BillSummary from '@/components/Summary/Bill/BillSummary'
 import BillSummaryEmpty from '@/components/Summary/Bill/BillSummaryEmpty'
 import { getBookingCourt, getBusinessDetail } from '@/config/api/business'
+import { getCourtsByBusinessSlug } from '@/config/api/court'
 import { useFetch, usePost } from '@/hooks/api-hooks'
 import facebook from '@/images/svg/facebook.svg'
 import google from '@/images/svg/google.svg'
 import { IBusiness } from '@/interface/business'
-import { ISlot } from '@/interface/court'
+import { IBusinessCourt, ISlot } from '@/interface/court'
 
 const Booking = () => {
   const { id } = useParams()
@@ -69,6 +70,8 @@ const Booking = () => {
     mutate(mappingDataForBooking())
   }
 
+  const { data: businessCourt } = useFetch<IBusinessCourt>(getCourtsByBusinessSlug(data?.slug ?? ''))
+
   return (
     <div>
       <div className='background-banner-home dark-overlay relative flex min-h-[40vh] w-full items-center bg-blue-200'>
@@ -95,21 +98,28 @@ const Booking = () => {
       </div>
 
       <div className='container flex flex-col items-start gap-8 py-20 lg:flex-row'>
-        <div className='w-full lg:w-[68%]'>
-          {activeTab === 0 ? (
-            <>
-              <Table
-                choosingDate={choosingDate}
-                setChoosingDate={setChoosingDate}
-                onSelectSlot={handleAddNewSlot}
-                business={data as IBusiness}
-              />
-            </>
-          ) : (
-            <>
-              <CourtDetail {...(data as IBusiness)} />
-            </>
-          )}
+        <div className='w-full lg:w-[68%] lg:min-w-[68%]'>
+          <div
+            style={{
+              display: activeTab === 0 ? 'block' : 'none',
+            }}
+          >
+            <Table
+              businessCourt={businessCourt}
+              choosingDate={choosingDate}
+              setChoosingDate={setChoosingDate}
+              onSelectSlot={handleAddNewSlot}
+              business={data as IBusiness}
+            />
+          </div>
+
+          <div
+            style={{
+              display: activeTab === 1 ? 'block' : 'none',
+            }}
+          >
+            <CourtDetail {...(data as IBusiness)} />
+          </div>
         </div>
 
         <div className='w-full lg:w-[32%]'>

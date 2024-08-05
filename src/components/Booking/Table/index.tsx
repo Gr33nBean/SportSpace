@@ -3,37 +3,44 @@ import { CalendarPlus } from 'lucide-react'
 import Slider from 'rc-slider'
 import ScrollContainer from 'react-indiana-drag-scroll'
 
-import { getCourtsByBusinessSlug } from '@/config/api/court'
+import { getBookingCourts } from '@/config/api/bookingCourt'
 import { useFetch } from '@/hooks/api-hooks'
 import { IBusiness } from '@/interface/business'
 import { IBusinessCourt, ISlot } from '@/interface/court'
 
-import { BodyCell, Cell, cellState, courtWidth, HeaderCell, rowHeight, splitCell } from './Cell'
+import { BodyCell, cellState, courtWidth, HeaderCell } from './Cell'
 import ChoosingDate, { formatDate } from './ChoosingDate'
+import Content from './Content'
 
 import 'rc-slider/assets/index.css'
 import './style.css'
 
 type TableProps = {
+  businessCourt?: IBusinessCourt
   business: IBusiness
   onSelectSlot: (slot: ISlot) => void
   choosingDate: string
   setChoosingDate: React.Dispatch<React.SetStateAction<string>>
 }
 
-const Table = ({ business, onSelectSlot, choosingDate, setChoosingDate }: TableProps) => {
+const Table = ({ businessCourt, business, onSelectSlot, choosingDate, setChoosingDate }: TableProps) => {
   const [cellWidth, setCellWidth] = React.useState(200)
-  const { data } = useFetch<IBusinessCourt>(getCourtsByBusinessSlug(business?.slug ?? ''))
 
   const handleChoosingDate = (date: Date) => {
     setChoosingDate(formatDate(date))
   }
 
-  if (!data) return <div className=''></div>
+  const { data: bookingCourt } = useFetch<IBusinessCourt>(
+    getBookingCourts(business?.slug ?? '', convertDateToISO(choosingDate))
+  )
+
+  console.log(bookingCourt)
+
+  if (!businessCourt) return <div className=''></div>
 
   return (
     <>
-      {data.courts?.length ? (
+      {businessCourt.courts?.length ? (
         <>
           <div className='w-full overflow-hidden rounded-[10px] border border-gray-300'>
             <div className='flex flex-col items-center gap-2 border-b border-gray-300 px-2 py-6 sm:flex-row sm:px-8'>
@@ -95,7 +102,7 @@ const Table = ({ business, onSelectSlot, choosingDate, setChoosingDate }: TableP
                 </HeaderCell>
 
                 <div className='border-r border-custom-gray'>
-                  {data.courts.map((item) => (
+                  {businessCourt.courts.map((item) => (
                     <BodyCell key={item.id} className='border-b last:border-0'>
                       <p className='text-base font-bold'>{item.name}</p>
                     </BodyCell>
@@ -110,75 +117,7 @@ const Table = ({ business, onSelectSlot, choosingDate, setChoosingDate }: TableP
                   width: 100 - courtWidth + '%',
                 }}
               >
-                {/* First row */}
-                <div
-                  className='sticky top-0 grid'
-                  style={{
-                    gridTemplateColumns: `repeat(${data.slots.length}, minmax(0, 1fr))`,
-                    minWidth: `${(data.slots.length * cellWidth) / splitCell}px`,
-                  }}
-                >
-                  {data.slots.map((slot, index, arr) => {
-                    const start = removeSecond(slot.start)
-                    let col = 1
-                    let end = ''
-                    if (index % splitCell == 0) {
-                      if (index + splitCell - 1 <= arr.length - 1) {
-                        end = arr[index + splitCell - 1].end
-                        col = splitCell
-                      } else {
-                        end = arr[arr.length - 1].end
-                        col = arr.length % splitCell
-                      }
-                    }
-                    if (!end) {
-                      return <></>
-                    } else {
-                      end = removeSecond(end)
-                    }
-
-                    return (
-                      <HeaderCell key={index} colSpan={col} className={`w-full last:border-r-0`}>
-                        <p className='flex flex-wrap justify-center gap-2 text-center text-sm font-bold'>
-                          <span>{start}</span>
-                          {cellWidth * col > 200 && '-'}
-                          <span>{end}</span>
-                        </p>
-                      </HeaderCell>
-                    )
-                  })}
-                </div>
-
-                {/* The others */}
-                {data.courts.map((item) => {
-                  const courtId = item.id
-                  return (
-                    <div
-                      key={item.id}
-                      className='grid items-center overflow-hidden border-b border-gray-300 last:border-b-0'
-                      style={{
-                        gridTemplateColumns: `repeat(${data.slots.length}, minmax(0, 1fr))`,
-                        minWidth: `${(data.slots.length * cellWidth) / splitCell}px`,
-                        height: rowHeight + 'px',
-                      }}
-                    >
-                      {data.slots.map((slot) => {
-                        const id = `${courtId}-${slot.slot}`
-                        return (
-                          <BodyCell key={id} className='border-r last:border-r-0'>
-                            <Cell
-                              onClick={() => {
-                                onSelectSlot({ ...slot, id })
-                              }}
-                              state={'available'}
-                              className='size-full'
-                            />
-                          </BodyCell>
-                        )
-                      })}
-                    </div>
-                  )
-                })}
+                <Content businessCourt={businessCourt} cellWidth={cellWidth} onSelectSlot={onSelectSlot} />
               </div>
             </ScrollContainer>
           </div>
@@ -194,6 +133,12 @@ const Table = ({ business, onSelectSlot, choosingDate, setChoosingDate }: TableP
 
 export default Table
 
-function removeSecond(time: string) {
-  return time.split(':')[0] + ':' + time.split(':')[1]
+function convertDateToISO(dateString: string) {
+  // Tách chuỗi ngày tháng theo dấu '/'
+  const [day, month, year] = dateString.split('/')
+
+  // Tạo chuỗi định dạng ISO 8601
+  const isoDateString = `${year}-${month}-${day}`
+
+  return isoDateString
 }
