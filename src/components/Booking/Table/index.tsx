@@ -171,7 +171,7 @@ const Table = ({ business, onSelectSlot, choosingDate, setChoosingDate }: TableP
                                 onSelectSlot({ ...slot, id })
                               }}
                               state={'available'}
-                              className='pointer-events-none size-full'
+                              className='size-full'
                             />
                           </BodyCell>
                         )
